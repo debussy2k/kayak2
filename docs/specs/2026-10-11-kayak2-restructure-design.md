@@ -16,7 +16,7 @@ Kayak 저장소는 그대로 둔다. 호스트(Edicus 등)는 API 재설계가 �
 
 **이번 단계(이전)에 하는 것**
 - 필요한 소스·테스트·픽스처·문서만 옮긴다. 공개 API와 렌더링 결과는 바꾸지 않는다.
-- npm workspaces 구조, 최신 빌드 설정(ESM 출력 추가), ESLint, Node 24 고정.
+- npm workspaces 구조, 최신 빌드 설정(ESM 출력 추가), ESLint, Volta로 Node 24 고정.
 - AI 친화 구성: `AGENTS.md`, `.claude/`, `docs/`의 안내 문서와 페르소나.
 - 쓰지 않는 의존성 삭제, 테스트용 jsdom 업그레이드(별도 커밋).
 
@@ -29,10 +29,9 @@ Kayak 저장소는 그대로 둔다. 호스트(Edicus 등)는 API 재설계가 �
 kayak2/
   AGENTS.md                   AI 작업 지시 원본
   CLAUDE.md                   "@AGENTS.md" 한 줄
-  package.json                private, workspaces ["packages/*", "apps/*"], 루트 스크립트(check/test/build/lint/typecheck)
+  package.json                private, workspaces ["packages/*", "apps/*"], 루트 스크립트(check/test/build/lint/typecheck), volta(node 24)
   tsconfig.base.json          공통 컴파일 옵션
   eslint.config.js
-  .nvmrc                      24
   .gitattributes, .gitignore
   patches/                    opentype.js+1.3.4.patch (workspaces는 의존성을 루트 node_modules로 올리므로 루트에 둔다)
   .claude/
@@ -41,7 +40,7 @@ kayak2/
     skills/{verify,update-snapshots,record-issue}/SKILL.md
   packages/kayak/
     AGENTS.md                 라이브러리 규칙
-    package.json              name "kayak", private, "type": "module", exports
+    package.json              name "kayak", private, "type": "module", exports, volta.extends → 루트
     tsconfig.json             tsconfig.base.json 확장
     vite.config.ts            브라우저 번들 + vitest 설정
     vite.config.node.ts       Node 번들
@@ -110,7 +109,7 @@ parity 테스트와 `test/segment/legacy/`는 seglayer 통합의 안전망이라
 
 **TypeScript**: 5.9, Kayak tsconfig의 옵션을 그대로 `tsconfig.base.json`으로 (strict, `useDefineForClassFields: false`, `moduleResolution: bundler`, shim `paths`).
 **Vite 8 / Vitest 4**: Kayak 설정을 `.ts`로 옮긴다. define(`LOG_LEVEL`, `process.env.NODE_ENV`), `cssMinify: false`, `target: es2015` 유지.
-**Node 24 LTS**: `.nvmrc`, `engines`. (현재 PC는 Node 20.20.2 — 구현 첫 단계에서 설치 필요)
+**Node 24 LTS (Volta)**: 루트 package.json에 `volta pin node@24`로 정확한 버전을 고정한다. 하위 패키지(`packages/*`, 앞으로의 `apps/*`)는 `"volta": { "extends": "../../package.json" }`로 루트를 따른다. npm은 Node에 포함된 것을 쓴다. `engines`에도 `node >=24`를 적어 Volta가 없는 환경에서 알 수 있게 한다. (이 PC에 Volta 2.0.2가 있고 기본은 Node 20.20.2 — kayak2 안에서는 Volta가 고정된 Node 24를 자동으로 받아 쓴다)
 **npm** workspaces. lockfile 커밋.
 
 **ESLint 9** (flat config + typescript-eslint)
@@ -186,7 +185,7 @@ parity 테스트와 `test/segment/legacy/`는 seglayer 통합의 안전망이라
 ## 9. 진행 방식
 
 구현 계획(`docs/plans/`)을 따로 쓰고 승인받은 뒤 실행한다. 큰 순서:
-1. 준비: Node 24 설치 확인, 저장소 뼈대(workspaces, tsconfig, vite/vitest, dts, patch-package).
+1. 준비: Volta로 Node 24 고정(`node -v` 확인), 저장소 뼈대(workspaces, tsconfig, vite/vitest, dts, patch-package).
 2. 이전: 소스·테스트·픽스처 복사와 경로 수정. 커밋 메시지에 Kayak 원본 커밋 해시를 적는다.
 3. 검증: 6절 1~4.
 4. ESLint 도입, 의존성 정리, jsdom 업그레이드 (각각 커밋, 매번 스냅샷 확인).
@@ -214,7 +213,7 @@ GitHub 원격 저장소는 지시가 있을 때 만든다.
 | npm workspaces (`packages/kayak` + `apps/`) | playground를 같은 저장소에 새로 만들 예정 |
 | 이번 단계에서 호스트 배포 안 함 | API 재설계 뒤 한 번에 전환 |
 | ESLint 지금, Prettier는 API 재설계 직전 | 일괄 포맷은 거의 모든 줄을 바꿈 |
-| Node 24 LTS | Node 20은 2026-04 지원 종료 |
+| Node 24 LTS, Volta로 고정 | Node 20은 2026-04 지원 종료. Volta는 사용자가 쓰는 도구이고 폴더에 들어가면 버전이 자동으로 맞춰짐 |
 | GitHub 원격은 지시가 있을 때 | 외부 작업 |
 | 엔진/공개 API 폴더 분리, `exports` 사용 | API 재설계와 legacy 병행 |
 | 출력 파일 이름 유지 + ESM 추가 | 호스트 전환 시 복사 이름 동일 |
@@ -227,4 +226,4 @@ GitHub 원격 저장소는 지시가 있을 때 만든다.
 - **스냅샷의 경로 의존**: 스냅샷이나 헬퍼가 파일 경로를 담고 있으면 이동으로 깨진다. 스냅샷이 아니라 헬퍼를 고친다.
 - **줄바꿈**: Windows에서 스냅샷 바이트 비교가 줄바꿈 때문에 어긋나지 않도록 `.gitattributes`를 그대로 가져온다.
 - **jsdom 업그레이드**: 레이아웃 계산이 jsdom에 기대는 부분이 있어 스냅샷이 바뀔 수 있다. 별도 커밋으로 두고, 바뀌면 멈추고 보고한다.
-- **Node 버전**: 설치된 Node가 20이다. 24 설치는 사용자 PC 작업이므로 계획 첫 단계에서 확인한다.
+- **Node 버전**: 하위 패키지에서 명령을 실행할 때 `volta.extends`가 빠지면 Volta가 기본 Node 20을 쓴다. 각 하위 package.json에 extends를 두고, 1단계에서 루트와 `packages/kayak` 양쪽의 `node -v`를 확인한다.
