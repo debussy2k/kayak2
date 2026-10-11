@@ -1,0 +1,6 @@
+# patch-package 패치는 체크아웃 환경(core.autocrlf)과 상관없이 LF로 유지
+patches/*.patch text eol=lf
+# 스냅샷 파일은 vitest가 바이트 비교하므로 체크아웃 환경과 상관없이 LF로 유지
+packages/*/test/**/__snapshots__/** text eol=lf
+*.ttf binary
+*.otf binary

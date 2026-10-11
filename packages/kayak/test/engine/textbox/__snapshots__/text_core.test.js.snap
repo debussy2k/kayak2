@@ -1,0 +1,136 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`TB_History (redux-undo) > 초기 상태, dispatch, noop 카운트, undo/redo, reset 1`] = `
+{
+  "noop": false,
+  "noop_count": 1,
+  "tpath": {
+    "align_to_path": "center",
+    "end_bracket": 1,
+    "flip_path": false,
+    "start_bracket": 0,
+  },
+}
+`;
+
+exports[`TB_History (redux-undo) > 초기 상태, dispatch, noop 카운트, undo/redo, reset 2`] = `
+{
+  "noop": true,
+  "noop_count": 4,
+  "tpath": {
+    "align_to_path": "center",
+    "end_bracket": 1,
+    "flip_path": false,
+    "start_bracket": 5,
+  },
+}
+`;
+
+exports[`TB_History (redux-undo) > 초기 상태, dispatch, noop 카운트, undo/redo, reset 3`] = `2`;
+
+exports[`TB_LineMetric / TB_LineRenderOptions / TB_RangeMetric > TB_RangeMetric.set_with_font: ascent_d가 큰 폰트/크기만 반영 1`] = `
+[
+  12.8,
+  11.424,
+  4,
+]
+`;
+
+exports[`TP_TextCore > undo_text/redo_text: 경계에서 에러 코드 1/2, noop은 텍스트를 건드리지 않는다 1`] = `
+[
+  [
+    null,
+    [
+      0,
+      1,
+      0,
+      [],
+    ],
+    "b$",
+  ],
+  [
+    null,
+    [
+      0,
+      1,
+      0,
+      [
+        97,
+      ],
+    ],
+    "ab$",
+  ],
+  [
+    null,
+    [
+      0,
+      0,
+      0,
+      [],
+    ],
+    "$",
+  ],
+  [
+    null,
+    [
+      0,
+      0,
+      0,
+      [],
+    ],
+    "",
+  ],
+  [
+    1,
+    null,
+    "",
+  ],
+  [
+    null,
+    [
+      0,
+      0,
+      0,
+      [],
+    ],
+    "$",
+  ],
+  [
+    null,
+    [
+      0,
+      0,
+      0,
+      [],
+    ],
+    "ab$",
+  ],
+  [
+    null,
+    [
+      0,
+      1,
+      0,
+      [
+        97,
+      ],
+    ],
+    "b$",
+  ],
+  [
+    null,
+    [
+      0,
+      1,
+      0,
+      [],
+    ],
+    "b$",
+  ],
+  [
+    2,
+    null,
+    "b$",
+  ],
+]
+`;

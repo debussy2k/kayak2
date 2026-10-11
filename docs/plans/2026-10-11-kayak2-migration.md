@@ -1,5 +1,7 @@
 # kayak2 이전 구현 계획
 
+> **실행 완료 (2026-10-11).** 이 문서는 실행 당시의 기록이다. scratchpad 경로, `C:\webdev\Kayak` 읽기 같은 지시는 그때의 작업용이며 지금 유효한 지시가 아니다. 실행 중 계획과 달리 정한 것과 결과는 `docs/decisions.md`에 있다.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Kayak `main`(f4b6604)의 엔진·테스트를 동작 변화 없이 `C:\webdev\kayak2`의 npm workspaces 저장소로 옮기고, AI가 읽고 검증하기 쉬운 구성(AGENTS.md, .claude/, docs/)을 갖춘다.

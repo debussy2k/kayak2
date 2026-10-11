@@ -1,0 +1,2135 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`TB_Keyboard (jsdom) > focus(target) 뒤 키/조합 이벤트가 target으로 간다 (insert → replace, 소멸 → backspace) 1`] = `
+[
+  [
+    "on_keydown",
+    65,
+  ],
+  [
+    "on_keyup",
+    65,
+  ],
+  [
+    "on_insert_word",
+    "a",
+    "insert",
+  ],
+  [
+    "on_insert_word",
+    "ㄱ",
+    "insert",
+  ],
+  [
+    "on_insert_word",
+    "가",
+    "replace",
+  ],
+  [
+    "on_insert_word",
+    "가",
+    "replace",
+  ],
+  [
+    "on_remove_by_ime_backspace",
+  ],
+  [
+    "on_copy",
+    Event {
+      "isTrusted": false,
+    },
+  ],
+  [
+    "on_cut",
+    Event {
+      "isTrusted": false,
+    },
+  ],
+  [
+    "on_paste",
+    Event {
+      "isTrusted": false,
+    },
+  ],
+]
+`;
+
+exports[`TB_KeydownAction (가짜 tb) > selection이 있으면 Backspace/Delete는 범위를 지우고, ctrl+a는 text_on_path면 끝-1까지 1`] = `
+[
+  [
+    "erase",
+    2,
+    2,
+    5,
+    "cb",
+  ],
+  [
+    "style_listener",
+    {
+      "erase_cmd": true,
+    },
+  ],
+  [
+    "erase",
+    2,
+    2,
+    5,
+    "cb",
+  ],
+  [
+    "style_listener",
+    {
+      "erase_cmd": true,
+    },
+  ],
+  [
+    "set_selection",
+    0,
+    9,
+  ],
+  [
+    "style_listener",
+    null,
+  ],
+]
+`;
+
+exports[`TB_KeydownAction (가짜 tb) > 키별 동작 1`] = `
+[
+  [
+    "Backspace",
+    [
+      [
+        "erase",
+        2,
+        2,
+        2,
+        "cb",
+      ],
+      [
+        "style_listener",
+        {
+          "erase_cmd": true,
+        },
+      ],
+    ],
+    true,
+    true,
+  ],
+  [
+    "Delete",
+    [
+      [
+        "erase",
+        3,
+        3,
+        3,
+        "cb",
+      ],
+      [
+        "style_listener",
+        {
+          "erase_cmd": true,
+        },
+      ],
+    ],
+    true,
+    true,
+  ],
+  [
+    "ctrl+c",
+    [
+      [
+        "style_listener",
+        null,
+      ],
+    ],
+    false,
+    true,
+  ],
+  [
+    "ctrl+v",
+    [
+      [
+        "style_listener",
+        null,
+      ],
+    ],
+    false,
+    true,
+  ],
+  [
+    "ctrl+shift+v",
+    [
+      [
+        "paste",
+        {
+          "get_element_size": [Function],
+        },
+        {
+          "begin": 3,
+          "cursor": 3,
+          "end": 3,
+          "exists_range": false,
+        },
+        "cb",
+      ],
+      [
+        "style_listener",
+        null,
+      ],
+    ],
+    true,
+    true,
+  ],
+  [
+    "ctrl+x",
+    [
+      [
+        "style_listener",
+        null,
+      ],
+    ],
+    false,
+    true,
+  ],
+  [
+    "ctrl+z",
+    [
+      [
+        "undo",
+        "cb",
+      ],
+      [
+        "style_listener",
+        null,
+      ],
+    ],
+    true,
+    true,
+  ],
+  [
+    "ctrl+y",
+    [
+      [
+        "redo",
+        "cb",
+      ],
+      [
+        "style_listener",
+        null,
+      ],
+    ],
+    true,
+    true,
+  ],
+  [
+    "ctrl+shift+L",
+    [
+      [
+        "set_text_align",
+        "left",
+        {
+          "begin": 0,
+          "cursor": 3,
+          "end": 10,
+          "exists_range": true,
+        },
+        "cb",
+      ],
+      [
+        "style_listener",
+        null,
+      ],
+    ],
+    true,
+    true,
+  ],
+  [
+    "ctrl+shift+E",
+    [
+      [
+        "set_text_align",
+        "center",
+        {
+          "begin": 0,
+          "cursor": 3,
+          "end": 10,
+          "exists_range": true,
+        },
+        "cb",
+      ],
+      [
+        "style_listener",
+        null,
+      ],
+    ],
+    true,
+    true,
+  ],
+  [
+    "ctrl+shift+R",
+    [
+      [
+        "set_text_align",
+        "right",
+        {
+          "begin": 0,
+          "cursor": 3,
+          "end": 10,
+          "exists_range": true,
+        },
+        "cb",
+      ],
+      [
+        "style_listener",
+        null,
+      ],
+    ],
+    true,
+    true,
+  ],
+  [
+    "PageUp",
+    [
+      [
+        "style_listener",
+        null,
+      ],
+    ],
+    true,
+    true,
+  ],
+  [
+    "End",
+    [
+      [
+        "input_end",
+        true,
+        false,
+      ],
+      [
+        "style_listener",
+        null,
+      ],
+    ],
+    true,
+    true,
+  ],
+  [
+    "Home",
+    [
+      [
+        "input_home",
+        false,
+        true,
+      ],
+      [
+        "style_listener",
+        null,
+      ],
+    ],
+    true,
+    true,
+  ],
+  [
+    "Left",
+    [
+      [
+        "input_left",
+        1,
+        false,
+      ],
+      [
+        "style_listener",
+        null,
+      ],
+    ],
+    true,
+    true,
+  ],
+  [
+    "ctrl+Left",
+    [
+      [
+        "find_steps_to_prev_word",
+      ],
+      [
+        "input_left",
+        2,
+        false,
+      ],
+      [
+        "style_listener",
+        null,
+      ],
+    ],
+    true,
+    true,
+  ],
+  [
+    "shift+Right",
+    [
+      [
+        "input_right",
+        1,
+        true,
+      ],
+      [
+        "style_listener",
+        null,
+      ],
+    ],
+    true,
+    true,
+  ],
+  [
+    "ctrl+Right",
+    [
+      [
+        "find_steps_to_next_word",
+      ],
+      [
+        "input_right",
+        3,
+        false,
+      ],
+      [
+        "style_listener",
+        null,
+      ],
+    ],
+    true,
+    true,
+  ],
+  [
+    "Up",
+    [
+      [
+        "input_up",
+        false,
+      ],
+      [
+        "style_listener",
+        null,
+      ],
+    ],
+    true,
+    true,
+  ],
+  [
+    "Down",
+    [
+      [
+        "input_down",
+        true,
+      ],
+      [
+        "style_listener",
+        null,
+      ],
+    ],
+    true,
+    true,
+  ],
+  [
+    "ctrl+a",
+    [
+      [
+        "set_selection",
+        0,
+        10,
+      ],
+      [
+        "style_listener",
+        null,
+      ],
+    ],
+    true,
+    true,
+  ],
+  [
+    "ctrl+b",
+    [
+      [
+        "set_bold",
+        null,
+        {
+          "begin": 3,
+          "cursor": 3,
+          "end": 3,
+          "exists_range": false,
+        },
+        "cb",
+      ],
+      [
+        "style_listener",
+        null,
+      ],
+    ],
+    true,
+    true,
+  ],
+  [
+    "ctrl+shift+,",
+    [
+      [
+        "set_font_size",
+        11,
+        {
+          "begin": 0,
+          "cursor": 3,
+          "end": 10,
+          "exists_range": true,
+        },
+        "cb",
+      ],
+      [
+        "style_listener",
+        null,
+      ],
+    ],
+    true,
+    true,
+  ],
+  [
+    "ctrl+shift+.",
+    [
+      [
+        "set_font_size",
+        14,
+        {
+          "begin": 0,
+          "cursor": 3,
+          "end": 10,
+          "exists_range": true,
+        },
+        "cb",
+      ],
+      [
+        "style_listener",
+        null,
+      ],
+    ],
+    true,
+    true,
+  ],
+  [
+    "Q",
+    [],
+    false,
+    true,
+  ],
+  [
+    "meta+a (jsdom은 mac이 아님)",
+    [],
+    false,
+    true,
+  ],
+]
+`;
+
+exports[`TB_NormalizedIME (jsdom → safari_mac 리스너) > element 이벤트가 리스너를 거쳐 options로 전달된다 1`] = `
+[
+  [
+    "keydown",
+    65,
+  ],
+  [
+    "composition_start",
+  ],
+  [
+    "composing_word",
+    "ㄱ",
+  ],
+  [
+    "composed_word",
+    "가",
+    "replace",
+  ],
+  [
+    "composed_word",
+    "x",
+    "insert",
+  ],
+  [
+    "on_copy",
+    Event {
+      "isTrusted": false,
+    },
+  ],
+]
+`;
+
+exports[`ime/TB_Ime_Chrome > 한글 조합 → 완성 → Windows11 이중 textInput 무시 → 영문 → 조합 중 backspace 소멸 → 조합 중 blur 1`] = `
+[
+  [
+    "keydown",
+    "",
+    [
+      [
+        "keydown",
+        229,
+      ],
+    ],
+    {
+      "composed": "",
+      "composing": "",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": null,
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "compositionstart",
+    "",
+    [
+      [
+        "composition_start",
+      ],
+    ],
+    {
+      "composed": "",
+      "composing": "",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": true,
+      "last_composing_state": null,
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "compositionupdate",
+    "ㄱ",
+    [
+      [
+        "composing_word",
+        "ㄱ",
+      ],
+    ],
+    {
+      "composed": "",
+      "composing": "ㄱ",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": true,
+      "last_composing_state": null,
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "compositionupdate",
+    "가",
+    [
+      [
+        "composing_word",
+        "가",
+      ],
+    ],
+    {
+      "composed": "",
+      "composing": "가",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": true,
+      "last_composing_state": null,
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "compositionend",
+    "가",
+    [
+      [
+        "composed_word",
+        "가",
+      ],
+    ],
+    {
+      "composed": "",
+      "composing": "가",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": null,
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "textInput",
+    "가",
+    [],
+    {
+      "composed": "가",
+      "composing": "가",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": null,
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "keyup",
+    "",
+    [
+      [
+        "keyup",
+        229,
+      ],
+    ],
+    {
+      "composed": "가",
+      "composing": "가",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": null,
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "textInput",
+    "a b",
+    [
+      [
+        "composed_word",
+        "a b",
+        "insert",
+      ],
+    ],
+    {
+      "composed": "a b",
+      "composing": "가",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": null,
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "compositionstart",
+    "",
+    [
+      [
+        "composition_start",
+      ],
+    ],
+    {
+      "composed": "a b",
+      "composing": "가",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": true,
+      "last_composing_state": null,
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "compositionupdate",
+    "",
+    [],
+    {
+      "composed": "a b",
+      "composing": "가",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": true,
+      "last_composing_state": null,
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "compositionend",
+    "",
+    [
+      [
+        "composed_word",
+        "",
+        "delete",
+      ],
+    ],
+    {
+      "composed": "a b",
+      "composing": "가",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": null,
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "compositionstart",
+    "",
+    [
+      [
+        "composition_start",
+      ],
+    ],
+    {
+      "composed": "a b",
+      "composing": "가",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": true,
+      "last_composing_state": null,
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "compositionend",
+    "",
+    [],
+    {
+      "composed": "a b",
+      "composing": "가",
+      "focus_blurred": true,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": null,
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "textInput",
+    "ㅎ",
+    [],
+    {
+      "composed": "a b",
+      "composing": "가",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": null,
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "textInput",
+    "c",
+    [
+      [
+        "composed_word",
+        "c",
+        "insert",
+      ],
+    ],
+    {
+      "composed": "c",
+      "composing": "가",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": null,
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "copy",
+    "",
+    [
+      [
+        "on_copy",
+        {
+          "type": "copy",
+        },
+      ],
+    ],
+    {
+      "composed": "c",
+      "composing": "가",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": null,
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "cut",
+    "",
+    [
+      [
+        "on_cut",
+        {
+          "type": "cut",
+        },
+      ],
+    ],
+    {
+      "composed": "c",
+      "composing": "가",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": null,
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "paste",
+    "",
+    [
+      [
+        "on_paste",
+        {
+          "type": "paste",
+        },
+      ],
+    ],
+    {
+      "composed": "c",
+      "composing": "가",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": null,
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "input",
+    "",
+    [],
+    {
+      "composed": "c",
+      "composing": "가",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": null,
+      "need_clear_text": false,
+    },
+  ],
+]
+`;
+
+exports[`ime/TB_Ime_EdgeTo15 / TB_Ime_EdgeFrom16 > EdgeFrom16 1`] = `
+[
+  [
+    "keydown",
+    "",
+    [],
+    {
+      "composed": "",
+      "composing": "",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": null,
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "compositionstart",
+    "",
+    [
+      [
+        "composing_word",
+        " ",
+        "insert",
+      ],
+    ],
+    {
+      "composed": "",
+      "composing": "",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": null,
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "compositionupdate",
+    "",
+    [
+      [
+        "composing_word",
+        "ㄱ",
+      ],
+    ],
+    {
+      "composed": "",
+      "composing": "ㄱ",
+      "focus_blurred": false,
+      "inp": "ㄱ",
+      "isComposing": false,
+      "last_composing_state": null,
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "compositionupdate",
+    "",
+    [
+      [
+        "composing_word",
+        "가",
+      ],
+    ],
+    {
+      "composed": "",
+      "composing": "가",
+      "focus_blurred": false,
+      "inp": "가",
+      "isComposing": false,
+      "last_composing_state": null,
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "compositionend",
+    "가",
+    [
+      [
+        "composing_word",
+        "가",
+      ],
+    ],
+    {
+      "composed": "",
+      "composing": "가",
+      "focus_blurred": false,
+      "inp": "가",
+      "isComposing": false,
+      "last_composing_state": null,
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "keyup",
+    "",
+    [],
+    {
+      "composed": "",
+      "composing": "가",
+      "focus_blurred": false,
+      "inp": "가",
+      "isComposing": false,
+      "last_composing_state": null,
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "keydown",
+    "",
+    [
+      [
+        "keydown",
+        16,
+      ],
+    ],
+    {
+      "composed": "",
+      "composing": "가",
+      "focus_blurred": false,
+      "inp": "가",
+      "isComposing": false,
+      "last_composing_state": null,
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "keydown",
+    "",
+    [
+      [
+        "keydown",
+        65,
+      ],
+    ],
+    {
+      "composed": "",
+      "composing": "",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": null,
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "keypress",
+    "",
+    [
+      [
+        "composed_word",
+        "a",
+        "insert",
+      ],
+    ],
+    {
+      "composed": "a",
+      "composing": "",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": null,
+      "need_clear_text": true,
+    },
+  ],
+  [
+    "keyup",
+    "",
+    [
+      [
+        "keyup",
+        65,
+      ],
+    ],
+    {
+      "composed": "a",
+      "composing": "",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": null,
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "keypress",
+    "",
+    [
+      [
+        "composed_word",
+        "
+",
+        "insert",
+      ],
+    ],
+    {
+      "composed": "
+",
+      "composing": "",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": null,
+      "need_clear_text": true,
+    },
+  ],
+  [
+    "compositionstart",
+    "",
+    [
+      [
+        "composing_word",
+        " ",
+        "insert",
+      ],
+    ],
+    {
+      "composed": "
+",
+      "composing": "",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": null,
+      "need_clear_text": true,
+    },
+  ],
+  [
+    "compositionend",
+    "",
+    [
+      [
+        "composed_word",
+        "",
+        "delete",
+      ],
+    ],
+    {
+      "composed": "
+",
+      "composing": "",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": null,
+      "need_clear_text": true,
+    },
+  ],
+  [
+    "copy",
+    "",
+    [
+      [
+        "on_copy",
+        {
+          "type": "copy",
+        },
+      ],
+    ],
+    {
+      "composed": "
+",
+      "composing": "",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": null,
+      "need_clear_text": true,
+    },
+  ],
+  [
+    "cut",
+    "",
+    [
+      [
+        "on_cut",
+        {
+          "type": "cut",
+        },
+      ],
+    ],
+    {
+      "composed": "
+",
+      "composing": "",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": null,
+      "need_clear_text": true,
+    },
+  ],
+  [
+    "beforepaste",
+    "",
+    [
+      [
+        "on_beforepaste",
+        {
+          "type": "beforepaste",
+        },
+      ],
+    ],
+    {
+      "composed": "
+",
+      "composing": "",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": null,
+      "need_clear_text": true,
+    },
+  ],
+  [
+    "paste",
+    "",
+    [
+      [
+        "on_paste",
+        {
+          "type": "paste",
+        },
+      ],
+    ],
+    {
+      "composed": "
+",
+      "composing": "",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": null,
+      "need_clear_text": true,
+    },
+  ],
+]
+`;
+
+exports[`ime/TB_Ime_EdgeTo15 / TB_Ime_EdgeFrom16 > EdgeTo15 1`] = `
+[
+  [
+    "keydown",
+    "",
+    [
+      [
+        "composition_start",
+      ],
+    ],
+    {
+      "composed": "",
+      "composing": "",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": null,
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "compositionstart",
+    "",
+    [
+      [
+        "composing_word",
+        " ",
+      ],
+    ],
+    {
+      "composed": "",
+      "composing": "",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": null,
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "compositionupdate",
+    "",
+    [
+      [
+        "composing_word",
+        "ㄱ",
+      ],
+    ],
+    {
+      "composed": "",
+      "composing": "ㄱ",
+      "focus_blurred": false,
+      "inp": "ㄱ",
+      "isComposing": false,
+      "last_composing_state": null,
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "compositionupdate",
+    "",
+    [
+      [
+        "composing_word",
+        "가",
+      ],
+    ],
+    {
+      "composed": "",
+      "composing": "가",
+      "focus_blurred": false,
+      "inp": "가",
+      "isComposing": false,
+      "last_composing_state": null,
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "compositionend",
+    "가",
+    [
+      [
+        "composing_word",
+        "가",
+      ],
+      [
+        "composing_word",
+        "가",
+      ],
+    ],
+    {
+      "composed": "",
+      "composing": "가",
+      "focus_blurred": false,
+      "inp": "가",
+      "isComposing": false,
+      "last_composing_state": null,
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "keyup",
+    "",
+    [],
+    {
+      "composed": "",
+      "composing": "가",
+      "focus_blurred": false,
+      "inp": "가",
+      "isComposing": false,
+      "last_composing_state": null,
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "keydown",
+    "",
+    [
+      [
+        "keydown",
+        16,
+      ],
+    ],
+    {
+      "composed": "",
+      "composing": "가",
+      "focus_blurred": false,
+      "inp": "가",
+      "isComposing": false,
+      "last_composing_state": null,
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "keydown",
+    "",
+    [
+      [
+        "keydown",
+        65,
+      ],
+    ],
+    {
+      "composed": "",
+      "composing": "",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": null,
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "keypress",
+    "",
+    [
+      [
+        "composed_word",
+        "a",
+        "insert",
+      ],
+    ],
+    {
+      "composed": "a",
+      "composing": "",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": null,
+      "need_clear_text": true,
+    },
+  ],
+  [
+    "keyup",
+    "",
+    [
+      [
+        "keyup",
+        65,
+      ],
+    ],
+    {
+      "composed": "a",
+      "composing": "",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": null,
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "keypress",
+    "",
+    [
+      [
+        "composed_word",
+        "
+",
+        "insert",
+      ],
+    ],
+    {
+      "composed": "
+",
+      "composing": "",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": null,
+      "need_clear_text": true,
+    },
+  ],
+  [
+    "compositionstart",
+    "",
+    [
+      [
+        "composing_word",
+        " ",
+      ],
+    ],
+    {
+      "composed": "
+",
+      "composing": "",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": null,
+      "need_clear_text": true,
+    },
+  ],
+  [
+    "compositionend",
+    "",
+    [
+      [
+        "composing_word",
+        "",
+      ],
+      [
+        "composed_word",
+        "",
+        "delete",
+      ],
+    ],
+    {
+      "composed": "
+",
+      "composing": "",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": null,
+      "need_clear_text": true,
+    },
+  ],
+  [
+    "copy",
+    "",
+    [
+      [
+        "on_copy",
+        {
+          "type": "copy",
+        },
+      ],
+    ],
+    {
+      "composed": "
+",
+      "composing": "",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": null,
+      "need_clear_text": true,
+    },
+  ],
+  [
+    "cut",
+    "",
+    [
+      [
+        "on_cut",
+        {
+          "type": "cut",
+        },
+      ],
+    ],
+    {
+      "composed": "
+",
+      "composing": "",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": null,
+      "need_clear_text": true,
+    },
+  ],
+  [
+    "beforepaste",
+    "",
+    [
+      [
+        "on_beforepaste",
+        {
+          "type": "beforepaste",
+        },
+      ],
+    ],
+    {
+      "composed": "
+",
+      "composing": "",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": null,
+      "need_clear_text": true,
+    },
+  ],
+  [
+    "paste",
+    "",
+    [
+      [
+        "on_paste",
+        {
+          "type": "paste",
+        },
+      ],
+    ],
+    {
+      "composed": "
+",
+      "composing": "",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": null,
+      "need_clear_text": true,
+    },
+  ],
+]
+`;
+
+exports[`ime/TB_Ime_Safari_Mac / TB_Ime_Safari_iOS > Safari_Mac 1`] = `
+[
+  [
+    "keydown",
+    "",
+    [
+      [
+        "keydown",
+        229,
+      ],
+    ],
+    {
+      "composed": "",
+      "composing": "",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": null,
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "textInput",
+    "a ",
+    [
+      [
+        "composed_word",
+        "a ",
+        "insert",
+      ],
+    ],
+    {
+      "composed": "a ",
+      "composing": "",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": "",
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "compositionstart",
+    "",
+    [
+      [
+        "composition_start",
+      ],
+    ],
+    {
+      "composed": "a ",
+      "composing": "",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": true,
+      "last_composing_state": "",
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "compositionupdate",
+    "ㄱ",
+    [
+      [
+        "composing_word",
+        "ㄱ",
+      ],
+    ],
+    {
+      "composed": "a ",
+      "composing": "ㄱ",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": true,
+      "last_composing_state": "",
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "compositionupdate",
+    "",
+    [],
+    {
+      "composed": "a ",
+      "composing": "ㄱ",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": true,
+      "last_composing_state": "",
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "compositionend",
+    "가",
+    [
+      [
+        "composed_word",
+        "가",
+        "replace",
+      ],
+    ],
+    {
+      "composed": "a ",
+      "composing": "ㄱ",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": "compositionend",
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "textInput",
+    "가",
+    [],
+    {
+      "composed": "a ",
+      "composing": "ㄱ",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": "",
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "textInput",
+    "b",
+    [
+      [
+        "composed_word",
+        "b",
+        "insert",
+      ],
+    ],
+    {
+      "composed": "b",
+      "composing": "ㄱ",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": "",
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "compositionstart",
+    "",
+    [
+      [
+        "composition_start",
+      ],
+    ],
+    {
+      "composed": "b",
+      "composing": "ㄱ",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": true,
+      "last_composing_state": "",
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "compositionend",
+    "",
+    [
+      [
+        "composed_word",
+        "",
+        "delete",
+      ],
+    ],
+    {
+      "composed": "b",
+      "composing": "ㄱ",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": "compositionend",
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "keyup",
+    "",
+    [
+      [
+        "keyup",
+        229,
+      ],
+    ],
+    {
+      "composed": "b",
+      "composing": "ㄱ",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": "compositionend",
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "copy",
+    "",
+    [
+      [
+        "on_copy",
+        {
+          "type": "copy",
+        },
+      ],
+    ],
+    {
+      "composed": "b",
+      "composing": "ㄱ",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": "compositionend",
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "cut",
+    "",
+    [
+      [
+        "on_cut",
+        {
+          "type": "cut",
+        },
+      ],
+    ],
+    {
+      "composed": "b",
+      "composing": "ㄱ",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": "compositionend",
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "paste",
+    "",
+    [
+      [
+        "on_paste",
+        {
+          "type": "paste",
+        },
+      ],
+    ],
+    {
+      "composed": "b",
+      "composing": "ㄱ",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": "compositionend",
+      "need_clear_text": false,
+    },
+  ],
+]
+`;
+
+exports[`ime/TB_Ime_Safari_Mac / TB_Ime_Safari_iOS > Safari_iOS 1`] = `
+[
+  [
+    "keydown",
+    "",
+    [
+      [
+        "keydown",
+        229,
+      ],
+    ],
+    {
+      "composed": "",
+      "composing": "",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": null,
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "textInput",
+    "a ",
+    [
+      [
+        "composed_word",
+        "a ",
+        "insert",
+      ],
+    ],
+    {
+      "composed": "a ",
+      "composing": "",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": "",
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "compositionstart",
+    "",
+    [
+      [
+        "composition_start",
+      ],
+    ],
+    {
+      "composed": "a ",
+      "composing": "",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": true,
+      "last_composing_state": "",
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "compositionupdate",
+    "ㄱ",
+    [
+      [
+        "composing_word",
+        "ㄱ",
+      ],
+    ],
+    {
+      "composed": "a ",
+      "composing": "ㄱ",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": true,
+      "last_composing_state": "",
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "compositionupdate",
+    "",
+    [],
+    {
+      "composed": "a ",
+      "composing": "ㄱ",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": true,
+      "last_composing_state": "",
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "compositionend",
+    "가",
+    [
+      [
+        "composed_word",
+        "가",
+        "replace",
+      ],
+    ],
+    {
+      "composed": "a ",
+      "composing": "ㄱ",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": "compositionend",
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "textInput",
+    "가",
+    [],
+    {
+      "composed": "a ",
+      "composing": "ㄱ",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": "",
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "textInput",
+    "b",
+    [
+      [
+        "composed_word",
+        "b",
+        "insert",
+      ],
+    ],
+    {
+      "composed": "b",
+      "composing": "ㄱ",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": "",
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "compositionstart",
+    "",
+    [
+      [
+        "composition_start",
+      ],
+    ],
+    {
+      "composed": "b",
+      "composing": "ㄱ",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": true,
+      "last_composing_state": "",
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "compositionend",
+    "",
+    [
+      [
+        "composed_word",
+        "",
+        "delete",
+      ],
+    ],
+    {
+      "composed": "b",
+      "composing": "ㄱ",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": "compositionend",
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "keyup",
+    "",
+    [
+      [
+        "keyup",
+        229,
+      ],
+    ],
+    {
+      "composed": "b",
+      "composing": "ㄱ",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": "compositionend",
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "copy",
+    "",
+    [
+      [
+        "on_copy",
+        {
+          "type": "copy",
+        },
+      ],
+    ],
+    {
+      "composed": "b",
+      "composing": "ㄱ",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": "compositionend",
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "cut",
+    "",
+    [
+      [
+        "on_cut",
+        {
+          "type": "cut",
+        },
+      ],
+    ],
+    {
+      "composed": "b",
+      "composing": "ㄱ",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": "compositionend",
+      "need_clear_text": false,
+    },
+  ],
+  [
+    "paste",
+    "",
+    [
+      [
+        "on_paste",
+        {
+          "type": "paste",
+        },
+      ],
+    ],
+    {
+      "composed": "b",
+      "composing": "ㄱ",
+      "focus_blurred": false,
+      "inp": "",
+      "isComposing": false,
+      "last_composing_state": "compositionend",
+      "need_clear_text": false,
+    },
+  ],
+]
+`;

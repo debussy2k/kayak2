@@ -1,0 +1,170 @@
+{
+    "meta": {
+        "linebreak_tolerance": 0
+    },
+    "text_arr": [
+        72,
+        101,
+        108,
+        108,
+        111,
+        32,
+        65,
+        114,
+        110,
+        111,
+        80,
+        114,
+        111,
+        32,
+        12431,
+        12383,
+        12375,
+        12431,
+        10
+    ],
+    "text_raw": "Hello ArnoPro わたしわ\n",
+    "font_used": {
+        "Arno Pro": {
+            "family": {
+                "locale": {
+                    "en": "Arno Pro"
+                }
+            },
+            "style": {
+                "Regular": {
+                    "url": "https://d2vgy67dgpwzce.cloudfront.net/Edicus/font/woff/A/arno-pro/ArnoPro-Regular.woff",
+                    "locale": {
+                        "en": "Regular"
+                    },
+                    "issue": "BkhfSGHKf",
+                    "basefont": false,
+                    "default": false
+                }
+            }
+        },
+        "Meiryo": {
+            "family": {
+                "locale": {
+                    "en": "Meiryo",
+                    "ja": "メイリオ"
+                }
+            },
+            "style": {
+                "Bold": {
+                    "url": "https://d2vgy67dgpwzce.cloudfront.net/Edicus/font/SUISUI/20180518/MeiryoBold.woff",
+                    "locale": {
+                        "ca": "Negreta",
+                        "cs": "tučné",
+                        "da": "fed",
+                        "de": "Fett",
+                        "el": "Έντονα",
+                        "en": "Bold",
+                        "es": "Negrita",
+                        "es-MX": "Negrita",
+                        "eu": "Lodia",
+                        "fi": "Lihavoitu",
+                        "fr": "Gras",
+                        "fr-CA": "Gras",
+                        "hu": "Félkövér",
+                        "it": "Grassetto",
+                        "ja": "ボールド",
+                        "nb": "Halvfet",
+                        "nl": "Vet",
+                        "pl": "Pogrubiony",
+                        "pt": "Negrito",
+                        "pt-PT": "Negrito",
+                        "ru": "Полужирный",
+                        "sk": "Tučné",
+                        "sl": "Krepko",
+                        "sv": "Fet",
+                        "tr": "Kalın"
+                    },
+                    "issue": "ryP6AMh0G",
+                    "basefont": false,
+                    "default": false
+                }
+            }
+        },
+        "Noto Sans KR": {
+            "family": {
+                "locale": {
+                    "en": "Noto Sans KR"
+                }
+            },
+            "style": {
+                "Regular": {
+                    "url": "https://fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.woff",
+                    "locale": {
+                        "en": "Regular"
+                    },
+                    "issue": "rkOu76_5dM",
+                    "basefont": false,
+                    "default": true
+                }
+            }
+        }
+    },
+    "ATTR_Par": [
+        {
+            "m_nCount": 19,
+            "m_nLineGap": 0,
+            "m_Align": "left",
+            "m_Findent": 0,
+            "m_Lindent": 0,
+            "m_Rindent": 0,
+            "m_SpaceBefore": 1,
+            "m_SpaceAfter": 1,
+            "m_LineSpace": 1.2,
+            "m_Leading": "auto"
+        }
+    ],
+    "ATTR_FontFamily": [
+        {
+            "m_nCount": 14,
+            "familyName": "Arno Pro",
+            "typeStyle": "Regular"
+        },
+        {
+            "m_nCount": 4,
+            "familyName": "Meiryo",
+            "typeStyle": "Bold"
+        },
+        {
+            "m_nCount": 1,
+            "familyName": "Noto Sans KR",
+            "typeStyle": "Regular"
+        }
+    ],
+    "ATTR_FontSize": [
+        {
+            "m_nCount": 19,
+            "FontSize": 17
+        }
+    ],
+    "ATTR_Bold": [
+        {
+            "m_nCount": 19,
+            "bold": false
+        }
+    ],
+    "ATTR_FontColor": [
+        {
+            "m_nCount": 19,
+            "fontColor": "black",
+            "fontColorCMYK": null
+        }
+    ],
+    "ATTR_LetterSpacing": [
+        {
+            "m_nCount": 19,
+            "letter_space": 0
+        }
+    ],
+    "ATTR_LetterScaleX": [
+        {
+            "m_nCount": 19,
+            "letter_scale_x": 100
+        }
+    ]
+}

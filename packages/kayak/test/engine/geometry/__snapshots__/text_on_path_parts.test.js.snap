@@ -1,0 +1,89 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`TB_TextOnPath_Bracket: bracket 위치 갱신 (DOM은 jsdom) > update_bracket_pos: 닫힌 경로에서는 start > end를 허용하고(wrap) 같을 때만 0.1 띄운다 1`] = `471.007691`;
+
+exports[`TB_TextOnPath_Draw: svg 문자열 생성 (pdf/mirror/render) > generate_svg_path_string: cropbox + padding + override_fill_color 1`] = `
+"<path d="M0 0 L1 1" transform="translate(7 8) rotate(30 1 2) " stroke="none" fill="#ffffff"/>
+<path d="M2 2 L3 3" transform="translate(9 10) rotate(-15 0 0) " stroke="none" fill="#ffffff"/>
+"
+`;
+
+exports[`TB_TextOnPath_Draw: svg 문자열 생성 (pdf/mirror/render) > generate_svg_path_string: 옵션 없음 1`] = `
+"<path d="M0 0 L1 1" transform="translate(5 6) rotate(30 1 2) " stroke="none" fill="#ff0000"/>
+<path d="M2 2 L3 3" transform="translate(7 8) rotate(-15 0 0) " stroke="none" fill="#00ff00"/>
+"
+`;
+
+exports[`TB_TextOnPath_Draw: svg 문자열 생성 (pdf/mirror/render) > get_shape_outline_css는 hover 색을 끼워 넣는다 1`] = `
+"
+            .marginal-grabbing-area {
+                pointer-events: stroke;
+                stroke: transparent;
+				stroke-width:16px;
+				fill:none;
+				cursor: move;
+			}
+			.marginal-grabbing-area:hover + .text-bounding-shape {
+                stroke :  none;
+			}
+
+			.text-bounding-shape {
+                pointer-events: fill;
+                stroke: none;
+                stroke-width:1px;
+                fill:none;
+            }
+			.text-bounding-shape:hover {
+                stroke 		 : none;
+                fill 		 : none;
+			}
+
+            .path-bounding-shape {
+                pointer-events: fill;
+                stroke: none;
+                fill:none;
+			}
+			.path-bounding-shape:hover {
+				stroke: lightgray;
+			}
+            
+            .text-path {
+                pointer-events: none;
+                stroke : lightgray;
+                fill : none;
+            }
+        "
+`;
+
+exports[`TB_TextOnPath_Draw: svg 문자열 생성 (pdf/mirror/render) > get_svg_for_render / get_svg_for_mirror 1`] = `
+"
+			<g transform="
+			translate(-10, -20)
+		">
+				<path d="M0 0 L1 1" transform="translate(6 7) rotate(30 1 2) " stroke="none" fill="#ff0000"/>
+<path d="M2 2 L3 3" transform="translate(8 9) rotate(-15 0 0) " stroke="none" fill="#00ff00"/>
+
+			</g>
+		"
+`;
+
+exports[`TB_TextOnPath_Draw: svg 문자열 생성 (pdf/mirror/render) > get_svg_for_render / get_svg_for_mirror 2`] = `
+"
+			<svg xmlns="http://www.w3.org/2000/svg" class='svg_tp' width="100%" height="100%" style='position:absolute; overflow:visible; pointer-events:none'>
+				<g transform="
+			translate(-10, -20)
+		">
+					<path d="M0 0 L1 1" transform="translate(5 6) rotate(30 1 2) " stroke="none" fill="#ff0000"/>
+<path d="M2 2 L3 3" transform="translate(7 8) rotate(-15 0 0) " stroke="none" fill="#00ff00"/>
+
+				</g>
+			</svg>
+		"
+`;
+
+exports[`TB_TextOnPath_MouseInput > get_offsetXY: 90도 회전 + scale 2이면 중심 기준으로 되돌린다 1`] = `
+{
+  "x": 100,
+  "y": 40,
+}
+`;

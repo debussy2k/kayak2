@@ -1,0 +1,148 @@
+{
+    "type": "TextFrame",
+    "id": "10135",
+    "frame": {
+        "origin": {
+            "x": 5,
+            "y": 10.1999999999979
+        },
+        "size": {
+            "width": 32.1468864642828,
+            "height": 13.6500000000015
+        }
+    },
+    "frame_abs": {
+        "origin": {
+            "x": 5,
+            "y": 10.1999999999979
+        },
+        "size": {
+            "width": 32.1468864642828,
+            "height": 13.6500000000015
+        }
+    },
+    "h_scale": 100,
+    "v_scale": 100,
+    "index": 4,
+    "layer": "Text@{div:host,lang:ko}",
+    "rotation_angle": 0,
+    "shear_angle": 0,
+    "flip": "NONE",
+    "locked": false,
+    "visible": true,
+    "opacity": 100,
+    "name": "",
+    "selectable": "",
+    "movable": "",
+    "variable": "",
+    "spine": "",
+    "chain": "",
+    "mask ": "",
+    "column_count": 1,
+    "inset_top": 0,
+    "inset_left": 0,
+    "inset_bottom": 0,
+    "inset_right": 0,
+    "gutter": 4.23333333333333,
+    "label": "",
+    "text_list": [
+        {
+            "contents": "강수연 \n",
+            "char_style": "[None]",
+            "para_style": "직책",
+            "font_family": "SpoqaHanSans",
+            "font_style": "Bold",
+            "font_size": 16,
+            "auto_leading": 120,
+            "leading": 20,
+            "tracking": 0,
+            "kerning": "Metrics",
+            "h_scale": 100,
+            "v_scale": 100,
+            "skew": 0,
+            "baseline": 0,
+            "fill_color": {
+                "color_name": "Paper",
+                "src_color": [
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "src_color_space": "CMYK",
+                "rgb_color": [
+                    255,
+                    255,
+                    255
+                ]
+            },
+            "stroke_color": {
+                "space": "Unknown",
+                "color_value": null,
+                "name": "Unknown"
+            },
+            "fill_tint": -1,
+            "stroket_tint": -1,
+            "capitalization": "NORMAL",
+            "position": "NORMAL",
+            "underline": false,
+            "strike_thru": false,
+            "justification": "LEFT_ALIGN",
+            "first_indent": 0,
+            "left_indent": 0,
+            "right_indent": 0,
+            "space_before": 0,
+            "space_after": 0,
+            "horizontal_scale": 100
+        },
+        {
+            "contents": "수학 공부방",
+            "char_style": "[None]",
+            "para_style": "직책",
+            "font_family": "SpoqaHanSans",
+            "font_style": "Bold",
+            "font_size": 16,
+            "auto_leading": 120,
+            "leading": 20,
+            "tracking": 0,
+            "kerning": "Metrics",
+            "h_scale": 100,
+            "v_scale": 100,
+            "skew": 0,
+            "baseline": 0,
+            "fill_color": {
+                "color_name": "Paper",
+                "src_color": [
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "src_color_space": "CMYK",
+                "rgb_color": [
+                    255,
+                    255,
+                    255
+                ]
+            },
+            "stroke_color": {
+                "space": "Unknown",
+                "color_value": null,
+                "name": "Unknown"
+            },
+            "fill_tint": -1,
+            "stroket_tint": -1,
+            "capitalization": "NORMAL",
+            "position": "NORMAL",
+            "underline": false,
+            "strike_thru": false,
+            "justification": "LEFT_ALIGN",
+            "first_indent": 0,
+            "left_indent": 0,
+            "right_indent": 0,
+            "space_before": 0,
+            "space_after": 0,
+            "horizontal_scale": 100
+        }
+    ]
+}

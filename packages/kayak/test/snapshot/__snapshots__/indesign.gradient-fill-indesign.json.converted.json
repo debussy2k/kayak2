@@ -1,0 +1,173 @@
+{
+  "kayak_json": {
+    "version": "1.0.0",
+    "meta": {
+      "linebreak_tolerance": 2
+    },
+    "preference": {
+      "single_line_mode": false,
+      "fit_to_line_width_by_scale_x": false,
+      "first_line_baseline_offset": "ascent",
+      "fit_to_content_height": false,
+      "vertical_justification": "top",
+      "frame_height": 68.03149606299213
+    },
+    "text_arr": [
+      65,
+      66,
+      67,
+      10
+    ],
+    "text_raw": "ABC\n",
+    "font_used": {
+      "NanumMyeongjoOTF": {
+        "family": {
+          "locale": {
+            "en": "NanumMyeongjoOTF",
+            "kr": "NanumMyeongjoOTF"
+          }
+        },
+        "style": {
+          "Regular": {
+            "default": true,
+            "url": "https://d2vgy67dgpwzce.cloudfront.net/Edicus/font/woff/%E3%84%B4/%E1%84%82%E1%85%A1%E1%84%82%E1%85%AE%E1%86%B7%E1%84%91%E1%85%A9%E1%86%AB%E1%84%90%E1%85%B3/NanumMyeongjo.woff",
+            "locale": {
+              "en": "Regular",
+              "kr": "Regular"
+            },
+            "issue": "001"
+          }
+        }
+      }
+    },
+    "fonts_unresolved": [
+      "NanumMyeongjo/Regular"
+    ],
+    "ATTR_Par": [
+      {
+        "m_nCount": 4,
+        "m_nLineGap": 0,
+        "m_Align": "left",
+        "m_Findent": 0,
+        "m_Lindent": 0,
+        "m_Rindent": 0,
+        "m_SpaceBefore": 0,
+        "m_SpaceAfter": 0,
+        "m_LineSpace": 1.2,
+        "m_Leading": 13.6
+      }
+    ],
+    "ATTR_Doc": [
+      {
+        "m_nCount": 4,
+        "vertical_align": "top",
+        "fit_to_content_height": false,
+        "frame_height": 68.03149606299213
+      }
+    ],
+    "ATTR_FontFamily": [
+      {
+        "m_nCount": 4,
+        "familyName": "NanumMyeongjo",
+        "typeStyle": "Regular"
+      }
+    ],
+    "ATTR_FontSize": [
+      {
+        "m_nCount": 4,
+        "FontSize": 42
+      }
+    ],
+    "ATTR_Bold": [
+      {
+        "m_nCount": 4,
+        "bold": false
+      }
+    ],
+    "ATTR_FontColor": [
+      {
+        "m_nCount": 4,
+        "fontColor": null,
+        "fontColorCMYK": null,
+        "gradient": {
+          "type": "linear",
+          "geom": {
+            "x1": "44%",
+            "y1": "33%",
+            "x2": "82%",
+            "y2": "101%"
+          },
+          "stops": [
+            {
+              "offset": "0%",
+              "rgb": "#ff4014"
+            },
+            {
+              "offset": "25.4545454545455%",
+              "rgb": "#be5c4c"
+            },
+            {
+              "offset": "100%",
+              "rgb": "#00a0e9",
+              "cmyk": [
+                100,
+                0,
+                0,
+                0
+              ]
+            }
+          ],
+          "angle": 0
+        },
+        "fontColorModel": null
+      }
+    ],
+    "ATTR_LetterSpacing": [
+      {
+        "m_nCount": 4,
+        "letter_space": 0
+      }
+    ],
+    "ATTR_LetterScaleX": [
+      {
+        "m_nCount": 4,
+        "letter_scale_x": 100
+      }
+    ],
+    "ATTR_Stroke": [
+      {
+        "m_nCount": 4,
+        "stroke": {
+          "weight": 0,
+          "align": "outside",
+          "color": "#000",
+          "join": "round",
+          "miterlimit": 10
+        }
+      }
+    ],
+    "ATTR_Shadow": [
+      {
+        "m_nCount": 4,
+        "shadow": {
+          "size": 0,
+          "angle": 135,
+          "distance": 0,
+          "opacity": 100
+        }
+      }
+    ],
+    "ATTR_NamedRange": [
+      {
+        "m_nCount": 4,
+        "var_name": "_na_",
+        "title": ""
+      }
+    ]
+  },
+  "dim_px": {
+    "width": 136.06299212598427,
+    "height": 68.03149606299213
+  },
+  "font_family_remap_occurred": false
+}
