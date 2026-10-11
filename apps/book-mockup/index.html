@@ -14,6 +14,8 @@
   --accent:#1F5C4A; --accent-ink:#FFFFFF; --accent-soft:#D6E7DF;
   --warn:#8A5A00; --warn-soft:#FAEFD6; --stop:#A8261C; --stop-soft:#F9E1DE; --ok:#25704A; --ok-soft:#DDEFE3;
   --desk:#D7DED9; --paper:#FFFFFF; --paper-ink:#1B1B1B; --paper-mute:#6F6F6F; --guide:#2F8C6E;
+  --opp:#F3EBD9; --opp-ink:#5C4313; --line-2:#9AA8A0;
+  --t-des:#2D5A8C; --t-des-soft:#DDE8F5; --t-use:#6A3E8A; --t-use-soft:#EDE2F5; --t-fea:#8A5A00; --t-fea-soft:#FAEFD6; --t-via:#1F6E6E; --t-via-soft:#D8EEEE;
   --ui:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
   --serif-book:"Nanum Myeongjo","AppleMyungjo","Batang",serif;
   --sans-book:"Nanum Gothic","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
@@ -23,12 +25,16 @@
   --bg:#121715; --surface:#1A211E; --surface-2:#232C28; --ink:#E4EBE7; --muted:#9BAAA2; --line:#2F3A35;
   --accent:#7CC3A6; --accent-ink:#0D1A14; --accent-soft:#1E3A2F;
   --warn:#E2B356; --warn-soft:#352A13; --stop:#F08A80; --stop-soft:#3A1C19; --ok:#86CFA2; --ok-soft:#1C3326;
-  --desk:#0B0F0D; --paper:#F3F1EB; --paper-ink:#1B1B1B; --paper-mute:#666666; --guide:#3FA884; color-scheme:dark}}
+  --desk:#0B0F0D; --paper:#F3F1EB; --paper-ink:#1B1B1B; --paper-mute:#666666; --guide:#3FA884;
+  --opp:#33291A; --opp-ink:#EBCB8B; --line-2:#56655D;
+  --t-des:#8DB8EA; --t-des-soft:#1B2A3C; --t-use:#C7A2E6; --t-use-soft:#2C2138; --t-fea:#E2B356; --t-fea-soft:#352A13; --t-via:#7ED0CF; --t-via-soft:#173232; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#121715; --surface:#1A211E; --surface-2:#232C28; --ink:#E4EBE7; --muted:#9BAAA2; --line:#2F3A35;
   --accent:#7CC3A6; --accent-ink:#0D1A14; --accent-soft:#1E3A2F;
   --warn:#E2B356; --warn-soft:#352A13; --stop:#F08A80; --stop-soft:#3A1C19; --ok:#86CFA2; --ok-soft:#1C3326;
-  --desk:#0B0F0D; --paper:#F3F1EB; --paper-ink:#1B1B1B; --paper-mute:#666666; --guide:#3FA884; color-scheme:dark}
+  --desk:#0B0F0D; --paper:#F3F1EB; --paper-ink:#1B1B1B; --paper-mute:#666666; --guide:#3FA884;
+  --opp:#33291A; --opp-ink:#EBCB8B; --line-2:#56655D;
+  --t-des:#8DB8EA; --t-des-soft:#1B2A3C; --t-use:#C7A2E6; --t-use-soft:#2C2138; --t-fea:#E2B356; --t-fea-soft:#352A13; --t-via:#7ED0CF; --t-via-soft:#173232; color-scheme:dark}
 
 *{box-sizing:border-box}
 [hidden]{display:none!important}
@@ -301,6 +307,58 @@ textarea.raw{width:100%;min-height:440px;font-family:ui-monospace,"Cascadia Code
 .style-edit .ctl{padding:6px 0}
 .style-unknown{background:var(--warn-soft);border-radius:8px;padding:8px 10px;font-size:13px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
 .others summary{cursor:pointer;color:var(--muted);padding:4px 0}
+/* 기회 나무 (Opportunity Solution Tree) */
+.ost h1{font-family:var(--display);font-weight:800;font-size:32px;letter-spacing:-.01em}
+.ost h2{font-size:19px;margin:40px 0 10px}
+.ost-lead{max-width:72ch;color:var(--muted);margin:8px 0 0}
+.ost-bar{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between;margin:22px 0 14px}
+.ost-legend{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;font-size:13px;color:var(--muted)}
+.ost-legend>span{display:inline-flex;align-items:center;gap:6px}
+.ost-sw{width:14px;height:14px;border-radius:3px;display:inline-block}
+.ost-sw.o{background:var(--ink)} .ost-sw.p{background:var(--opp);border:1px solid var(--opp-ink)} .ost-sw.s{background:var(--accent-soft);border:1px solid var(--accent);border-radius:7px} .ost-sw.t{border:1px dashed var(--line-2)}
+.ost-tree{display:flex;flex-direction:column;align-items:center}
+.ost-outcome{background:var(--ink);color:var(--bg);border-radius:12px;padding:16px 20px;max-width:640px;width:100%;text-align:center}
+.ost-outcome .k{font-size:12px;letter-spacing:.08em;opacity:.75}
+.ost-outcome b{display:block;font-family:var(--display);font-size:21px;line-height:1.4;margin:4px 0 8px}
+.ost-outcome .m{font-size:13px;opacity:.85}
+.ost-trunk{width:2px;height:22px;background:var(--line-2)}
+.ost-branches{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;position:relative;padding-top:20px;width:100%}
+.ost-branches::before{content:"";position:absolute;top:0;left:12.5%;right:12.5%;border-top:2px solid var(--line-2)}
+.ost-branch{position:relative;min-width:0;display:flex;flex-direction:column;gap:8px}
+.ost-branch::before{content:"";position:absolute;top:-20px;left:50%;height:20px;border-left:2px solid var(--line-2)}
+.ost-opp{background:var(--opp);color:var(--opp-ink);border-radius:8px;padding:12px 14px}
+.ost-opp .k{font-size:11px;letter-spacing:.06em;font-weight:600;opacity:.85;display:flex;justify-content:space-between;gap:8px}
+.ost-opp b{display:block;font-size:16px;line-height:1.45;margin-top:2px;color:var(--ink)}
+.ost-sub{position:relative;margin-left:10px;padding-left:14px;border-left:2px solid var(--line);display:flex;flex-direction:column;gap:8px;padding-bottom:4px}
+.ost-sub>.ost-node{position:relative}
+.ost-sub>.ost-node::before{content:"";position:absolute;left:-16px;top:16px;width:14px;border-top:2px solid var(--line)}
+.ost-subopp{background:var(--surface);border:1px solid var(--opp-ink);border-radius:8px;padding:9px 12px;font-size:14px;font-weight:600;line-height:1.45}
+.ost-sol{background:var(--accent-soft);border:1px solid var(--accent);border-radius:14px;padding:8px 12px;font-size:14px;line-height:1.45}
+.ost-sol small{display:block;color:var(--muted);font-size:12px}
+.ost-test{border:1px dashed var(--line-2);border-radius:8px;padding:7px 10px;font-size:13px;line-height:1.45;background:var(--surface)}
+.ost-test.first{border:1.5px solid var(--stop);background:var(--stop-soft)}
+.ost-test .pass{display:block;color:var(--muted);font-size:12px;margin-top:2px}
+.ost-tag{display:inline-flex;align-items:center;font-size:11px;font-weight:600;border-radius:99px;padding:0 7px;margin-right:4px;white-space:nowrap}
+.ost-tag.des{background:var(--t-des-soft);color:var(--t-des)} .ost-tag.use{background:var(--t-use-soft);color:var(--t-use)} .ost-tag.fea{background:var(--t-fea-soft);color:var(--t-fea)} .ost-tag.via{background:var(--t-via-soft);color:var(--t-via)}
+.ost-tag.f{background:var(--stop);color:var(--surface)}
+.ost-tree.hide-tests .ost-tests{display:none}
+.ost-tree.only-first .ost-test:not(.first){display:none}
+.ost-tree.only-first .ost-sol:not(.has-first){opacity:.45}
+.ost-tbl{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:10px}
+.ost-tbl table{border-collapse:collapse;width:100%;min-width:760px;font-size:14px}
+.ost-tbl th,.ost-tbl td{text-align:left;vertical-align:top;padding:10px 12px;border-bottom:1px solid var(--line)}
+.ost-tbl tr:last-child td{border-bottom:0}
+.ost-tbl th{font-size:12px;color:var(--muted);font-weight:600}
+.ost-tbl td.n{font-variant-numeric:tabular-nums;font-weight:600;color:var(--stop)}
+.ost-note{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;max-width:860px}
+.ost-note p{margin:0 0 8px;max-width:76ch}
+.ost-note p:last-child{margin:0}
+.ost code{font-size:13px;background:var(--surface-2);padding:0 5px;border-radius:4px}
+@media (max-width: 960px){
+  .ost-branches{grid-template-columns:minmax(0,1fr);padding-top:0;gap:22px}
+  .ost-branches::before,.ost-branch::before{display:none}
+  .ost-trunk{height:14px}
+}
 .toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:10px;font-size:14px;z-index:50;display:flex;gap:12px;align-items:center;max-width:calc(100vw - 32px)}
 .toast button{background:transparent;border:1px solid currentColor;color:inherit;border-radius:6px;padding:2px 8px;cursor:pointer}
 
@@ -400,6 +458,7 @@ textarea.raw{width:100%;min-height:440px;font-family:ui-monospace,"Cascadia Code
     <div class="modes" role="group" aria-label="보기 전환">
       <button type="button" data-act="mode" data-v="proto" aria-pressed="true">목업</button>
       <button type="button" data-act="mode" data-v="plan" aria-pressed="false">기획 요약</button>
+      <button type="button" data-act="mode" data-v="ost" aria-pressed="false">기회 나무</button>
     </div>
   </header>
   <main id="view"></main>
@@ -1095,6 +1154,7 @@ function render(){
   document.querySelectorAll('.modes button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.v === S.mode)));
   afterRender = null;
   if(S.mode === 'plan'){ view.innerHTML = planView(); return; }
+  if(S.mode === 'ost'){ view.innerHTML = ostView(); return; }
   const v = S.view;
   view.innerHTML = v === 'library' ? libraryView() : v === 'studio' ? studioView() : appbar() + ({input:inputView, toc:tocView, design:designView, preview:previewView, check:checkView}[v])();
   if(afterRender) afterRender();
@@ -1500,6 +1560,103 @@ function planView(){
   </article>`;
 }
 
+/* ---- 기회 나무 (Opportunity Solution Tree) ---- */
+const OST_T = {des:'필요성', use:'사용성', fea:'실현성', via:'사업성'};
+// 기회 → 하위 기회 → 해결책 → 가정 시험. first: 먼저 시험할 가정 (아래 표의 번호)
+const OST = [
+  {k:'기회 ①', title:'내 원고가 책이 되려면 무엇부터 해야 할지 모르겠다', subs:[
+    {title:'원고가 한글·워드·메모장에 흩어져 있고 형식이 제각각이다', sols:[
+      {title:'원고 넣기 세 갈래: 붙여넣기, .docx, 직접 쓰기', note:'.hwp는 .docx로 저장하라고 안내', tests:[
+        {t:['des'], text:'작가 원고 20개의 파일 형식 분포', pass:'.hwp로만 가진 작가 30% 미만', first:3}]},
+      {title:'워드 스타일 → 책 표기 대응, 처음 보는 스타일은 한 번 묻기', tests:[
+        {t:['fea'], text:'실제 .docx 10개를 변환해 제목·각주·그림이 남는 비율', pass:'90% 이상 보존'}]}]},
+    {title:'장이 잘못 나뉘면 어떻게 고치는지 모른다', sols:[
+      {title:'장 자동 인식과 찾은 근거 표시', note:'‘제1장’, ‘여는 글’, 짧은 한 줄', tests:[
+        {t:['fea'], text:'원고 20개로 장 경계 인식 정확도', pass:'90% 이상', first:3}]},
+      {title:'2단계 차례 확인: 장 후보, 나누기·합치기', tests:[
+        {t:['use'], text:'사용성 시험에서 잘못 나뉜 장을 도움 없이 고치는가', pass:'5명 중 4명', first:5}]}]}]},
+  {k:'기회 ②', title:'책처럼 보이게 하는 규칙을 모른다', subs:[
+    {title:'장 시작 면, 오른쪽 면, 머리글, 쪽 번호 같은 관례를 모른다', sols:[
+      {title:'디자인 프리셋 3개와 쪽 규칙 자동 적용', note:'장 오른쪽 시작, 빈 면, 머리글', tests:[
+        {t:['des'], text:'프리셋별 견본을 작가 10명에게 보여 주고 고르게 함', pass:'7명 이상이 “이대로 내도 된다”'}]},
+      {title:'쉬운 말만 쓰고 출판 용어는 툴팁으로', tests:[
+        {t:['use'], text:'사용성 시험에서 막힌 말 기록', pass:'1개 이하', first:5}]}]},
+    {title:'편지·시·문자처럼 특별한 글을 다르게 보이게 하고 싶다', sols:[
+      {title:'책 표기 ::: 시 와 모양 사전', note:'의미는 원고에, 모양은 디자인에', tests:[
+        {t:['use'], text:'표기 한 장만 읽고 상자를 쓰고 모양을 바꾸는가', pass:'5명 중 4명', first:4},
+        {t:['des'], text:'원고 20개 중 편지·시·인용·문자가 있는 비율', pass:'30% 이상이면 첫 출시에 포함'}]},
+      {title:'편집기의 상자 버튼 (표기 몰라도)', tests:[
+        {t:['use'], text:'버튼으로 상자를 만들고 이름을 고르는가', pass:'5명 중 4명', first:4}]}]},
+    {title:'한글 서체에는 기울임이 없어 강조가 밋밋하다', sols:[
+      {title:'강조는 의미만 적고 모양은 디자인이 정함', note:'방점, 다른 서체, 굵게, 밑줄', tests:[
+        {t:['des'], text:'방점과 다른 서체 견본을 비교해 고르게 함', pass:'프리셋별 기본값 결정'},
+        {t:['fea'], text:'kayak에 방점(K8) 추가 규모 확인', pass:'위첨자(K4)와 함께 2주 이내'}]}]}]},
+  {k:'기회 ③', title:'인쇄했을 때 어떻게 나올지 불안하다', subs:[
+    {title:'화면과 인쇄물이 다를까 걱정된다', sols:[
+      {title:'같은 kayak 렌더로 미리보기와 PDF를 만듦', note:'펼침면 미리보기, 쪽을 누르면 그 원고로', tests:[
+        {t:['fea'], text:'kayak 글줄 측정·범위 렌더(K1·K2) 시제품으로 200쪽 조판', pass:'다시 조판 1초 이내', first:1},
+        {t:['fea'], text:'같은 원고의 브라우저 SVG와 Node SVG 비교', pass:'줄바꿈·쪽 나눔 동일', first:1}]}]},
+    {title:'인쇄 기준(해상도, 없는 글자, 쪽수)을 모른다', sols:[
+      {title:'인쇄 전 점검: 고쳐야 해요 / 확인해 보세요 / 알아서 했어요', tests:[
+        {t:['use'], text:'점검 메시지만 보고 스스로 고치는가', pass:'5명 중 4명', first:5}]},
+      {title:'인쇄용 PDF: 재단 여백 3mm, 글자 아웃라인, 4의 배수 쪽', tests:[
+        {t:['via'], text:'견본 PDF를 POD 두 곳에 입고', pass:'반려 없음', first:2}]}]},
+    {title:'주석과 사진이 제자리에 들어갈지 모르겠다', sols:[
+      {title:'주석 위치 하나 고르기, 그림 세 가지 크기', note:'자리가 없으면 다음 쪽으로 자동으로', tests:[
+        {t:['fea'], text:'주석·사진이 많은 원고 3개로 조판 규칙 검증', pass:'주석이 참조와 다른 쪽에 놓이는 곳 0'}]}]}]},
+  {k:'기회 ④', gap:true, title:'고치다가 책 전체가 망가질까 봐 무섭다', subs:[
+    {title:'한 곳을 고치면 다른 곳이 깨질까 걱정된다', sols:[
+      {title:'모양 사전: 한 곳을 고치면 책 전체에 같은 규칙', tests:[]},
+      {title:'자동 저장과 이전 버전, 장 단위로 빠르게 다시 조판', tests:[
+        {t:['use'], text:'사용성 시험에서 되돌리기와 이전 버전을 찾는가', pass:'5명 중 4명'}]}]},
+    {title:'다른 곳에서 고친 원고를 다시 넣는 일이 번거롭다', sols:[
+      {title:'책 작업실 편집기와 표기로 보기', tests:[
+        {t:['des'], text:'베타에서 수정이 작업실 안에서 일어나는 비율', pass:'70% 이상'}]}]}]},
+];
+const OST_FIRST = [
+  [['fea'], 'kayak으로 문단 글줄을 측정하고 글줄 범위만 그려 여러 쪽 조판을 할 수 있다 (기획서 K1·K2)', '“미리보기 = 인쇄물” 약속과 조판기 설계 전체가 바뀐다', '측정 API 시제품으로 예시 원고 200쪽을 조판하고, 한 장을 고친 뒤 다시 조판. 같은 원고로 브라우저 SVG와 Node SVG 비교', '다시 조판 1초 이내, 두 SVG의 줄바꿈·쪽 나눔 동일', '2주'],
+  [['via'], '인쇄소·POD가 이 서비스의 PDF를 그대로 받는다', '내보내기 규격을 다시 정하고 인쇄 파트너를 바꿔야 한다', '재단 여백 3mm, 글자 아웃라인, 4의 배수 쪽 견본 PDF를 POD 두 곳에 입고', '두 곳 모두 반려 없이 접수', '1주'],
+  [['des', 'fea'], '작가 원고는 붙여넣기나 .docx로 들어오고, 장 경계를 자동으로 찾을 수 있다', '첫 단계에서 이탈한다. .hwpx 지원이나 장 나누기 화면을 앞당겨야 한다', '동의를 받은 실제 작가 원고 20개를 모아 파일 형식 분포를 세고, 장 인식 결과를 사람이 매긴 정답과 비교', '.hwp로만 가진 작가 30% 미만, 장 경계 90% 이상 맞음', '2주'],
+  [['use'], '첫 책 작가가 이름 붙은 상자(시, 편지)와 모양 사전을 이해하고 쓴다', '책 표기는 고급 기능으로 숨기고, 자동 인식과 버튼에 더 기대야 한다', '이 목업으로 첫 책 작가 5명. 과제: “할머니 편지를 편지 모양으로”, “한 단어 강조”, “편지 모양 바꾸기”', '5명 중 4명이 도움 없이 세 과제를 끝냄', '1주'],
+  [['use'], '차례 확인과 점검 문구만 보고 작가가 스스로 고친다', '상담·도움말 비용이 늘고 완주율이 떨어진다', '4번과 같은 시험에서 잘못 나뉜 장 고치기, 점검의 “고쳐야 해요” 처리', '막힌 말 1개 이하, 4/5 성공', '4번과 함께'],
+];
+function ostView(){
+  const v = S.ostView || 'all';
+  const tag = k => `<span class="ost-tag ${k}">${OST_T[k]}</span>`;
+  const test = t => `<div class="ost-test ${t.first ? 'first' : ''}">${t.t.map(tag).join('')}${t.first ? `<span class="ost-tag f">먼저 ${t.first}</span>` : ''}${esc(t.text)}<span class="pass">통과: ${esc(t.pass)}</span></div>`;
+  const sol = s => `<div class="ost-node"><div class="ost-sol ${s.tests.some(t => t.first) ? 'has-first' : ''}">${esc(s.title)}${s.note ? `<small>${esc(s.note)}</small>` : ''}</div>
+    ${s.tests.length ? `<div class="ost-sub ost-tests">${s.tests.map(t => `<div class="ost-node">${test(t)}</div>`).join('')}</div>` : ''}</div>`;
+  const branches = OST.map(o => `<section class="ost-branch" aria-label="${o.k}">
+    <div class="ost-opp"><div class="k"><span>${o.k}</span><span>${o.gap ? '근거 가장 약함' : '가설'}</span></div><b>${esc(o.title)}</b></div>
+    <div class="ost-sub">${o.subs.map(s => `<div class="ost-node"><div class="ost-subopp">${esc(s.title)}</div><div class="ost-sub">${s.sols.map(sol).join('')}</div></div>`).join('')}</div>
+  </section>`).join('');
+  return `<article class="ost">
+  <p class="muted small" style="margin:0">책 만들기 서비스 기획 · 2026-10-12</p>
+  <h1>기회 해결책 나무</h1>
+  <p class="ost-lead">바라는 결과 하나에서 출발해, 작가가 겪는 문제(기회), 기획이 내놓은 해결책, 그 해결책이 기대고 있는 가정과 그 가정을 확인할 시험을 이었습니다. 붉은 테두리가 먼저 시험할 가정입니다.</p>
+  <div class="ost-bar">
+    <div class="ost-legend" aria-label="범례"><span><i class="ost-sw o"></i>바라는 결과</span><span><i class="ost-sw p"></i>기회 (작가의 문제)</span><span><i class="ost-sw s"></i>해결책</span><span><i class="ost-sw t"></i>가정 시험</span><span>${['des','use','fea','via'].map(tag).join('')}</span></div>
+    <div class="seg" role="group" aria-label="보기">${[['all','모두'],['first','먼저 시험할 것만'],['none','시험 숨기기']].map(([k, l]) => `<button type="button" data-act="ost-view" data-v="${k}" aria-pressed="${v === k}">${l}</button>`).join('')}</div>
+  </div>
+  <div class="ost-tree ${v === 'first' ? 'only-first' : v === 'none' ? 'hide-tests' : ''}">
+    <div class="ost-outcome"><div class="k">바라는 결과</div><b>처음 책을 만드는 작가가 원고를 넣은 뒤 혼자서 인쇄용 PDF까지 끝낸다</b><div class="m">지표: 원고를 넣은 책 중 인쇄용 PDF를 만든 비율 · 보조: 원고 200쪽 기준 완료 시간 중앙값 20분 이하</div></div>
+    <div class="ost-trunk"></div>
+    <div class="ost-branches">${branches}</div>
+  </div>
+  <h2>먼저 시험할 가정</h2>
+  <p class="ost-lead" style="margin:0 0 12px">틀리면 기획의 약속 자체가 무너지는 것부터, 싸고 빠르게 확인할 수 있는 순서로 놓았습니다.</p>
+  <div class="ost-tbl"><table><thead><tr><th></th><th>가정</th><th>틀리면</th><th>시험</th><th>통과 기준</th><th>기간</th></tr></thead><tbody>
+    ${OST_FIRST.map(([ts, a, b, c, d, e], i) => `<tr><td class="n">${i + 1}</td><td>${ts.map(tag).join(' ')}<br>${esc(a)}</td><td>${esc(b)}</td><td>${esc(c)}</td><td>${esc(d)}</td><td>${esc(e)}</td></tr>`).join('')}
+  </tbody></table></div>
+  <h2>이 나무의 근거</h2>
+  <div class="ost-note">
+    <p>기회는 아직 작가 인터뷰에서 나온 것이 아닙니다. 페르소나(<code>docs/personas.md</code>), 경쟁 도구 조사(Vellum, Scrivener, 부크크 편집 대행 수요 등), 기획 과정의 판단에서 나온 <b>가설</b>입니다.</p>
+    <p>그래서 위 시험보다 먼저, 또는 함께 <b>첫 책 작가 6~8명 인터뷰</b>로 기회를 확인하고 순서를 다시 정하기를 권합니다. 질문은 “지난번 원고를 책으로 만들려다 멈춘 순간”처럼 지난 경험의 이야기를 묻습니다. 근거가 가장 약한 기회는 ④(고치다가 망가질까 두려움)입니다.</p>
+    <p class="muted">기획 문서: <code>docs/specs/2026-10-11-book-service-design.md</code>, <code>docs/specs/2026-10-12-book-markup-design.md</code></p>
+  </div>
+  </article>`;
+}
+
 /* ===================== 동작 ===================== */
 let toastTimer = null;
 function toast(msg, undo){
@@ -1533,6 +1690,7 @@ function topIndex(){ const sec = curSec(); let i = S.edFocus; if(i == null || i 
 
 const ACT = {
   mode:a => { S.mode = a.dataset.v; window.scrollTo(0, 0); render(); },
+  'ost-view':a => { S.ostView = a.dataset.v; render(); },
   go:a => { const v = a.dataset.v; if(STEPS.some(s => s.id === v)) stepTo(v); else { S.view = v; S.rawMode = false; window.scrollTo(0, 0); render(); } },
   next:a => stepTo(a.dataset.v),
   toast:a => toast(a.dataset.msg),
