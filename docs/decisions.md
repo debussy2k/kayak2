@@ -8,7 +8,7 @@
 
 - 새 git 저장소로 시작하고 이전 커밋에 Kayak 원본 커밋(f4b6604)을 적는다. 10년치 관련 없는 이력을 끌고 오지 않기 위해. 원본 이력은 Kayak 저장소에 있다.
 - npm workspaces. 라이브러리는 `packages/kayak`, 앱은 `apps/`(첫 앱을 만들 때 workspaces에 `"apps/*"` 추가).
-- 엔진(`src/engine/`)과 공개 진입점(`src/index.ts`, `src/node.ts`)을 나눈다. API 재설계는 `src/api/`에, 지금 API는 `kayak/legacy`로 병행하기 위해.
+- 엔진(`src/engine/`)과 공개 진입점(`src/index.ts`, `src/node.ts`)을 나눈다. 앞으로 API 재설계를 `src/api/`에 만들고 지금 API를 `kayak/legacy`로 병행하기 위해(둘 다 아직 없다 — `docs/roadmap.md` 1).
 - 출력 파일 이름은 Kayak과 같게 두고 ESM(`m1textbox.mjs`)을 더한다. 호스트를 옮길 때 복사 이름이 같도록.
 - `packages/kayak`에는 `"type": "module"`을 두지 않는다. UMD `.js` 번들을 Node가 ESM으로 해석하지 않도록. 그래서 Vite 설정 파일은 `vite.config.mts`, `vite.config.node.mts`로 ESM을 고정한다.
 - Node 24 LTS를 Volta로 고정(루트 `volta.node` 24.21.0, 하위 패키지 `volta.extends`). Node 20은 2026-04 지원 종료.

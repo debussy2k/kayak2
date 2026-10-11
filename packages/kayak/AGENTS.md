@@ -20,7 +20,7 @@
 - `src/types/*.d.ts`는 타입 없는 패키지(opentype.js, bezier-js, loglevel, he)의 shim이다. tsconfig `paths`로 연결되며 Vite/Vitest는 paths를 무시한다(런타임은 실제 패키지). ambient가 아니라 모듈 파일이어야 d.ts 번들에 들어간다.
 - 이 패키지에는 `"type"` 필드가 없다(UMD `.js` 번들이 CommonJS로 읽혀야 함). 그래서 Vite 설정은 `vite.config.mts`/`vite.config.node.mts`다. `.ts`로 바꾸면 CommonJS로 로드된다.
 - opentype.js는 `patches/opentype.js+1.3.4.patch`(hasChar 수정)가 postinstall로 적용된 상태를 전제한다. 버전을 올리면 패치를 다시 확인한다.
-- 의존성은 루트 `node_modules`로 올라간다. 이 패키지에 `node_modules`가 생기면 버전 충돌을 의심한다(패치가 루트 사본에만 적용됨).
+- 의존성은 루트 `node_modules`로 올라간다. 이 패키지의 `node_modules`에 패키지가 생기면 버전 충돌을 의심한다(패치가 루트 사본에만 적용됨). `.vite`, `.vite-temp`(Vite/Vitest 캐시)만 있는 것은 정상이다.
 - 런타임 의존성은 정확한 버전으로 고정돼 있고, shortid의 하위 nanoid는 루트 `overrides`로 2.0.3이다(`docs/decisions.md`).
 - `test/engine/segment/legacy/`와 `parity_*.test.js`는 seglayer/seglayer_par 통합용 기준본이다. legacy 코드는 고치지 않고(lint도 제외), 통합이 끝나면 함께 지운다.
 - 스냅샷 헬퍼는 shortid로 만든 id를 정규화하고, 모든 폰트 요청을 `test/fixtures/fonts/KoPubDotumMedium.ttf`로 돌린다. 폰트별 차이는 스냅샷에 나타나지 않는다.

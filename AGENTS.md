@@ -8,12 +8,14 @@
 | 할 일 | 명령 |
 |---|---|
 | 전체 확인 (타입 → lint → 테스트) | `npm run check` |
-| 테스트 일부 | `npm test -w kayak -- test/engine/segment` |
+| 테스트 일부 (경로는 `packages/kayak` 기준) | `npm test -w kayak -- test/engine/segment` |
 | 타입 검사 / lint | `npm run typecheck` / `npm run lint` |
 | 빌드 (UMD·ESM 번들 + d.ts + d.ts 소비자 검사) | `npm run build` |
 
 - Node는 Volta가 맞춘다. `node -v`가 v24가 아니면 멈추고 알린다.
 - 끝났다고 말하기 전에 `npm run check`를 돌리고 결과를 확인한다 → `.claude/skills/verify`.
+- `npm run check`는 d.ts 소비자 검사를 하지 않는다. 공개 진입점이나 공개 타입을 건드렸으면 `npm run build`도 돌린다.
+- `npm warn Unknown user config "python"`은 개인 npm 설정에서 나오는 경고라 무시한다.
 
 ## 구조
 
@@ -31,7 +33,7 @@
 ## 반드시 지킬 규칙
 
 1. 동작 변경과 구조 변경(이동·이름·타입)은 커밋을 나눈다.
-2. 스냅샷(`__snapshots__`)은 렌더링을 의도적으로 바꿀 때만 갱신한다 → `.claude/skills/update-snapshots`.
+2. 스냅샷은 렌더링·계산 결과를 의도적으로 바꿀 때만 갱신한다 → `.claude/skills/update-snapshots`. 두 종류 모두 해당한다: `test/snapshot/__snapshots__/`(렌더링 파일 스냅샷)와 `test/engine/**/__snapshots__/*.snap`(특성 테스트 스냅샷).
 3. 공개 API(진입점의 export, d.ts에 나가는 타입)를 바꾸기 전에 사람에게 묻는다.
 4. 테스트는 네트워크를 쓰지 않는다. 폰트는 `test/fixtures/fonts`만 쓴다.
 5. 원본 결함을 발견하면 작은 것은 고치고 커밋 본문에 적는다. 기존 동작에 큰 영향이 있으면 고치지 않고 `docs/issues.md`에 올린다 → `.claude/skills/record-issue`.

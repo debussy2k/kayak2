@@ -29,7 +29,7 @@ Kayak은 웹 페이지에 올리는 텍스트 박스 편집기 겸 렌더러다.
 | `dist/m1textbox_node.min.js` | Node | UMD. DOM은 jsdom으로 만들어 [`TB_PlatformEnv.set()`](05-helpers.md#tb_platformenv)으로 넘긴다. CSS는 넣지 않는다 |
 | `dist/m1textbox_node.d.ts` | Node | 타입 선언 |
 
-빌드 방법은 루트 [README.md](../../README.md#build-vite)를 본다.
+빌드 방법은 루트 [README.md](../../README.md)를 본다.
 
 ## 공개 export
 
@@ -73,9 +73,9 @@ JSON을 만들거나 고칠 때 쓴다. 기본값은 화면에 그리는 편집 
 
 ## 예제 코드의 타입 검사
 
-이 문서의 TypeScript 예제는 [test/dts/docs_examples.ts](../../packages/kayak/test/api/dts/docs_examples.ts)와
-[test/dts/docs_examples_node.ts](../../packages/kayak/test/api/dts/docs_examples_node.ts)에도 들어 있어,
-`npm run build_types`(→ `npm run check_types_dist`)가 배포용 `.d.ts`에 대고 컴파일한다.
+이 문서의 TypeScript 예제는 [packages/kayak/test/api/dts/docs_examples.ts](../../packages/kayak/test/api/dts/docs_examples.ts)와
+[packages/kayak/test/api/dts/docs_examples_node.ts](../../packages/kayak/test/api/dts/docs_examples_node.ts)에도 들어 있어,
+`npm run build`(→ `build:types` → `check:types-dist`)가 배포용 `.d.ts`에 대고 컴파일한다.
 공개 API가 바뀌어 예제가 깨지면 빌드가 실패하므로, 그때 문서도 같이 고친다.
 
 ## 알려진 결함

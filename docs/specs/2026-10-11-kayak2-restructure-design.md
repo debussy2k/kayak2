@@ -1,7 +1,7 @@
 # kayak2 재구성 설계
 
 - 날짜: 2026-10-11
-- 상태: 검토 대기
+- 상태: 승인됨, 구현 완료 (2026-10-11, 계획 `docs/plans/2026-10-11-kayak2-migration.md`, 결과 `docs/decisions.md`)
 - 원본: Kayak `main` f4b6604 (PR #38까지). `docs/ts-migration/issues.md`만 `feat/svelte-playground` 1a027db의 것(#21 포함)을 쓴다.
 
 ## 1. 목적

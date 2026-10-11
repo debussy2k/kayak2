@@ -2,6 +2,7 @@
 
 > 언제 읽나: 이상한 동작을 만났을 때(알려진 결함인지), 결함을 고치거나 새로 올릴 때(`.claude/skills/record-issue`).
 > #1~#21은 Kayak TypeScript 전환과 playground 작업 중 기록했다. 그 항목들의 경로는 Kayak 기준이다: `src/<dir>/…` → `packages/kayak/src/engine/<dir>/…`. #21이 언급하는 `playground/`는 kayak2에 없다.
+> 형식: #1, #2는 아래 표의 행이고, #3부터는 `## #N` 제목이다. 새 항목은 `## #N` 형식으로 쓴다.
 
 전환 PR에서 고치지 않고 넘긴 것만 적는다. 작은 수정(스냅샷 변화 없음)은 해당 PR의 커밋 메시지에 있다.
 

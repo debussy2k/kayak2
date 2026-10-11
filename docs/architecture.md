@@ -21,7 +21,7 @@
 | `engine/textbox/` | 텍스트 상자 본체: 편집, 레이아웃, 렌더, 폰트, 입출력 | `TextBox.ts` 외 아래 |
 | `engine/textbox/ime/` | 브라우저별 IME(조합 입력) 처리 | `TB_Ime_Chrome.ts`, `TB_Ime_Safari_Mac.ts` 등 |
 | `engine/textbox/layout_service/` | 레이아웃 중간 상태 | `TB_LayoutContext.ts`, `TB_PosTracker.ts`, `TB_ParChangeInfo.ts`, `TB_LayoutAux.ts` |
-| `engine/textbox/services/` | 레이아웃·렌더 보조 | `TB_JustificationService.ts`(양쪽 맞춤), `TB_TofuService.ts`(없는 글리프 대체), `TB_StyleService.ts`, `TB_TextFxService.ts`(그림자 등), `TB_Format.service.ts` |
+| `engine/textbox/services/` | 레이아웃·렌더 보조 | `TB_JustificationService.ts`(양쪽 맞춤), `TB_TofuService.ts`(없는 글리프 대체), `TB_StyleService.ts`, `TB_TextFxService.ts`(그림자 등), `TB_Format.service.ts`(글을 한 줄에 맞추는 등 서식 자동 조정 — 장평을 바꾼다) |
 | `engine/textbox/inout/` | SVG 입출력 보조 | `inout.ts` |
 | `engine/css/` | 편집 화면 기본 CSS | `base.css` |
 | `types/` | 타입 없는 외부 패키지의 shim, 전역 선언 | `opentype.js.d.ts`, `globals.d.ts` 등 |
@@ -33,7 +33,7 @@
 - **원고와 이력**: `TP_TextCore.ts`(글자 코드 배열과 텍스트 편집), `TP_TextHistory*.ts`, `TB_History.ts`(redux + redux-undo)
 - **입력**: `TB_Input.ts`, `TB_Keyboard.ts`, `TB_KeydownAction.ts`, `TB_NormalizedIME.ts`, `TB_Cursor.ts`, `TB_SelRange.ts`, `TB_ApplyEditOperation.ts`(붙여넣은 HTML 적용)
 - **레이아웃**: `TB_Layout.ts`, `TB_LineComposer.ts`, `TB_WordFetch.ts`/`TB_WordFinder.ts`/`TB_WordInfo.ts`/`TB_WordCache.ts`(단어 단위 측정), `TB_LineMetric.ts`, `TB_DocFactory.ts`, `TextBoxDom.ts`(논리 문서 모델: `DomPar`, `DomLine`), `TB_layoutWalker.ts`, `TB_PostLayoutProcess.ts`, `TB_LocationFinder.ts`(좌표 ↔ 글자 위치)
-- **렌더**: `TB_SvgLineFactory.ts`, `TB_SvgTextRender.ts`(opentype 글리프 → SVG path, 커닝), `TB_SvgGradientFactory.ts`, `TB_SvgDimension.ts`, `TB_ExportHtml.ts`(seglayer → HTML)
+- **렌더**: `TB_SvgLineFactory.ts`, `TB_SvgTextRender.ts`(opentype 글리프 → SVG path. 글자 크기·장평·자간·커닝을 여기서 적용), `TB_SvgGradientFactory.ts`, `TB_SvgDimension.ts`, `TB_StyleContext.ts`(속성 → HTML/CSS 스타일, 클립보드 복사 HTML), `TB_ExportHtml.ts`(seglayer → HTML)
 - **폰트**: `TB_FontManager.ts`(전역 `spFontManager`), `TB_LocalFontLoader.ts`(텍스트 상자별), `TB_FontRscList.ts`(폰트 목록 `font_rsc_list`), `TB_FontDecoder.ts`, `TB_GsubSafety.ts`
 - **기반**: `TB_PlatformEnv.ts`(window/document·Node 함수 주입), `TB_Dom.ts`(jQuery를 대신하는 DOM 헬퍼), `cg.ts`(`CGPoint`/`CGSize`/`CGRect`/`CGMatrix`), `TB_Utils.ts`, `MeasureDiv.ts`
 

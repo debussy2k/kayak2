@@ -15,7 +15,7 @@
 | 굵게 | `ATTR_Bold`, `m_Bold`, `set_bold` | `segment/ATTR_Bold.ts` | `'bold'`/`'normal'`. SVG 렌더에는 효과가 없다는 기록이 있다(usage 문서 "주의") |
 | 글자색 | `ATTR_FontColor`, `m_FontColor`, `set_fontColor` | `segment/ATTR_FontColor.ts` | RGB와 CMYK, 색 모델 |
 | 자간 | `ATTR_LetterSpacing`, `m_LetterSpacing`, `set_letter_space` | `segment/ATTR_LetterSpacing.ts` | 단위 em/1000 (예: `-50`, `100`). InDesign의 tracking |
-| 장평 | `ATTR_LetterScaleX`, `m_LetterScaleX`, `set_letter_scale_x` | `segment/ATTR_LetterScaleX.ts` | 글자 가로 비율 %, 기본 100. InDesign의 horizontal scale |
+| 장평 | `ATTR_LetterScaleX`, `m_LetterScaleX`, `set_letter_scale_x` | 저장 `segment/ATTR_LetterScaleX.ts`, 설정 `textbox/TextBox_Style.ts`(`do_set_letter_scale_x`), SVG 렌더 `textbox/TB_SvgTextRender.ts`(`letter_scale_x`로 글리프 xScale·글자 폭), HTML `textbox/TB_StyleContext.ts`(`scaleX`) | 글자 가로 비율 %, 기본 100. InDesign의 horizontal scale(`TB_InDesignJsonConverter`의 `h_scale`). 한 줄 맞춤 때 `services/TB_Format.service.ts`가 자동으로 바꾼다 |
 | 외곽선 | `ATTR_Stroke`, `m_Stroke`, `set_stroke` | `segment/ATTR_Stroke.ts` | 두께, 색, `align`(`'center'`/`'outside'`), join |
 | 그림자 | `ATTR_Shadow`, `m_Shadow`, `set_shadow` | `segment/ATTR_Shadow.ts` | |
 | 커닝 | `kerning` (스타일 플래그) | `textbox/TB_SvgTextRender.ts`, `TB_SvgLineFactory.ts` | 폰트의 kerning 값(`font.getKerningValue`)을 쓴다. 지금은 항상 켜져 있다. InDesign의 Optical 커닝은 지원하지 않는다(Metrics만) |
