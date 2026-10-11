@@ -1,0 +1,280 @@
+.kayak-page {
+    position: relative;
+    /*background-color: rgba(240, 240, 240, 0.5);*/
+    background-color: transparent;
+}
+
+.kayak-page * {
+    box-sizing: border-box;
+}
+
+.kayak-root {
+    /* gutter 부분에 대해 "move" cursor를 보여줌. */
+    cursor: move;
+}
+
+.kayak-content {
+    cursor: default;
+    position: relative;
+    line-height: 1.42857143;
+    /* #line-height 줄간격상 매우 중요. font-size에 곱해지는 값 */
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently supported by Chrome and Opera */
+}
+
+.kayak-content:focus {
+    outline: none;
+}
+
+.kayak-gutter-wrapper {
+    display: none;
+    position: absolute;
+    left: -102px;
+    width: 95px;
+    background-color: #f0f0f0;
+    font-size: 9px;
+}
+
+.kayak-content[show-gutter="true"] .kayak-gutter-wrapper {
+    display: block;
+}
+
+.kayak-lineview-container {
+    position:relative;
+    display:block;
+}
+
+.kayak-lineview-hidden .kayak-svg-line {
+    opacity: 0;
+}
+
+/* color for inspection ------------------------------------ */
+.show-for-inspection .kayak-lineview {
+    outline : 1px dashed #a195ff;
+}
+.show-for-inspection .kayak-linespace-top {
+    /* background-color:#c4dfb8; */
+    /* stripe 참고 : https://css-tricks.com/stripes-css/ */
+    background: repeating-linear-gradient(
+        135deg,
+        #b1b7be,
+        #b1b7be 10px,
+        #fff 10px,
+        #fff 20px
+      );
+      z-index:-1;    
+}
+.show-for-inspection .kayak-linespace-bottom {
+    /* background-color:#dedede; */
+    background: repeating-linear-gradient(
+        45deg,
+        #b1b7be,
+        #b1b7be 10px,
+        #fff 10px,
+        #fff 20px
+      );    
+      z-index:-1;    
+}
+/* -------------------------------------------------- */
+
+
+.kayak-lineview {
+    position: relative;
+    white-space: nowrap;
+    /* span element의 line-break을 막아줌. */
+    pointer-events: none;
+    /* 추후 modernizr로 대응 할 것 */
+}
+
+.kayak-linespace-top {
+    position:relative;
+    display: block;
+    width: 100%;
+    height: 0px;
+    padding: 0px;
+    margin: 0px;
+}
+.kayak-line {
+    position: relative;
+}
+.kayak-linespace-bottom {
+    z-index: -1;
+    position:relative;
+    display: block;
+    width: 100%;
+    height: 0px;
+    padding: 0px;
+    margin: 0px;
+}
+
+div.kayak-lineview:first-of-type {
+    /* background-color: yellow; */
+}
+
+/* 
+    첫줄 space-before는 무시되도록 한다.
+    단, legacy-181028 모드로 동작할 때는 첫줄 space-before 공간이 실제 영역을 가지도록 한다. 
+*/
+.kayak-lineview-container:not(.legacy-181028) div.kayak-lineview:first-of-type .kayak-linespace-top {
+    display:none;
+}
+
+div.kayak-lineview:last-of-type {
+    /* background-color: cyan; */
+}
+div.kayak-lineview:last-of-type .kayak-linespace-bottom {
+    display:none;
+}
+
+.kayak-svg-line {
+    position: absolute;
+    display:block; 
+    overflow:visible !important; /* bootstrap등의 css library에서 "svg:not(:root) {overflow:hidden}"으로 처리된 것이 있어 강제 설정함. */
+    top: 0px;        /* parent div의 top에 align 시킨다.*/
+}
+
+
+.kayak-cursor {
+    position: absolute;
+    z-index: 50;
+    /* 별도 layer로 해야 repaint시 이득이 있음.  */
+    background-color: black;
+    left: 0px;
+    top: 0px;
+    width: 1px;
+    height: 15px;
+	opacity: 0.8;
+}
+
+.kayak-selection {
+    position: absolute;
+    z-index: 50;
+    /* 별도 layer로 해야 repaint시 이득이 있음.  */
+    left: 0px;
+    top: 0px;
+    width: 1px;
+    height: 15px;
+}
+
+.kayak-selection-overlay {
+    position: absolute;
+    opacity: 0.7;
+    background-color: #aecbfd;
+    top: 0px;
+    bottom: 0px;
+}
+
+.kayak-blink {
+    visibility: hidden;
+    animation: 1s blink step-end infinite;
+    -webkit-animation: 1s blink step-end infinite;
+    -moz-animation: 1s blink step-end infinite;
+    -ms-animation: 1s blink step-end infinite;
+    -o-animation: 1s blink step-end infinite;
+}
+
+
+@keyframes blink {
+    from,
+    to {
+        background-color: white;
+    }
+    50% {
+        background-color: black;
+    }
+}
+
+@-moz-keyframes blink {
+    from,
+    to {
+        background-color: white;
+    }
+    50% {
+        background-color: black;
+    }
+}
+
+@-webkit-keyframes blink {
+    from,
+    to {
+        background-color: white;
+    }
+    50% {
+        background-color: black;
+    }
+}
+
+@-ms-keyframes blink {
+    from,
+    to {
+        background-color: white;
+    }
+    50% {
+        background-color: black;
+    }
+}
+
+@-o-keyframes blink {
+    from,
+    to {
+        background-color: white;
+    }
+    50% {
+        background-color: black;
+    }
+}
+
+
+/* for measure html cotent */
+
+#kayak_metric_box {
+    position: fixed;
+    left: 10px;
+    top: -1000px;
+    outline: thin black solid;
+    line-height: 1.42857143;
+    /* #line-height 줄간격상 매우 중요. font-size에 곱해지는 값 */
+}
+
+
+/* 참고 : http://codepen.io/georgecrawford/pen/gbaJWJ */
+
+#kayak_metric_box:after {
+    content: '';
+    height: 100%;
+    outline: 1px solid red;
+    display: inline-block;
+}
+
+
+/* IME BOX */
+
+.kayak_input_box {
+    /* fixed이면 textarea가 focus를 가질 때 강제 scroll되는 경우를 막을 수 있다.*/
+    position: absolute;
+    line-height: 1;
+    /* 정확하게 위치시키기 위헤서는 box에 여백이 없어야 함. */
+    right: 10px;
+    top: 10px;
+    width: 20px;
+    height: 20px;
+    /* 수평으로 scroll없이 쭉 나가게 함.*/
+    overflow: visible;
+    white-space: nowrap;
+    /* 마우스 선택이 안되도록 함*/
+    pointer-events:none;
+    z-index: -9999;
+    opacity: 0;
+}
+
+#kayak_ime_proxy {}

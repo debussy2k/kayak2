@@ -22,8 +22,8 @@
   "files": ["dist"],
   "volta": { "extends": "../../package.json" },
   "scripts": {
-    "build": "vite build && vite build -c vite.config.node.ts && npm run build:types",
-    "build:dev": "vite build --mode development && vite build -c vite.config.node.ts --mode development",
+    "build": "vite build && vite build -c vite.config.node.mts && npm run build:types",
+    "build:dev": "vite build --mode development && vite build -c vite.config.node.mts --mode development",
     "build:types": "dts-bundle-generator --config dts-bundle.config.json && npm run check:types-dist",
     "check:types-dist": "tsc -p test/api/dts/tsconfig.json",
     "typecheck": "tsc -p tsconfig.json",
