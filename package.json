@@ -21,5 +21,10 @@
   },
   "volta": {
     "node": "24.21.0"
+  },
+  "overrides": {
+    "shortid": {
+      "nanoid": "2.0.3"
+    }
   }
 }
