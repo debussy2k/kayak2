@@ -2,7 +2,7 @@
 
 - 날짜: 2026-10-11
 - 상태: 방향 승인됨(진행 방식 A, 장은 오른쪽 면 시작, 주석 위치는 책 전체에 하나). 기획서 검토 대기
-- 목업: 클릭되는 HTML 프로토타입(사내 공유 페이지) https://claude.ai/artifact/KeATca2GmLVqQmDKK5Ux3B — 화면 구성은 8절. 미리보기는 브라우저 글꼴로 흉내 낸 조판이며 10.2의 규칙을 그대로 따른다
+- 목업: 클릭되는 HTML 프로토타입 `apps/book-mockup/index.html`(사내 공유 페이지 https://claude.ai/artifact/KeATca2GmLVqQmDKK5Ux3B) — 화면 구성은 8절. 미리보기는 브라우저 글꼴로 흉내 낸 조판이며 10.2의 규칙을 그대로 따른다
 - 범위 밖: 책표지, 전자책(EPUB), 인쇄 주문·결제
 
 ## 1. 목적
