@@ -40,7 +40,7 @@ kayak2/
     skills/{verify,update-snapshots,record-issue}/SKILL.md
   packages/kayak/
     AGENTS.md                 라이브러리 규칙
-    package.json              name "kayak", private, "type": "module", exports, volta.extends → 루트
+    package.json              name "kayak", private, exports, volta.extends → 루트 ("type" 필드 없음 — 5절)
     tsconfig.json             tsconfig.base.json 확장
     vite.config.ts            브라우저 번들 + vitest 설정
     vite.config.node.ts       Node 번들
@@ -104,6 +104,8 @@ parity 테스트와 `test/segment/legacy/`는 seglayer 통합의 안전망이라
 | `m1textbox.d.ts`, `m1textbox_node.d.ts` | dts-bundle-generator | Kayak과 같음 |
 
 파일 이름을 바꾸지 않는 것은 나중에 호스트를 kayak2로 옮길 때 복사 대상 이름이 같도록 하기 위함이다.
+
+**"type" 필드**: 루트 package.json만 `"type": "module"`(eslint.config.js 등 설정 파일용)이다. `packages/kayak`에는 두지 않는다. 두면 UMD 번들(`.js`)을 Node가 ESM으로 해석해 `require('kayak/node')`가 아무것도 내보내지 않는다. ESM 번들은 확장자 `.mjs`로 구분한다.
 
 **exports**: `"."` → types `m1textbox.d.ts`, import `m1textbox.mjs`, default `m1textbox.min.js`; `"./node"` → types `m1textbox_node.d.ts`, default `m1textbox_node.min.js`.
 
