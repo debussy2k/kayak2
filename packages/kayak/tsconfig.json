@@ -1,0 +1,15 @@
+{
+    "extends": "../../tsconfig.base.json",
+    "compilerOptions": {
+        "types": ["vite/client", "node"],
+        // 타입 선언이 없는 패키지를 src/types의 shim으로 매핑한다. Vite/Vitest는 paths를 무시한다(런타임은 실제 패키지).
+        // ambient `declare module`이 아니라 모듈 파일이어야 dts-bundle-generator가 d.ts에 인라인한다.
+        "paths": {
+            "opentype.js": ["./src/types/opentype.js.d.ts"],
+            "bezier-js": ["./src/types/bezier-js.d.ts"],
+            "loglevel": ["./src/types/loglevel.d.ts"],
+            "he": ["./src/types/he.d.ts"]
+        }
+    },
+    "include": ["src/**/*"]
+}

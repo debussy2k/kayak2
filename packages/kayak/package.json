@@ -1,0 +1,56 @@
+{
+  "name": "kayak",
+  "version": "2.0.0-alpha.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "author": "Harry Hyeonsoo Jung <harry@motion1.co.kr>",
+  "description": "온라인 책 만들기 서비스용 텍스트 엔진 (텍스트 상자 편집, 한글 조판, SVG 렌더링)",
+  "main": "./dist/m1textbox.min.js",
+  "types": "./dist/m1textbox.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/m1textbox.d.ts",
+      "import": "./dist/m1textbox.mjs",
+      "default": "./dist/m1textbox.min.js"
+    },
+    "./node": {
+      "types": "./dist/m1textbox_node.d.ts",
+      "default": "./dist/m1textbox_node.min.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": ["dist"],
+  "volta": { "extends": "../../package.json" },
+  "scripts": {
+    "build": "vite build && vite build -c vite.config.node.ts && npm run build:types",
+    "build:dev": "vite build --mode development && vite build -c vite.config.node.ts --mode development",
+    "build:types": "dts-bundle-generator --config dts-bundle.config.json && npm run check:types-dist",
+    "check:types-dist": "tsc -p test/api/dts/tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "bezier-js": "2.2.5",
+    "css-element-queries": "0.4.0",
+    "events": "3.3.0",
+    "he": "1.1.1",
+    "immutable": "3.8.2",
+    "lodash": "4.17.11",
+    "loglevel": "1.6.1",
+    "opentype.js": "1.3.4",
+    "redux": "4.0.0",
+    "redux-undo": "1.0.0-beta9-9-7",
+    "shortid": "2.2.14"
+  },
+  "devDependencies": {
+    "@types/lodash": "4.17.25",
+    "@types/node": "20.19.43",
+    "@types/shortid": "2.2.0",
+    "dts-bundle-generator": "9.5.1",
+    "jsdom": "11.7.0",
+    "typescript": "5.9.3",
+    "vite": "8.3.2",
+    "vitest": "4.1.11"
+  }
+}

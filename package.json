@@ -1,0 +1,25 @@
+{
+  "name": "kayak2",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "postinstall": "patch-package",
+    "check": "npm run typecheck && npm run lint && npm test",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "lint": "echo \"lint: Task 5에서 설정\"",
+    "test": "npm test --workspaces --if-present",
+    "build": "npm run build --workspaces --if-present"
+  },
+  "devDependencies": {
+    "patch-package": "8.0.1"
+  },
+  "volta": {
+    "node": "24.21.0"
+  }
+}
