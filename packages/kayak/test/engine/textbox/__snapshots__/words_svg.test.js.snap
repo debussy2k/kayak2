@@ -1,0 +1,736 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`TB_ApplyEditOperation > apply_edit_operation: html 모드는 바로, svg 모드는 폰트 로딩 뒤 (문단/스팬마다 insert) 1`] = `
+[
+  [
+    "set_text_align",
+    "right",
+    {
+      "begin": 6,
+      "end": 6,
+    },
+  ],
+  [
+    "insert_string",
+    0,
+    "ab",
+  ],
+  [
+    "insert",
+    0,
+    10,
+  ],
+  [
+    "insert_string",
+    0,
+    "cd",
+  ],
+  [
+    "set_fontColor",
+    "#000",
+    null,
+    null,
+    {
+      "begin": 6,
+      "end": 6,
+    },
+  ],
+  [
+    "set_font_family",
+    "A",
+    "B",
+    {
+      "begin": 6,
+      "end": 6,
+    },
+  ],
+  [
+    "insert_string",
+    0,
+    "e",
+  ],
+  [
+    "set_font_size",
+    10,
+    {
+      "begin": 6,
+      "end": 6,
+    },
+  ],
+]
+`;
+
+exports[`TB_ApplyEditOperation > apply_par_style / apply_par_padding_style 1`] = `
+[
+  [
+    "set_text_align",
+    "center",
+    {
+      "begin": 0,
+      "end": 3,
+    },
+  ],
+  [
+    "set_par_style",
+    "first",
+    5,
+    {
+      "begin": 0,
+      "end": 3,
+    },
+  ],
+  [
+    "set_par_style",
+    "left",
+    6,
+    {
+      "begin": 0,
+      "end": 3,
+    },
+  ],
+  [
+    "set_par_style",
+    "right",
+    7,
+    {
+      "begin": 0,
+      "end": 3,
+    },
+  ],
+  [
+    "set_par_style",
+    "line_space",
+    1.5,
+    {
+      "begin": 0,
+      "end": 3,
+    },
+  ],
+  [
+    "set_par_style",
+    "space_after",
+    8,
+    {
+      "begin": 0,
+      "end": 3,
+    },
+  ],
+  [
+    "set_par_style",
+    "space_before",
+    9,
+    {
+      "begin": 0,
+      "end": 3,
+    },
+  ],
+  [
+    "set_par_style",
+    "line_space",
+    1,
+    {
+      "begin": 0,
+      "end": 3,
+    },
+  ],
+  [
+    "set_par_style",
+    "space_before",
+    1,
+    {
+      "begin": 0,
+      "end": 3,
+    },
+  ],
+  [
+    "set_par_style",
+    "right",
+    2,
+    {
+      "begin": 0,
+      "end": 3,
+    },
+  ],
+  [
+    "set_par_style",
+    "space_after",
+    3,
+    {
+      "begin": 0,
+      "end": 3,
+    },
+  ],
+  [
+    "set_par_style",
+    "left",
+    4,
+    {
+      "begin": 0,
+      "end": 3,
+    },
+  ],
+  [
+    "set_par_style",
+    "space_before",
+    1,
+    {
+      "begin": 0,
+      "end": 3,
+    },
+  ],
+  [
+    "set_par_style",
+    "right",
+    2,
+    {
+      "begin": 0,
+      "end": 3,
+    },
+  ],
+  [
+    "set_par_style",
+    "left",
+    2,
+    {
+      "begin": 0,
+      "end": 3,
+    },
+  ],
+  [
+    "set_par_style",
+    "space_after",
+    3,
+    {
+      "begin": 0,
+      "end": 3,
+    },
+  ],
+  [
+    "set_par_style",
+    "space_before",
+    1,
+    {
+      "begin": 0,
+      "end": 3,
+    },
+  ],
+  [
+    "set_par_style",
+    "space_after",
+    1,
+    {
+      "begin": 0,
+      "end": 3,
+    },
+  ],
+  [
+    "set_par_style",
+    "right",
+    2,
+    {
+      "begin": 0,
+      "end": 3,
+    },
+  ],
+  [
+    "set_par_style",
+    "left",
+    2,
+    {
+      "begin": 0,
+      "end": 3,
+    },
+  ],
+  [
+    "set_par_style",
+    "space_before",
+    9,
+    {
+      "begin": 0,
+      "end": 3,
+    },
+  ],
+  [
+    "set_par_style",
+    "space_after",
+    9,
+    {
+      "begin": 0,
+      "end": 3,
+    },
+  ],
+  [
+    "set_par_style",
+    "right",
+    9,
+    {
+      "begin": 0,
+      "end": 3,
+    },
+  ],
+  [
+    "set_par_style",
+    "left",
+    9,
+    {
+      "begin": 0,
+      "end": 3,
+    },
+  ],
+]
+`;
+
+exports[`TB_ApplyEditOperation > apply_span_style: -kayak-* 값은 순서대로 누적된다 1`] = `
+[
+  [
+    "set_fontColor",
+    "#ff0000",
+    null,
+    null,
+    {
+      "begin": 1,
+      "end": 2,
+    },
+  ],
+  [
+    "set_bold",
+    "bold",
+    {
+      "begin": 1,
+      "end": 2,
+    },
+  ],
+  [
+    "set_font_size",
+    12,
+    {
+      "begin": 1,
+      "end": 2,
+    },
+  ],
+  [
+    "set_font_family",
+    "A",
+    "B",
+    {
+      "begin": 1,
+      "end": 2,
+    },
+  ],
+  [
+    "set_fontColor",
+    "#ff0000",
+    "0,100,100,0",
+    null,
+    {
+      "begin": 1,
+      "end": 2,
+    },
+  ],
+  [
+    "set_fontColor",
+    "#ff0000",
+    "0,100,100,0",
+    {
+      "name": "P",
+      "type": "SPOT",
+    },
+    {
+      "begin": 1,
+      "end": 2,
+    },
+  ],
+  [
+    "set_letter_space",
+    50,
+    {
+      "begin": 1,
+      "end": 2,
+    },
+  ],
+  [
+    "set_letter_scale_x",
+    80.5,
+    {
+      "begin": 1,
+      "end": 2,
+    },
+  ],
+  [
+    "set_stroke",
+    {
+      "weight": 1,
+    },
+    {
+      "begin": 1,
+      "end": 2,
+    },
+  ],
+  [
+    "set_shadow",
+    {
+      "size": 2,
+    },
+    {
+      "begin": 1,
+      "end": 2,
+    },
+  ],
+  [
+    "set_fontColor",
+    {
+      "type": "linear",
+    },
+    null,
+    null,
+    {
+      "begin": 1,
+      "end": 2,
+    },
+  ],
+]
+`;
+
+exports[`TB_DocFactory (가짜 tb) > calc_offset_left: 정렬별, 첫 줄 들여쓰기, 음수는 0 1`] = `
+[
+  [
+    "left",
+    false,
+    0,
+    30,
+  ],
+  [
+    "left",
+    false,
+    1,
+    10,
+  ],
+  [
+    "left",
+    true,
+    0,
+    30,
+  ],
+  [
+    "left",
+    true,
+    1,
+    10,
+  ],
+  [
+    "center",
+    false,
+    0,
+    60,
+  ],
+  [
+    "center",
+    false,
+    1,
+    40,
+  ],
+  [
+    "center",
+    true,
+    0,
+    60,
+  ],
+  [
+    "center",
+    true,
+    1,
+    40,
+  ],
+  [
+    "right",
+    false,
+    0,
+    90,
+  ],
+  [
+    "right",
+    false,
+    1,
+    70,
+  ],
+  [
+    "right",
+    true,
+    0,
+    90,
+  ],
+  [
+    "right",
+    true,
+    1,
+    70,
+  ],
+  [
+    "left-justified",
+    false,
+    0,
+    30,
+  ],
+  [
+    "left-justified",
+    false,
+    1,
+    10,
+  ],
+  [
+    "left-justified",
+    true,
+    0,
+    30,
+  ],
+  [
+    "left-justified",
+    true,
+    1,
+    10,
+  ],
+  [
+    "center-justified",
+    false,
+    0,
+    30,
+  ],
+  [
+    "center-justified",
+    false,
+    1,
+    10,
+  ],
+  [
+    "center-justified",
+    true,
+    0,
+    60,
+  ],
+  [
+    "center-justified",
+    true,
+    1,
+    40,
+  ],
+  [
+    "right-justified",
+    false,
+    0,
+    30,
+  ],
+  [
+    "right-justified",
+    false,
+    1,
+    10,
+  ],
+  [
+    "right-justified",
+    true,
+    0,
+    90,
+  ],
+  [
+    "right-justified",
+    true,
+    1,
+    70,
+  ],
+  [
+    "fully-justified",
+    false,
+    0,
+    30,
+  ],
+  [
+    "fully-justified",
+    false,
+    1,
+    10,
+  ],
+  [
+    "fully-justified",
+    true,
+    0,
+    30,
+  ],
+  [
+    "fully-justified",
+    true,
+    1,
+    10,
+  ],
+]
+`;
+
+exports[`TB_DocFactory (가짜 tb) > populate_data_on_domLine 1`] = `
+{
+  "alignment_option": "left",
+  "content_width": 80,
+  "core_width": 70,
+  "dom_line_height": 20,
+  "last_glyph_white_space": 2,
+  "leading": "auto",
+  "line_body_height": 20,
+  "line_height": 30,
+  "line_height_base": 20,
+  "line_holder_height": 20,
+  "line_width": 200,
+  "max_font_size_px": 16,
+  "max_word_ascent": 15,
+  "max_word_ascent_d": 11,
+  "max_word_descent": 5,
+  "max_word_height": 20,
+  "offset_left": 30,
+  "space_after": 4,
+  "space_before": 3,
+  "trailing_ws_count": 2,
+  "trailing_ws_px": 8,
+}
+`;
+
+exports[`TB_SvgDimension / TB_SvgLineFactory (실제 폰트, 가짜 styleService) > calc_max_metrics / text_to_svg_paths / get_svg_textline 1`] = `
+{
+  "embox_height_offset": 0,
+  "max_ascender": 19.2,
+  "max_ascender_d": 17.136,
+  "max_font_size_px": 24,
+  "max_height": 24,
+}
+`;
+
+exports[`TB_SvgDimension / TB_SvgLineFactory (실제 폰트, 가짜 styleService) > calc_max_metrics / text_to_svg_paths / get_svg_textline 2`] = `85.184`;
+
+exports[`TB_SvgDimension / TB_SvgLineFactory (실제 폰트, 가짜 styleService) > calc_max_metrics / text_to_svg_paths / get_svg_textline 3`] = `
+"<svg xmlns="http://www.w3.org/2000/svg" class='kayak-svg-line' width='85.184' height='24' style=''>
+			<defs for="gradient"></defs>
+			<defs><path id="path-u1-0" d="M2.75 14.14L2.75 19.79L1.50 19.79L1.50 7.84L2.75 7.84L2.75 13.02L8.69 13.02L8.69 7.84L9.95 7.84L9.95 19.79L8.69 19.79L8.69 14.14L2.75 14.14ZM13.57 14.99L13.57 14.99L18.35 14.99Q18.27 13.86 17.66 13.14Q17.06 12.43 15.90 12.43L15.90 12.43Q14.82 12.43 14.23 13.20Q13.65 13.97 13.57 14.99ZM19.63 15.71L19.63 15.71Q19.63 15.89 19.57 15.95Q19.50 16.02 19.36 16.02L19.36 16.02L13.54 16.02Q13.54 16.66 13.68 17.20Q13.82 17.74 14.13 18.14L14.13 18.14Q14.45 18.56 14.93 18.78Q15.41 19.01 16.11 19.01L16.11 19.01Q16.90 19.01 17.46 18.50Q18.02 17.98 18.24 17.09L18.24 17.09L19.57 17.09Q19.18 18.64 18.24 19.34Q17.30 20.05 15.81 20.05L15.81 20.05Q14.88 20.05 14.21 19.70Q13.54 19.34 13.09 18.75L13.09 18.75Q12.64 18.14 12.43 17.37Q12.22 16.59 12.22 15.73L12.22 15.73Q12.22 14.90 12.45 14.11Q12.67 13.33 13.14 12.74L13.14 12.74Q13.58 12.13 14.27 11.77Q14.96 11.41 15.89 11.41L15.89 11.41Q16.88 11.41 17.58 11.74Q18.29 12.06 18.75 12.62L18.75 12.62Q19.20 13.20 19.42 13.99Q19.63 14.78 19.63 15.71ZM22.99 7.73L22.99 19.79L21.76 19.79L21.76 7.73L22.99 7.73ZM26.70 7.73L26.70 19.79L25.47 19.79L25.47 7.73L26.70 7.73ZM34.51 15.73L34.51 15.73Q34.51 15.17 34.36 14.58Q34.21 14 33.90 13.52L33.90 13.52Q33.60 13.04 33.12 12.74Q32.64 12.43 31.97 12.43L31.97 12.43Q31.30 12.43 30.82 12.74Q30.34 13.04 30.03 13.52L30.03 13.52Q29.73 14 29.59 14.58Q29.46 15.17 29.46 15.73L29.46 15.73Q29.46 16.30 29.59 16.90Q29.73 17.49 30.03 17.95L30.03 17.95Q30.34 18.42 30.82 18.71Q31.30 19.01 31.97 19.01L31.97 19.01Q32.64 19.01 33.12 18.71Q33.60 18.42 33.90 17.95L33.90 17.95Q34.21 17.49 34.36 16.90Q34.51 16.30 34.51 15.73ZM31.97 11.41L31.97 11.41Q32.94 11.41 33.67 11.78Q34.40 12.14 34.88 12.75L34.88 12.75Q35.36 13.36 35.59 14.14Q35.82 14.91 35.82 15.73L35.82 15.73Q35.82 16.56 35.59 17.34Q35.36 18.11 34.88 18.72L34.88 18.72Q34.40 19.33 33.67 19.69Q32.94 20.05 31.97 20.05L31.97 20.05Q30.98 20.05 30.26 19.69Q29.54 19.33 29.07 18.72L29.07 18.72Q28.61 18.11 28.38 17.34Q28.16 16.56 28.16 15.73L28.16 15.73Q28.16 14.91 28.38 14.14Q28.61 13.36 29.07 12.75L29.07 12.75Q29.54 12.14 30.26 11.78Q30.98 11.41 31.97 11.41Z"/><path id="path-u1-1" d="M45.56 3.94L45.56 2.28L54.46 2.28Q54.75 2.28 54.88 2.39Q55.02 2.50 55.02 2.78L55.02 2.78Q54.90 5.28 54.20 7.51Q53.50 9.74 52.30 11.66L52.30 11.66Q51.13 13.58 49.48 15.17Q47.84 16.75 45.87 17.90L45.87 17.90L44.34 16.58Q48.03 14.64 50.30 11.41Q52.57 8.18 52.88 3.94L52.88 3.94L45.56 3.94ZM63.94 9.60L63.94 11.33L60.80 11.33L60.80 22.34L58.88 22.34L58.88 1.06L60.80 1.06L60.80 9.60L63.94 9.60ZM66.46 16.32L66.46 1.94L68.38 1.94L68.38 15.10L71.07 15.10Q73.45 15.10 75.45 14.82Q77.46 14.54 78.73 14.26L78.73 14.26L78.73 15.96Q78.03 16.13 77.11 16.28Q76.18 16.44 75.13 16.56L75.13 16.56Q74.07 16.68 72.96 16.75Q71.84 16.82 70.78 16.82L70.78 16.82L66.97 16.82Q66.68 16.82 66.57 16.72Q66.46 16.61 66.46 16.32L66.46 16.32ZM84.82 8.90L84.82 10.68L81.70 10.68L81.70 22.34L79.78 22.34L79.78 1.06L81.70 1.06L81.70 8.90L84.82 8.90Z"/></defs>
+			<defs></defs>
+			
+			
+			<use xlink:href="#path-u1-0" fill="#000000" shape-rendering="geometricPrecision"/><use xlink:href="#path-u1-1" fill="#ff0000" shape-rendering="geometricPrecision"/>
+        </svg>
+        "
+`;
+
+exports[`TB_SvgDimension / TB_SvgLineFactory (실제 폰트, 가짜 styleService) > get_dimension_of_text_range: 스타일 구간마다 폰트 크기가 누적된다 (Object.assign) 1`] = `
+{
+  "ascent": 19.2,
+  "ascent_d": 17.136,
+  "descent": 6,
+  "height": 24,
+  "last_glyph_width": 20.928,
+  "last_style_key": null,
+  "max_font_size_px": 24,
+  "style_keys": {},
+  "width": 85.184,
+  "width_without_last_glyph_ws": 85.184,
+}
+`;
+
+exports[`TB_SvgDimension / TB_SvgLineFactory (실제 폰트, 가짜 styleService) > get_dimension_of_text_range: 스타일 구간마다 폰트 크기가 누적된다 (Object.assign) 2`] = `
+{
+  "fS:12;ls:0;sx:100": {
+    "count": 5,
+    "width": 36.368,
+  },
+  "fS:18;ls:0;sx:100": {
+    "count": 3,
+    "width": 48.816,
+  },
+}
+`;
+
+exports[`TB_SvgGradientFactory > build_gradient_defs: linear만, 필터 후 index로 id 1`] = `
+"
+					<linearGradient id="grad-u-0" x1="-10" y1="-20" x2="190" y2="-20" 
+						gradientUnits="userSpaceOnUse"
+						gradientTransform="translate(90 30) rotate(90) translate(-90 -30)">
+						<stop offset="0%" style="stop-color:#f00;stop-opacity:1"/><stop offset="100%" style="stop-color:#00f;stop-opacity:1"/>
+					</linearGradient>
+				"
+`;
+
+exports[`TB_SvgTextRender (실제 폰트) > getGlyphsDimension: 기본, 자간/장평, 정렬 key 1`] = `
+{
+  "count": 8,
+  "height": 16,
+  "key": null,
+  "last_glyph_white_space": 0,
+  "last_glyph_width": 13.952,
+  "width": 68.912,
+}
+`;
+
+exports[`TB_SvgTextRender (실제 폰트) > getGlyphsDimension: 기본, 자간/장평, 정렬 key 2`] = `
+{
+  "count": 2,
+  "height": 16,
+  "key": null,
+  "last_glyph_white_space": 1.28,
+  "last_glyph_width": 2.9696,
+  "width": 14.72,
+}
+`;
+
+exports[`TB_SvgTextRender (실제 폰트) > getSvgPathGlyphs: path data와 text-on-path용 glyph_arr 1`] = `"M2.75 4.94L2.75 10.59L1.50 10.59L1.50-1.36L2.75-1.36L2.75 3.82L8.69 3.82L8.69-1.36L9.95-1.36L9.95 10.59L8.69 10.59L8.69 4.94L2.75 4.94ZM12.77 10.59L12.77 2.29L14 2.29L14 10.59L12.77 10.59ZM12.70-1.33L14.06-1.33L14.06 0.03L12.70 0.03L12.70-1.33Z"`;
+
+exports[`TB_SvgTextRender (실제 폰트) > getSvgPathGlyphs: path data와 text-on-path용 glyph_arr 2`] = `
+[
+  [],
+  15.2,
+  0,
+]
+`;
+
+exports[`TB_SvgTextRender (실제 폰트) > getSvgPathGlyphs: path data와 text-on-path용 glyph_arr 3`] = `
+[
+  {
+    "ascender": 12.8,
+    "descender": -4,
+    "fontColor": "",
+    "fontColorCMYK": "",
+    "glyph_width": 11.488,
+    "gx": 0,
+    "gy": 10,
+  },
+  {
+    "ascender": 12.8,
+    "descender": -4,
+    "fontColor": "",
+    "fontColorCMYK": "",
+    "glyph_width": 3.712,
+    "gx": 11.488,
+    "gy": 10,
+  },
+]
+`;
+
+exports[`TB_SvgTextRender (실제 폰트) > getSvgPathGlyphs: path data와 text-on-path용 glyph_arr 4`] = `"M2.75-5.06L2.75 0.59L1.50 0.59L1.50-11.36L2.75-11.36L2.75-6.18L8.69-6.18L8.69-11.36L9.95-11.36L9.95 0.59L8.69 0.59L8.69-5.06L2.75-5.06Z"`;
+
+exports[`TB_WordFinder / TB_WordFetch (글자 폭 10px, 공백 5px인 가짜 측정) > findWord: maxWordSize(24)보다 긴 단어는 24자에서 끊고 늘려 본다 (stretch) 1`] = `
+[
+  0,
+  30,
+  false,
+  undefined,
+]
+`;
+
+exports[`TB_WordFinder / TB_WordFetch (글자 폭 10px, 공백 5px인 가짜 측정) > findWord: maxWordSize(24)보다 긴 단어는 24자에서 끊고 늘려 본다 (stretch) 2`] = `
+[
+  0,
+  26,
+  4,
+]
+`;
+
+exports[`TB_WordFinder / TB_WordFetch (글자 폭 10px, 공백 5px인 가짜 측정) > findWord: 글줄 폭보다 긴 단어는 들어가는 만큼 자른다 (shrink), 짧으면 그대로 1`] = `
+[
+  0,
+  5,
+  "abcde",
+  4,
+]
+`;

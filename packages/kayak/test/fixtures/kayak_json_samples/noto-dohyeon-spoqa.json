@@ -1,0 +1,137 @@
+{
+    "meta": {
+        "linebreak_tolerance": 0
+    },
+    "text_arr": [
+        72,
+        101,
+        108,
+        108,
+        111,
+        32,
+        110,
+        111,
+        116,
+        111,
+        10,
+        44032,
+        45208,
+        45796,
+        46972,
+        32,
+        100,
+        111,
+        104,
+        121,
+        101,
+        111,
+        110,
+        10,
+        49828,
+        54252,
+        52852,
+        83,
+        112,
+        111,
+        113,
+        97,
+        10
+    ],
+    "text_raw": "Hello noto\n가나다라 dohyeon\n스포카Spoqa\n",
+    "ATTR_Par": [
+        {
+            "m_nCount": 11,
+            "m_nLineGap": 0,
+            "m_Align": "undefined",
+            "m_Findent": 0,
+            "m_Lindent": 0,
+            "m_Rindent": 0,
+            "m_SpaceBefore": 1,
+            "m_SpaceAfter": 1,
+            "m_LineSpace": 1.2,
+            "m_Leading": "auto"
+        },
+        {
+            "m_nCount": 13,
+            "m_nLineGap": 0,
+            "m_Align": "undefined",
+            "m_Findent": 0,
+            "m_Lindent": 0,
+            "m_Rindent": 0,
+            "m_SpaceBefore": 1,
+            "m_SpaceAfter": 1,
+            "m_LineSpace": 1.2,
+            "m_Leading": "auto"
+        },
+        {
+            "m_nCount": 9,
+            "m_nLineGap": 0,
+            "m_Align": "undefined",
+            "m_Findent": 0,
+            "m_Lindent": 0,
+            "m_Rindent": 0,
+            "m_SpaceBefore": 1,
+            "m_SpaceAfter": 1,
+            "m_LineSpace": 1.2,
+            "m_Leading": "auto"
+        }
+    ],
+    "ATTR_FontFamily": [
+        {
+            "m_nCount": 11,
+            "familyName": "Noto Sans KR",
+            "typeStyle": "Regular"
+        },
+        {
+            "m_nCount": 12,
+            "familyName": "BM DoHyeon OTF",
+            "typeStyle": "Regular"
+        },
+        {
+            "m_nCount": 4,
+            "familyName": "Noto Sans KR",
+            "typeStyle": "Regular"
+        },
+        {
+            "m_nCount": 5,
+            "familyName": "SpoqaHanSans",
+            "typeStyle": "Regular"
+        },
+        {
+            "m_nCount": 1,
+            "familyName": "Noto Sans KR",
+            "typeStyle": "Regular"
+        }
+    ],
+    "ATTR_FontSize": [
+        {
+            "m_nCount": 33,
+            "FontSize": 18
+        }
+    ],
+    "ATTR_Bold": [
+        {
+            "m_nCount": 33,
+            "bold": false
+        }
+    ],
+    "ATTR_FontColor": [
+        {
+            "m_nCount": 33,
+            "fontColor": "black",
+            "fontColorCMYK": null
+        }
+    ],
+    "ATTR_LetterSpacing": [
+        {
+            "m_nCount": 33,
+            "letter_space": 0
+        }
+    ],
+    "ATTR_LetterScaleX": [
+        {
+            "m_nCount": 33,
+            "letter_scale_x": 100
+        }
+    ]
+}

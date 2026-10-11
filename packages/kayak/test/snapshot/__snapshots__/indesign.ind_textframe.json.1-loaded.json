@@ -1,0 +1,157 @@
+{
+  "version": "1.0.0",
+  "meta": {
+    "linebreak_tolerance": 2
+  },
+  "preference": {
+    "single_line_mode": false,
+    "fit_to_line_width_by_scale_x": false,
+    "first_line_baseline_offset": "ascent",
+    "fit_to_content_height": true,
+    "vertical_justification": "top",
+    "frame_height": 100
+  },
+  "text_arr": [
+    44053,
+    49688,
+    50672,
+    32,
+    10,
+    49688,
+    54617,
+    32,
+    44277,
+    48512,
+    48169,
+    10
+  ],
+  "text_raw": "강수연 \n수학 공부방\n",
+  "font_used": {
+    "NanumMyeongjoOTF": {
+      "family": {
+        "locale": {
+          "en": "NanumMyeongjoOTF",
+          "kr": "NanumMyeongjoOTF"
+        }
+      },
+      "style": {
+        "Regular": {
+          "default": true,
+          "url": "https://d2vgy67dgpwzce.cloudfront.net/Edicus/font/woff/%E3%84%B4/%E1%84%82%E1%85%A1%E1%84%82%E1%85%AE%E1%86%B7%E1%84%91%E1%85%A9%E1%86%AB%E1%84%90%E1%85%B3/NanumMyeongjo.woff",
+          "locale": {
+            "en": "Regular",
+            "kr": "Regular"
+          },
+          "issue": "001"
+        }
+      }
+    }
+  },
+  "fonts_unresolved": [
+    "SpoqaHanSans/Bold"
+  ],
+  "ATTR_Par": [
+    {
+      "m_nCount": 5,
+      "m_nLineGap": 0,
+      "m_Align": "left",
+      "m_Findent": 0,
+      "m_Lindent": 0,
+      "m_Rindent": 0,
+      "m_SpaceBefore": 0,
+      "m_SpaceAfter": 0,
+      "m_LineSpace": 1.2,
+      "m_Leading": 20
+    },
+    {
+      "m_nCount": 7,
+      "m_nLineGap": 0,
+      "m_Align": "left",
+      "m_Findent": 0,
+      "m_Lindent": 0,
+      "m_Rindent": 0,
+      "m_SpaceBefore": 0,
+      "m_SpaceAfter": 0,
+      "m_LineSpace": 1.2,
+      "m_Leading": 20
+    }
+  ],
+  "ATTR_Doc": [
+    {
+      "m_nCount": 12,
+      "vertical_align": "top",
+      "fit_to_content_height": true,
+      "frame_height": 100
+    }
+  ],
+  "ATTR_FontFamily": [
+    {
+      "m_nCount": 12,
+      "familyName": "SpoqaHanSans",
+      "typeStyle": "Bold"
+    }
+  ],
+  "ATTR_FontSize": [
+    {
+      "m_nCount": 12,
+      "FontSize": 16
+    }
+  ],
+  "ATTR_Bold": [
+    {
+      "m_nCount": 12,
+      "bold": false
+    }
+  ],
+  "ATTR_FontColor": [
+    {
+      "m_nCount": 12,
+      "fontColor": "#ffffff",
+      "fontColorCMYK": "0,0,0,0",
+      "gradient": null,
+      "fontColorModel": null
+    }
+  ],
+  "ATTR_LetterSpacing": [
+    {
+      "m_nCount": 12,
+      "letter_space": 0
+    }
+  ],
+  "ATTR_LetterScaleX": [
+    {
+      "m_nCount": 12,
+      "letter_scale_x": 100
+    }
+  ],
+  "ATTR_Stroke": [
+    {
+      "m_nCount": 12,
+      "stroke": {
+        "weight": 0,
+        "align": "outside",
+        "color": "#000",
+        "join": "round",
+        "miterlimit": 10
+      }
+    }
+  ],
+  "ATTR_Shadow": [
+    {
+      "m_nCount": 12,
+      "shadow": {
+        "size": 0,
+        "angle": 135,
+        "distance": 0,
+        "opacity": 100
+      }
+    }
+  ],
+  "ATTR_NamedRange": [
+    {
+      "m_nCount": 12,
+      "var_name": "_na_",
+      "title": ""
+    }
+  ]
+}

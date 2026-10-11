@@ -1,0 +1,137 @@
+{
+	"type": "TextFrame",
+	"layer": "Text",
+	"fullLayer": "Text",
+	"visible": true,
+	"id": 2237,
+	"index": 0,
+	"name": "",
+	"label": "",
+	"rotation_angle": 0,
+	"opacity": 100,
+	"frame": {
+		"origin": {
+			"x": 8.80000000000001,
+			"y": 10.3
+		},
+		"size": {
+			"width": 36,
+			"height": 18
+		}
+	},
+	"visible_frame": {
+		"origin": {
+			"x": 8.80000000000001,
+			"y": 10.3
+		},
+		"size": {
+			"width": 36,
+			"height": 18
+		}
+	},
+	"fill_color": null,
+	"stroke_color": null,
+	"stroke_tint": -1,
+	"textFramePreferences": {
+		"verticalJustification": "TOP_ALIGN",
+		"autoSizingType": "OFF",
+		"autoSizingReferencePoint": "CENTER_POINT"
+	},
+	"text_list": [
+		{
+			"composer": "Adobe CJK 단락 컴포저",
+			"contents": "ABC",
+			"font_size": 42,
+			"leading": 13.6,
+			"auto_leading": 120,
+			"tracking": 0,
+			"kerning": "Metrics",
+			"skew": 0,
+			"baseline": 22.1459177652995,
+			"underline": false,
+			"strike_thru": false,
+			"position": "NORMAL",
+			"capitalization": "NORMAL",
+			"justification": "LEFT_ALIGN",
+			"gradient_fill": {
+				"angle": -42,
+				"length": 52.2947355340897,
+				"start": [
+					15.752312464749,
+					5.86892272983644
+				]
+			},
+			"fill_color": {
+				"gradientType": "LINEAR",
+				"gradientStops": [
+					{
+						"index": 0,
+						"location": 0,
+						"stopColor": {
+							"src_color_space": "RGB",
+							"src_color": [
+								255,
+								63.75,
+								20.3999995440245
+							],
+							"rgb_color": [
+								255,
+								64,
+								20
+							]
+						}
+					},
+					{
+						"index": 1,
+						"location": 25.4545454545455,
+						"stopColor": {
+							"src_color_space": "RGB",
+							"src_color": [
+								190.090910196304,
+								91.7063452446309,
+								76.0984883454583
+							],
+							"rgb_color": [
+								190,
+								92,
+								76
+							]
+						}
+					},
+					{
+						"index": 2,
+						"location": 100,
+						"stopColor": {
+							"src_color_space": "CMYK",
+							"src_color": [
+								100,
+								0,
+								0,
+								0
+							],
+							"rgb_color": [
+								0,
+								160,
+								233
+							]
+						}
+					}
+				]
+			},
+			"fill_tint": -1,
+			"stroke_weight": 1,
+			"stroke_color": null,
+			"stroke_tint": -1,
+			"h_scale": 100,
+			"v_scale": 100,
+			"first_indent": 0,
+			"left_indent": 0,
+			"right_indent": 0,
+			"space_before": 0,
+			"space_after": 0,
+			"font_family": "NanumMyeongjo",
+			"font_style": "Regular",
+			"missing_font": false
+		}
+	]
+}

@@ -1,0 +1,36 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`MeasureDiv / TB_HtmlMeasure > measure_html_dimension: jsdom에서는 전부 0 (모양만 고정) 1`] = `
+{
+  "ascent": 0,
+  "descent": 0,
+  "height": 0,
+  "last_glyph_white_space": 0,
+  "width": 0,
+}
+`;
+
+exports[`TB_Config > build_dom_textonpath: kayak-root를 숨기고 .kayak-textonpath를 붙인다 (두 번 불러도 하나) 1`] = `"pointer-events: none; position: absolute; left: 0px; top: 0px; cursor: text;"`;
+
+exports[`TB_Config > build_dom_textonpath: kayak-root를 숨기고 .kayak-textonpath를 붙인다 (두 번 불러도 하나) 2`] = `"pointer-events: none; position: absolute; left: 0px; top: 0px; cursor: text; outline: 1px solid gray;"`;
+
+exports[`TB_Config > 일반 모드: DOM 골격, 크기 계산, debug 병합 1`] = `"<div class="kayak-root" style="width: 300px; height: auto; padding-top: 0px; padding-bottom: 0px;"><div class="kayak-content" style="width: 300px; min-height: 4px; margin-left: 0px; margin-right: 0px;"><div class="kayak_input_box inline_input"></div><div class="kayak-cursor kayak-blink" style="left: 0px; top: 0px;"></div><div class="kayak-selection kayak-sel-begin"></div><div class="kayak-selection kayak-sel-end"></div><div class="kayak-lineview-container"></div></div></div>"`;
+
+exports[`TB_ExportHtml.generate_html_inline > 일반: 자간이 있으면 글자마다 span 1`] = `"<span style="color:red;">&#65;</span><span style="color:red;">&#66;</span><span style="color:red;">&#67;</span>"`;
+
+exports[`TB_ExportHtml.generate_html_inline > 일반: 장평이 있으면 글자마다 transform span + padding 1`] = `"<span style="display:inline-block;color:red;padding-right:1.4px;"><span style='display:inline-block; transform-origin:0% 0%;transform:scaleX(1.2);'>&#65;</span></span></span><span style="display:inline-block;color:red;padding-right:1.4px;"><span style='display:inline-block; transform-origin:0% 0%;transform:scaleX(1.2);'>&#66;</span></span></span>"`;
+
+exports[`TB_Utils > jsdom(platform "")에서는 mac/iOS가 아니고 브라우저 판정은 고정된 값이다 1`] = `
+{
+  "isChrome": false,
+  "isPCSafari": true,
+  "isiOSSafari": false,
+}
+`;
+
+exports[`TB_Utils > jsdom(platform "")에서는 mac/iOS가 아니고 브라우저 판정은 고정된 값이다 2`] = `
+{
+  "name": "safari_mac",
+  "version": 0,
+}
+`;

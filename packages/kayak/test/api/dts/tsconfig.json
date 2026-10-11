@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "strict": true,
+        "noEmit": true,
+        "types": [],
+        "typeRoots": [],
+        "lib": ["ES2020", "DOM"],
+        "module": "ESNext",
+        "moduleResolution": "bundler",
+        "skipLibCheck": false
+    },
+    "files": ["use.ts", "global.ts", "use_node.ts", "public_types.ts", "docs_examples.ts", "docs_examples_node.ts"]
+}

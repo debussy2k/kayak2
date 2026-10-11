@@ -1,0 +1,90 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`TB_TextFxService > fill / gradient / stroke(outside, center) / shadow 1`] = `
+"<defs><path id="path-u1-0" d="M0 0"/><path id="path-u1-1" d="M1 1"/><path id="path-u1-2" d="M2 2"/><path id="path-u1-3" d="M3 3"/><path id="path-u1-4" d="M4 4"/><path id="path-u1-5" d="M5 5"/></defs>
+			<defs>
+			<filter id="dropshadow-u1-4" x="-5.669291338582678" y="-5.669291338582678" width="200" height="200">
+				<feGaussianBlur in="SourceGraphic" stdDeviation="1.8897637795275593"/>
+				<feOffset dx="5.345059133378628" dy="5.345059133378627" result="offsetblur"/>
+				<feFlood flood-color="#000"/>
+				<feComposite in2="offsetblur" operator="in"/>
+				<feMerge>
+					<feMergeNode/>
+				</feMerge>
+			</filter> 
+		</defs>
+			<use xlink:href="#path-u1-4"  filter="url(#dropshadow-u1-4)" shape-rendering="geometricPrecision"/>
+			
+			<use xlink:href="#path-u1-0" fill="#f00" shape-rendering="geometricPrecision"/><use xlink:href="#path-u1-1" fill="url(#grad-u1-0)" shape-rendering="geometricPrecision"/><use xlink:href="#path-u1-2"  stroke-width="2.6666666666666665" stroke="#00f"
+						stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="4"
+						shape-rendering="geometricPrecision"/><use xlink:href="#path-u1-2" fill="#0f0" shape-rendering="geometricPrecision"/><use xlink:href="#path-u1-3" fill="#0f0" stroke-width="2.6666666666666665" stroke="#00f" 
+						stroke-linejoin="miter" stroke-miterlimit="2" shape-rendering="geometricPrecision"/><use xlink:href="#path-u1-4" fill="#f00" shape-rendering="geometricPrecision"/><use xlink:href="#path-u1-5" fill="#f00" shape-rendering="geometricPrecision"/>"
+`;
+
+exports[`TB_TextFxService > override_fill_color와 transparent_by_src_color 1`] = `
+"<defs><path id="path-u1-0" d="M0 0"/><path id="path-u1-1" d="M1 1"/><path id="path-u1-2" d="M2 2"/><path id="path-u1-3" d="M3 3"/><path id="path-u1-4" d="M4 4"/><path id="path-u1-5" d="M5 5"/></defs>
+			<defs>
+			<filter id="dropshadow-u1-4" x="-5.669291338582678" y="-5.669291338582678" width="200" height="200">
+				<feGaussianBlur in="SourceGraphic" stdDeviation="1.8897637795275593"/>
+				<feOffset dx="5.345059133378628" dy="5.345059133378627" result="offsetblur"/>
+				<feFlood flood-color="#000"/>
+				<feComposite in2="offsetblur" operator="in"/>
+				<feMerge>
+					<feMergeNode/>
+				</feMerge>
+			</filter> 
+		</defs>
+			<use xlink:href="#path-u1-4"  filter="url(#dropshadow-u1-4)" shape-rendering="geometricPrecision"/>
+			
+			<use xlink:href="#path-u1-0" fill="none" shape-rendering="geometricPrecision"/><use xlink:href="#path-u1-1" fill="url(#grad-u1-0)" shape-rendering="geometricPrecision"/><use xlink:href="#path-u1-2"  stroke-width="2.6666666666666665" stroke="#fff"
+						stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="4"
+						shape-rendering="geometricPrecision"/><use xlink:href="#path-u1-2" fill="#fff" shape-rendering="geometricPrecision"/><use xlink:href="#path-u1-3" fill="#fff" stroke-width="2.6666666666666665" stroke="#fff" 
+						stroke-linejoin="miter" stroke-miterlimit="2" shape-rendering="geometricPrecision"/><use xlink:href="#path-u1-4" fill="none" shape-rendering="geometricPrecision"/><use xlink:href="#path-u1-5" fill="none" shape-rendering="geometricPrecision"/>"
+`;
+
+exports[`TB_TextFxService > shadow_as_image: <image>로 바꾸고 shadow_info_arr를 채운다 1`] = `
+[
+  {
+    "shadow_dim": {
+      "height": 26.338583,
+      "width": 111.338583,
+    },
+    "shadow_name": "path-u1-4",
+    "svg_path": {
+      "d": "M4 4",
+      "fill": "#f00",
+      "shadow": {
+        "angle": 135,
+        "color": "#000",
+        "distance": 2,
+        "opacity": 100,
+        "size": 1,
+      },
+    },
+  },
+]
+`;
+
+exports[`TB_TextFxService > shadow_as_image: <image>로 바꾸고 shadow_info_arr를 채운다 2`] = `
+"<defs><path id="path-u1-0" d="M0 0"/><path id="path-u1-1" d="M1 1"/><path id="path-u1-2" d="M2 2"/><path id="path-u1-3" d="M3 3"/><path id="path-u1-4" d="M4 4"/><path id="path-u1-5" d="M5 5"/></defs>
+			<defs></defs>
+			<image xlink:href="img/path-u1-4.png" x="-0.3242322052040496" y="-0.3242322052040505" width="111.33858267716536" height="26.338582677165356" />
+			
+			<use xlink:href="#path-u1-0" fill="#f00" shape-rendering="geometricPrecision"/><use xlink:href="#path-u1-1" fill="url(#grad-u1-0)" shape-rendering="geometricPrecision"/><use xlink:href="#path-u1-2"  stroke-width="2.6666666666666665" stroke="#00f"
+						stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="4"
+						shape-rendering="geometricPrecision"/><use xlink:href="#path-u1-2" fill="#0f0" shape-rendering="geometricPrecision"/><use xlink:href="#path-u1-3" fill="#0f0" stroke-width="2.6666666666666665" stroke="#00f" 
+						stroke-linejoin="miter" stroke-miterlimit="2" shape-rendering="geometricPrecision"/><use xlink:href="#path-u1-4" fill="#f00" shape-rendering="geometricPrecision"/><use xlink:href="#path-u1-5" fill="#f00" shape-rendering="geometricPrecision"/>"
+`;
+
+exports[`TB_TofuService / TB_StyleService > 폰트를 못 찾으면 전체가 tofu 1`] = `
+[
+  {
+    "familyName": "Def",
+    "pos": 0,
+    "typeStyle": "Regular",
+  },
+  {
+    "pos": 6,
+  },
+]
+`;

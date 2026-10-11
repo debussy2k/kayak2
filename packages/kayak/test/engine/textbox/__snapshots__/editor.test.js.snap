@@ -1,0 +1,10 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`TB_Cursor > input_home/end, input_up/down(한 줄이면 무시), dblclick 1`] = `
+{
+  "begin": 6,
+  "cursor": 11,
+  "end": 11,
+  "exists_range": true,
+}
+`;

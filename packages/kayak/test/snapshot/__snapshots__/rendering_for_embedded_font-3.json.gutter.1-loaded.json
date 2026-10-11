@@ -1,0 +1,319 @@
+{
+  "version": "legacy_181028",
+  "meta": {
+    "linebreak_tolerance": 0
+  },
+  "preference": {
+    "single_line_mode": false,
+    "fit_to_line_width_by_scale_x": false,
+    "first_line_baseline_offset": "ascent",
+    "fit_to_content_height": true,
+    "vertical_justification": "top",
+    "frame_height": 100
+  },
+  "text_arr": [
+    83,
+    97,
+    109,
+    112,
+    108,
+    101,
+    32,
+    78,
+    111,
+    116,
+    111,
+    83,
+    97,
+    110,
+    115,
+    32,
+    82,
+    101,
+    103,
+    117,
+    108,
+    97,
+    114,
+    10,
+    78,
+    111,
+    116,
+    111,
+    32,
+    83,
+    97,
+    110,
+    115,
+    32,
+    76,
+    105,
+    103,
+    104,
+    116,
+    10,
+    83,
+    112,
+    111,
+    113,
+    97,
+    72,
+    97,
+    110,
+    83,
+    97,
+    110,
+    115,
+    32,
+    82,
+    101,
+    103,
+    10,
+    66,
+    77,
+    32,
+    68,
+    111,
+    72,
+    121,
+    101,
+    111,
+    110,
+    32,
+    82,
+    69,
+    103,
+    10
+  ],
+  "text_raw": "Sample NotoSans Regular\nNoto Sans Light\nSpoqaHanSans Reg\nBM DoHyeon REg\n",
+  "font_used": {
+    "Noto Sans KR": {
+      "family": {
+        "locale": {
+          "en": "Noto Sans KR",
+          "kr": "Noto Sans KR"
+        }
+      },
+      "style": {
+        "Regular": {
+          "url": "https://fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.woff",
+          "locale": {
+            "en": "Regular",
+            "kr": "Regular"
+          },
+          "issue": "001"
+        },
+        "Light": {
+          "url": "https://fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Light.woff",
+          "locale": {
+            "en": "Light",
+            "kr": "Light"
+          },
+          "issue": "001"
+        }
+      }
+    },
+    "SpoqaHanSans": {
+      "family": {
+        "locale": {
+          "en": "SpoqaHanSans",
+          "kr": "SpoqaHanSans"
+        }
+      },
+      "style": {
+        "Regular": {
+          "url": "https://s3.ap-northeast-2.amazonaws.com/redprintingweb.cloudfront/Edicus/font/Spoqa+Han+Sans+Regular.ttf",
+          "locale": {
+            "en": "Regular",
+            "kr": "Regular"
+          },
+          "issue": "001"
+        }
+      }
+    },
+    "BM DoHyeon OTF": {
+      "family": {
+        "locale": {
+          "en": "BM DoHyeon",
+          "kr": "배민 도현체"
+        }
+      },
+      "style": {
+        "Regular": {
+          "url": "https://pop.baemin.com/fonts/dohyeon/BMDOHYEON_otf.otf",
+          "locale": {
+            "en": "Regular",
+            "kr": "Regular"
+          },
+          "issue": "001"
+        }
+      }
+    },
+    "NanumMyeongjoOTF": {
+      "family": {
+        "locale": {
+          "en": "NanumMyeongjoOTF",
+          "kr": "NanumMyeongjoOTF"
+        }
+      },
+      "style": {
+        "Regular": {
+          "default": true,
+          "url": "https://d2vgy67dgpwzce.cloudfront.net/Edicus/font/woff/%E3%84%B4/%E1%84%82%E1%85%A1%E1%84%82%E1%85%AE%E1%86%B7%E1%84%91%E1%85%A9%E1%86%AB%E1%84%90%E1%85%B3/NanumMyeongjo.woff",
+          "locale": {
+            "en": "Regular",
+            "kr": "Regular"
+          },
+          "issue": "001"
+        }
+      }
+    }
+  },
+  "ATTR_Par": [
+    {
+      "m_nCount": 24,
+      "m_nLineGap": 0,
+      "m_Align": "left",
+      "m_Findent": 0,
+      "m_Lindent": 0,
+      "m_Rindent": 0,
+      "m_SpaceBefore": 1,
+      "m_SpaceAfter": 1,
+      "m_LineSpace": 1.2,
+      "m_Leading": "auto"
+    },
+    {
+      "m_nCount": 16,
+      "m_nLineGap": 0,
+      "m_Align": "left",
+      "m_Findent": 0,
+      "m_Lindent": 0,
+      "m_Rindent": 0,
+      "m_SpaceBefore": 1,
+      "m_SpaceAfter": 1,
+      "m_LineSpace": 1.2,
+      "m_Leading": "auto"
+    },
+    {
+      "m_nCount": 17,
+      "m_nLineGap": 0,
+      "m_Align": "left",
+      "m_Findent": 0,
+      "m_Lindent": 0,
+      "m_Rindent": 0,
+      "m_SpaceBefore": 1,
+      "m_SpaceAfter": 1,
+      "m_LineSpace": 1.2,
+      "m_Leading": "auto"
+    },
+    {
+      "m_nCount": 15,
+      "m_nLineGap": 0,
+      "m_Align": "left",
+      "m_Findent": 0,
+      "m_Lindent": 0,
+      "m_Rindent": 0,
+      "m_SpaceBefore": 1,
+      "m_SpaceAfter": 1,
+      "m_LineSpace": 1.2,
+      "m_Leading": "auto"
+    }
+  ],
+  "ATTR_Doc": [
+    {
+      "m_nCount": 72,
+      "vertical_align": "top",
+      "fit_to_content_height": true,
+      "frame_height": 100
+    }
+  ],
+  "ATTR_FontFamily": [
+    {
+      "m_nCount": 24,
+      "familyName": "Noto Sans KR",
+      "typeStyle": "Regular"
+    },
+    {
+      "m_nCount": 15,
+      "familyName": "Noto Sans KR",
+      "typeStyle": "Light"
+    },
+    {
+      "m_nCount": 18,
+      "familyName": "SpoqaHanSans",
+      "typeStyle": "Regular"
+    },
+    {
+      "m_nCount": 14,
+      "familyName": "BM DoHyeon OTF",
+      "typeStyle": "Regular"
+    },
+    {
+      "m_nCount": 1,
+      "familyName": "Noto Sans KR",
+      "typeStyle": "Regular"
+    }
+  ],
+  "ATTR_FontSize": [
+    {
+      "m_nCount": 72,
+      "FontSize": 14
+    }
+  ],
+  "ATTR_Bold": [
+    {
+      "m_nCount": 72,
+      "bold": false
+    }
+  ],
+  "ATTR_FontColor": [
+    {
+      "m_nCount": 72,
+      "fontColor": "black",
+      "fontColorCMYK": null
+    }
+  ],
+  "ATTR_LetterSpacing": [
+    {
+      "m_nCount": 72,
+      "letter_space": 0
+    }
+  ],
+  "ATTR_LetterScaleX": [
+    {
+      "m_nCount": 72,
+      "letter_scale_x": 100
+    }
+  ],
+  "ATTR_Stroke": [
+    {
+      "m_nCount": 72,
+      "stroke": {
+        "weight": 0,
+        "align": "outside",
+        "color": "#000",
+        "join": "round",
+        "miterlimit": 10
+      }
+    }
+  ],
+  "ATTR_Shadow": [
+    {
+      "m_nCount": 72,
+      "shadow": {
+        "size": 0,
+        "angle": 135,
+        "distance": 0,
+        "opacity": 100,
+        "color": "#000"
+      }
+    }
+  ],
+  "ATTR_NamedRange": [
+    {
+      "m_nCount": 72,
+      "var_name": "_na_",
+      "title": ""
+    }
+  ]
+}

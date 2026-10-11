@@ -1,0 +1,46 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`TB_Layout > insert_multiline_string 뒤 문단 3개, 긴 문단은 여러 글줄로 나뉜다 (do_layout_all + do_layout) 1`] = `
+[
+  [
+    12,
+  ],
+  [
+    44,
+    37,
+  ],
+  [
+    6,
+  ],
+]
+`;
+
+exports[`TB_Layout > 문단 정렬 변경(set_par)은 문단 전체를 다시 배치한다 (full_layout) 1`] = `
+[
+  [
+    12,
+  ],
+  [
+    45,
+    37,
+  ],
+  [
+    6,
+  ],
+]
+`;
+
+exports[`TB_Layout > 문단 중간에 글자를 넣으면(smart layout, 글줄 재사용) 불변식이 유지된다 1`] = `
+[
+  [
+    12,
+  ],
+  [
+    45,
+    37,
+  ],
+  [
+    6,
+  ],
+]
+`;
