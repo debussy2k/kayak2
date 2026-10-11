@@ -8,7 +8,7 @@
 import base_css from './engine/css/base.css?inline';
 
 if (typeof document !== 'undefined') {
-    let style = document.createElement('style');
+    const style = document.createElement('style');
     style.type = 'text/css';
     style.appendChild(document.createTextNode(base_css));
     document.head.appendChild(style);
