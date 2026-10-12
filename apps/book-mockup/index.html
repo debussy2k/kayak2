@@ -936,7 +936,7 @@ function parseManuscript(raw, mode, opts = {}){
     const blank = k => k < 0 || k >= lines.length || lines[k] == null || !lines[k].trim();
     if(gal){
       if(/^:{3,}$/.test(line)){ closeGal(); continue; }
-      if(/^(#{1,3}\s|:{3,}\s*\S)/.test(line)){ diag('G8', `사진 묶음 안의 ‘${line.slice(0, 24)}’ 때문에 묶음을 거기서 닫았어요`); closeGal(); }
+      if(/^(#{1,3}\s|:{3,}\s*\S|>|\[(새|쪽\s*넘김|다음\s*쪽|오른쪽\s*면|펼침면)|(\*\s*){3,}$|(-\s*){3,}$|(\+\s*){3,}$)/.test(line)){ diag('G8', `사진 묶음 안의 ‘${line.slice(0, 24)}’ 때문에 묶음을 거기서 닫았어요`); closeGal(); }
       else {
         let mm;
         if(!line) continue;
@@ -1230,13 +1230,13 @@ function paginate(){
       if(cap){ const c = mk('div', 'bcap', esc(cap)); c.style.cssText = `${cur.recto ? 'right' : 'left'}:${D.outer}px;bottom:${D.bottom * .26}px`; cur.node.append(c); }
     } else {
       const f = mk('figure', 'fig full', (art ? `<div class="art" style="background-image:url('${art.uri}')"></div>` : `<div class="missing">사진 파일 없음</div>`) + (cap ? `<figcaption>${esc(cap)}</figcaption>` : ''));
-      f.dataset.ph = ref; pin(f, info); cur.flow.append(f); f.style.height = cur.body.clientHeight + 'px';
+      f.dataset.ph = ref; f.dataset.b = ref; pin(f, info); cur.flow.append(f); f.style.height = cur.body.clientHeight + 'px';
     }
   }
   function placePhoto(b, ref, info){
     target();
     photos[ref] = info; info.wmm = widthMm(info, artOf(b)); if(info.cap == null) info.cap = capText(b);
-    const pend = () => { if(info.deferredFrom == null && info.size !== 'spread'){ info.deferredFrom = pages.length - 1; stats.deferred++; } pending.push({b, ref, info}); };
+    const pend = () => { if(info.deferredFrom == null && info.size !== 'spread'){ info.deferredFrom = pages.length - 1; if(info.size !== 'full') stats.deferred++; } pending.push({b, ref, info}); };
     if(info.size === 'spread'){
       // 펼침면은 왼쪽 면(짝수)에서 시작해야 한다. 그때까지 글이 앞 면을 채운다
       if(isEmpty() && !cur.recto){ fullPage(b, info, ref, 'L'); makePage('body', curSec); fullPage(b, info, ref, 'R'); return; }
@@ -1246,7 +1246,8 @@ function paginate(){
     if(cur.kind === 'opener' && !info.atStart){ pend(); return; }  // 장 시작 면에는 자동으로 두지 않는다
     if(info.autoSize && cur.autoN >= PH.perPage){ pend(); return; }
     const f = figEl(b, info, ref);
-    const tryPut = () => { if(info.place === 'top') cur.flow.prepend(f); else if(info.place === 'bottom') cur.btm.append(f); else cur.flow.append(f); return !over(); };
+    const at = info.place === 'bottom' && info.deferredFrom != null ? 'top' : info.place;  // 쪽 아래가 앵커 쪽에 안 들어가면 다음 쪽 위
+    const tryPut = () => { if(at === 'top') cur.flow.prepend(f); else if(at === 'bottom') cur.btm.append(f); else cur.flow.append(f); return !over(); };
     const done = () => { info.page = pages.length - 1; info.wmm = widthMm(info, artOf(b)); if(info.autoSize) cur.autoN++; };
     if(tryPut()) return done();
     f.remove();
@@ -1303,7 +1304,8 @@ function paginate(){
       for(const c of r.cells) photos[c.it.ref].page = pages.length - 1;
       if(ginfo.page == null) ginfo.page = pages.length - 1;
     });
-    if(g.caption){ const c = mk('p', 'gcap', esc(g.caption)); cur.flow.append(c); if(over()){ c.remove(); newBodyPage(); cur.flow.append(c); } }
+    const gcap = capText({caption:g.caption});  // 실용 프리셋의 '그림 3-2' 번호는 묶음 설명에 하나
+    if(gcap){ const c = mk('p', 'gcap', esc(gcap)); cur.flow.append(c); if(over()){ c.remove(); newBodyPage(); cur.flow.append(c); } }
   }
   function placeBreak(){ target(); const e = mk('div', 'scene', '* * *'); cur.flow.append(e); if(over()){ e.remove(); newBodyPage(); cur.flow.append(e); } }
   function placeDirective(b){
@@ -1348,8 +1350,10 @@ function paginate(){
     tag('');
     figNo = 0;
     const bl = sec.blocks;
-    const firstLand = sec.kind === 'chapter' ? bl.findIndex(b => b.t === 'img' && !b.size && b.art && ARTS[b.art].ratio < 1) : -1;
-    const loose = x => x && x.t === 'img' && !x.size;
+    // 장의 첫 사진이 크기를 정하지 않은 가로 사진일 때만 크게 (사진 규격 6.6)
+    const firstImg = sec.kind === 'chapter' ? bl.findIndex(b => b.t === 'img' || b.t === 'gal') : -1;
+    const firstLand = firstImg >= 0 && bl[firstImg].t === 'img' && !bl[firstImg].size && bl[firstImg].art && ARTS[bl[firstImg].art].ratio < 1 ? firstImg : -1;
+    const loose = x => x && x.t === 'img' && !intentOf(x);  // 크기·자리·채움을 하나라도 정한 사진은 묶지 않는다 (사진 규격 6.3)
     for(let bi = 0; bi < bl.length; bi++){
       const b = bl[bi];
       // 사이에 글 없이 이어진 사진은 묶음으로 (사진 규격 6.3)
@@ -1687,6 +1691,14 @@ function photoAt(ref){
   if(gi != null) return blk.t === 'gal' && blk.items[gi] ? {sec, bi, gi, gal:blk, b:blk.items[gi]} : null;
   return {sec, bi, gi:null, gal:blk.t === 'gal' ? blk : null, b:blk};
 }
+// 고른 사진은 블록 객체로도 기억한다. 원고를 편집해 블록 위치가 바뀌어도 같은 사진을 가리키게
+function selectPhoto(ref){ const P = ref ? photoAt(ref) : null; S.phSel = P ? ref : null; S.phObj = P ? P.b : null; S.phPick = false; }
+function syncPhSel(){
+  if(!S.phSel || !S.phObj) return; const P = photoAt(S.phSel); if(P && P.b === S.phObj) return;
+  S.phSel = null;
+  for(const s of S.sections) s.blocks.forEach((b, bi) => { if(b === S.phObj) S.phSel = `${s.id}:${bi}`; if(b.t === 'gal') b.items.forEach((it, gi) => { if(it === S.phObj) S.phSel = `${s.id}:${bi}:${gi}`; }); });
+  if(!S.phSel) S.phObj = null;
+}
 function assetUses(){
   const m = {};
   for(const s of S.sections) s.blocks.forEach((b, bi) => {
@@ -1696,7 +1708,7 @@ function assetUses(){
   return m;
 }
 const intentOf = b => !!(b.size || b.place || b.bleed != null);
-const shortText = (b, n = 14) => { const t = b.t === 'box' ? plainOf((b.items.find(x => x.t === 'p') || {}).text || '') : b.t === 'img' ? (b.caption || b.file || '사진') : b.t === 'gal' ? '사진 묶음' : plainOf(b.text || ''); return t.length > n ? t.slice(0, n) + '…' : t; };
+const shortText = (b, n = 14) => { if(b.t === 'break') return '장면 바꿈'; if(b.t === 'dir') return '쪽 지시'; const t = b.t === 'box' ? plainOf((b.items.find(x => x.t === 'p') || {}).text || '') : b.t === 'img' ? (b.caption || b.file || '사진') : b.t === 'gal' ? '사진 묶음' : plainOf(b.text || ''); return t.length > n ? t.slice(0, n) + '…' : t; };
 // 자동이 고른 값과 그 이유 (사진 규격 3절 4, 9.2)
 function photoWhy(info, L){
   if(!info) return ['아직 조판하지 않았어요'];
@@ -1777,7 +1789,7 @@ function galleryCardHTML(ref, where){
 }
 // 미리보기 오른쪽: 고른 사진의 카드, 고르지 않았으면 이 펼침면의 사진 목록
 function photoSideHTML(){
-  const L = getLayout();
+  syncPhSel(); const L = getLayout();
   if(S.phSel && photoAt(S.phSel)) return `<div class="phside-top"><h2 class="sec-title" style="margin:0">사진 카드</h2><button class="btn ghost small" data-act="ph-close" aria-label="사진 카드 닫기">✕</button></div>${photoCardHTML(S.phSel, 'preview')}`;
   S.phSel = null;
   const sp = L.spreads[S.spread] || []; const onSpread = Object.entries(L.photos).filter(([r, i]) => i.page != null && !i.inGallery && (sp.includes(i.page) || (i.size === 'spread' && sp.includes(i.page + 1))));
@@ -1813,6 +1825,7 @@ function insertAssets(names, at){
 }
 // 사진을 바꾸면 그 장만 다시 조판하고, 미리보기는 사진이 있는 펼침면으로 따라간다
 function photoChanged(ref){
+  S.undoFn = null; document.querySelector('.toast')?.remove();  // 끌기 되돌리기는 바로 다음 변경 전까지만
   invalidate();
   if(S.view === 'preview'){ const L = getLayout(); const {sid, bi} = refParts(ref); const inf = L.photos[ref] || L.photos[`${sid}:${bi}`]; if(inf && inf.page != null) S.spread = spreadOf(inf.page); }
   render();
@@ -1852,15 +1865,16 @@ function applyDrop(ref, z){
   to = Math.max(0, to);
   sec.blocks.splice(from, 1); if(from < to) to--; sec.blocks.splice(to, 0, b);
   if(b.t === 'img' && b.size !== 'full' && b.size !== 'spread'){ if(z.kind === 'side'){ b.place = 'side'; b.side = z.side; } else { b.place = z.kind; delete b.side; } }
-  S.undoFn = () => { sec.blocks = snap; S.phSel = ref; };
-  const nref = `${sec.id}:${to}`; S.phSel = nref; S.phPick = false;
+  const nref = `${sec.id}:${to}`; selectPhoto(nref);
   photoChanged(nref);
+  S.undoFn = () => { sec.blocks = snap; selectPhoto(ref); };
   const anchor = sec.blocks[to - 1]; const name = b.t === 'gal' ? '사진 묶음' : `‘${b.caption || b.file || '사진'}’ 사진`;
   toast(`${name}을 ${z.kind === 'top' ? '이 쪽 위' : z.kind === 'bottom' ? '이 쪽 아래' : `${anchor ? `‘${shortText(anchor)}’ 문단 뒤` : '장 첫머리'}${z.kind === 'side' ? `, 글 옆(${z.side === 'right' ? '오른쪽' : '왼쪽'})으` : ''}`}로 옮겼어요`, true);
 }
 
 /* ---- ④ 미리보기 ---- */
 function previewView(){
+  syncPhSel();
   afterRender = () => {
     const L = getLayout(); S.spread = Math.max(0, Math.min(S.spread, L.spreads.length - 1));
     const stage = document.getElementById('pstage'); stage.classList.toggle('gray', S.gray); stage.classList.toggle('guides', S.guides); stage.classList.toggle('phmode', S.phMode);
@@ -1906,7 +1920,7 @@ function runChecks(L){
       const list = b.t === 'img' ? [[b, `${s.id}:${bi}`, null]] : b.t === 'gal' ? b.items.map((it, gi) => [it, `${s.id}:${bi}:${gi}`, gi]) : [];
       for(const [p, ref, gi] of list){
         const name = p.caption || p.file || '사진';
-        if(!p.art){ stop.push({msg:`${p.file ? `‘${p.file}’` : `‘${name}’ 자리의`} 사진 파일이 없어요`, hint:'사진함에 같은 이름으로 올리면 저절로 채워져요.', sec:s.id, bi, where:where(s), fix:{act:'fix-img', id:s.id, i:bi, j:gi, label:'예시 사진 넣기'}}); continue; }
+        if(!p.art){ stop.push({msg:`${p.file ? `‘${p.file}’` : `‘${name}’ 자리의`} 사진을 올려 주세요`, hint:'사진함에 같은 이름으로 올리면 원고의 사진 자리가 저절로 채워져요.', sec:s.id, bi, where:where(s), fix:{act:'fix-img', id:s.id, i:bi, j:gi, label:'예시 사진 넣기'}}); continue; }
         const info = L.photos[ref]; if(!info || !info.wmm) continue;
         const dpi = dpiAt(ARTS[p.art], info.wmm);
         const canHalf = b.t === 'img' && info.size === 'body' && dpi * 2 >= 300;
@@ -2282,15 +2296,15 @@ const ACT = {
   'fix-half':a => { secById(a.dataset.id).blocks[+a.dataset.i].size = 'half'; invalidate(); toast('사진을 반 폭으로 바꿨어요'); render(); },
   'fix-img':a => { let b = secById(a.dataset.id).blocks[+a.dataset.i]; if(a.dataset.j !== '' && a.dataset.j != null && b.t === 'gal') b = b.items[+a.dataset.j]; b.art = ART_ORDER[(artSeq++) % 3]; b.file = b.file || `예시사진${artSeq}.jpg`; FILES[b.file] = b.art; invalidate(); toast('예시 사진을 넣었어요'); render(); },
   /* 사진 (사진 규격 9절) */
-  'ph-sel':a => { S.phSel = a.dataset.ref; S.phPick = false; render(); },
-  'ph-open':a => { const P = photoAt(a.dataset.ref); if(!P) return; S.phSel = a.dataset.ref; S.phPick = false; const inf = getLayout().photos[a.dataset.ref]; if(inf && inf.page != null) S.spread = spreadOf(inf.page); stepTo('preview'); },
+  'ph-sel':a => { selectPhoto(a.dataset.ref); render(); },
+  'ph-open':a => { const P = photoAt(a.dataset.ref); if(!P) return; selectPhoto(a.dataset.ref); const inf = getLayout().photos[a.dataset.ref]; if(inf && inf.page != null) S.spread = spreadOf(inf.page); stepTo('preview'); },
   'ph-close':() => { S.phSel = null; S.phPick = false; render(); },
   'ph-set':a => {
     const P = photoAt(a.dataset.ref); if(!P) return; const b = P.b; const {k, v} = a.dataset;
     if(k === 'size'){ if(v) b.size = v; else delete b.size; if(v === 'full' || v === 'spread'){ delete b.place; delete b.side; } if(v !== 'full') delete b.bleed; }
     else if(k === 'place'){ if(v) b.place = v; else delete b.place; if(v !== 'side') delete b.side; }
     else if(k === 'side') b.side = v;
-    else if(k === 'bleed'){ if(v === '') delete b.bleed; else b.bleed = v === 'true'; }
+    else if(k === 'bleed'){ if(v === '') delete b.bleed; else { b.bleed = v === 'true'; b.size = 'full'; delete b.place; delete b.side; } }
     photoChanged(a.dataset.ref);
   },
   'ph-auto':a => { const P = photoAt(a.dataset.ref); if(!P) return; for(const k of ['size', 'place', 'side', 'bleed']) delete P.b[k]; photoChanged(a.dataset.ref); toast('크기와 자리를 자동으로 되돌렸어요'); },
@@ -2304,7 +2318,7 @@ const ACT = {
   'ph-goto':a => { const P = photoAt(a.dataset.ref); if(!P) return; S.sel = P.sec.id; S.focusBlock = P.bi; S.view = 'studio'; S.stTab = 'toc'; S.rawMode = false; window.scrollTo(0, 0); render(); },
   'gal-frame':a => { const P = photoAt(a.dataset.ref); if(!P) return; P.b.frame = a.dataset.v; photoChanged(a.dataset.ref); },
   'gal-unwrap':a => { const P = photoAt(a.dataset.ref); P.sec.blocks.splice(P.bi, 1, ...P.b.items.map(it => ({t:'img', file:it.file, art:it.art, caption:it.caption}))); S.phSel = null; invalidate(); render(); toast('묶음을 풀었어요. 사이에 글이 없으면 자동으로 나란히 놓여요'); },
-  'gal-item-del':a => { const P = photoAt(a.dataset.ref); if(!P) return; P.gal.items.splice(P.gi, 1); if(!P.gal.items.length){ P.sec.blocks.splice(P.bi, 1); S.phSel = null; } else if(S.phSel === a.dataset.ref) S.phSel = `${P.sec.id}:${P.bi}`; invalidate(); render(); },
+  'gal-item-del':a => { const P = photoAt(a.dataset.ref); if(!P) return; P.gal.items.splice(P.gi, 1); if(!P.gal.items.length){ P.sec.blocks.splice(P.bi, 1); S.phSel = null; } else if(S.phSel === a.dataset.ref) selectPhoto(`${P.sec.id}:${P.bi}`); invalidate(); render(); },
   'sec-photos-auto':a => { const sec = secById(a.dataset.id); for(const b of sec.blocks){ if(b.t === 'img') for(const k of ['size', 'place', 'side', 'bleed']) delete b[k]; if(b.t === 'gal') b.frame = ''; } S.phSel = null; invalidate(); render(); toast(`‘${secLabel(sec)}’의 사진을 모두 자동으로 되돌렸어요`); },
   'st-tab':a => { S.stTab = a.dataset.v; render(); },
   'asset-sel':a => { const n = a.dataset.v; S.assetSel = S.assetSel.includes(n) ? S.assetSel.filter(x => x !== n) : [...S.assetSel, n]; render(); },
@@ -2384,7 +2398,7 @@ document.addEventListener('click', e => {
   const hz = e.target.closest?.('#ed .m-hanja');
   if(hz){ const el = hz.closest('.eb'); const m = modelOf(el); S.hanjaEdit = {i:m.i, j:m.j, k:[...el.querySelectorAll('.m-hanja')].indexOf(hz), base:hz.textContent, v:hz.dataset.v || ''}; render(); return; }
   const ph = e.target.closest?.('#pstage [data-ph]');
-  if(ph){ S.phSel = ph.dataset.ph; S.phPick = false; render(); return; }
+  if(ph){ selectPhoto(ph.dataset.ph); render(); return; }
   const a = e.target.closest('[data-act]'); if(!a || a.disabled) return;
   const f = ACT[a.dataset.act]; if(f) f(a, e);
 });
@@ -2426,6 +2440,7 @@ document.addEventListener('focusin', e => { const el = e.target.closest?.('#ed .
 let rawTimer = null;
 document.addEventListener('input', e => {
   const t = e.target; const bind = t.dataset?.bind;
+  if(S.undoFn){ S.undoFn = null; document.querySelector('.toast')?.remove(); }
   if(t.matches?.('.eb[contenteditable="true"]')){ syncEl(t); schedulePreview(); return; }
   if(t.id === 'raw'){ clearTimeout(rawTimer); rawTimer = setTimeout(() => { S.rawText = t.value; S.rawDiag = parseManuscript(t.value, 'strict').diag; const ul = document.getElementById('rawdiag'); if(ul) ul.innerHTML = rawDiagHTML(); }, 300); return; }
   if(t.id === 'hanja-in'){ const he = S.hanjaEdit; if(!he) return; he.v = t.value; const el = view.querySelector(`#ed .eb[data-i="${he.i}"]${he.j != null ? `[data-j="${he.j}"]` : ':not([data-j])'}`); const sp = el && el.querySelectorAll('.m-hanja')[he.k]; if(sp){ sp.dataset.v = t.value; syncEl(el); schedulePreview(); } return; }
