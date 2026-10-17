@@ -782,6 +782,16 @@ const S = {
 };
 
 /* ===================== 글자 표기 (인라인) ===================== */
+// 받침에 맞는 조사: jo('사진', '을를') → '을'. pair는 '은는', '을를', '이가', 또는 '으로'
+function jo(w, pair){
+  const t = String(w).trim(); const c = t.charCodeAt(t.length - 1);
+  let fin; // 0 받침 없음, 1 받침(ㄹ 아님), 2 ㄹ 받침
+  if(c >= 0xAC00 && c <= 0xD7A3){ const f = (c - 0xAC00) % 28; fin = f === 0 ? 0 : f === 8 ? 2 : 1; }
+  else if(/[0-9]$/.test(t)) fin = [1, 2, 0, 1, 0, 0, 1, 2, 2, 0][+t.slice(-1)]; // 영 일 이 삼 사 오 육 칠 팔 구
+  else fin = /[mn]$/i.test(t) ? 1 : /[lr]$/i.test(t) ? 2 : 0;
+  if(pair === '으로') return fin === 1 ? '으로' : '로';
+  return fin === 0 ? pair[1] : pair[0];
+}
 function closeBracket(s, i){ let d = 0; for(let k = i; k < s.length; k++){ const c = s[k]; if(c === '\\'){ k++; continue; } if(c === '[' || c === '［') d++; else if(c === ']' || c === '］'){ d--; if(d === 0) return k; } } return -1; }
 function findClose(s, from, delim){ for(let k = from; k < s.length; k++){ if(s[k] === '\\'){ k++; continue; } if(s.startsWith(delim, k)){ if(delim === '*' && s[k+1] === '*'){ k++; continue; } return k; } } return -1; }
 function tokenize(s){
@@ -852,6 +862,20 @@ function renderEd(text, nums){
   return walk(tokenize(text || ''));
 }
 const escText = t => t.replace(/[\\*\[\]{}|]/g, m => '\\' + m);
+function wrapMark(inner, a, b){ const m = inner.match(/^(\s*)([\s\S]*?)(\s*)$/); return m[2] ? m[1] + a + m[2] + b + m[3] : m[1] + m[3]; }
+// 글자 표기의 정규형 (규격 8.3): 한자는 {漢|한}, 꾸밈 기호의 앞뒤 공백은 밖으로, 표기 기호 글자는 \ 로
+function canonInline(text){
+  const walk = ts => ts.map(t => {
+    if(t.k === 'text') return escText(t.v);
+    if(t.k === 'note') return `{{${t.id}}}`;
+    if(t.k === 'span' && t.name === '한자'){ const base = plainOf(t.c.map(x => x.v || '').join('')).replace(/[{}|\\]/g, ''); return base ? `{${base}|${(t.v || '').replace(/[{}|\\]/g, '')}}` : ''; }
+    const inner = walk(t.c);
+    if(t.k === 'strong') return wrapMark(inner, '**', '**');
+    if(t.k === 'emph') return wrapMark(inner, '*', '*');
+    return wrapMark(inner, '[', `]{${t.name}${t.v ? ': ' + t.v : ''}}`);
+  }).join('');
+  return walk(tokenize(text || ''));
+}
 function serializeEd(el){
   let out = '';
   el.childNodes.forEach(n => {
@@ -862,9 +886,9 @@ function serializeEd(el){
     else if(n.nodeName === 'BR') out += ' ';
     else if(m === 'hanja'){ const base = n.textContent.replace(/[{}|\\]/g, ''); if(base) out += `{${base}|${(n.dataset.v || '').replace(/[{}|\\]/g, '')}}`; }
     else { const inner = serializeEd(n); if(!inner) return;
-      if(m === 'strong' || n.nodeName === 'B' || n.nodeName === 'STRONG') out += `**${inner}**`;
-      else if(m === 'emph' || n.nodeName === 'I' || n.nodeName === 'EM') out += `*${inner}*`;
-      else if(m === 'span') out += `[${inner}]{${n.dataset.name}${n.dataset.v ? ': ' + n.dataset.v : ''}}`;
+      if(m === 'strong' || n.nodeName === 'B' || n.nodeName === 'STRONG') out += wrapMark(inner, '**', '**');
+      else if(m === 'emph' || n.nodeName === 'I' || n.nodeName === 'EM') out += wrapMark(inner, '*', '*');
+      else if(m === 'span') out += wrapMark(inner, '[', `]{${n.dataset.name}${n.dataset.v ? ': ' + n.dataset.v : ''}}`);
       else out += inner; }
   });
   return out;
@@ -874,7 +898,7 @@ function serializeEd(el){
 const FW = {'＃':'#','＞':'>','＊':'*','：':':'};
 function fwLine(l){
   let t = l.replace(/^([＃＞＊：]+)/, m => [...m].map(c => FW[c]).join(''));
-  t = t.replace(/［(주|그림|사진)\s*：/g, '[$1:').replace(/［\^/g, '[^');
+  t = t.replace(/［(주|그림|사진)\s*[：:]/g, '[$1:').replace(/［\^/g, '[^');
   t = t.replace(/^［(새\s*쪽|쪽\s*넘김|다음\s*쪽|새\s*오른쪽\s*면|오른쪽\s*면에서|새\s*펼침면|펼침면에서)］$/, '[$1]');
   t = t.replace(/｛([^｛｝｜{}|]+)｜([^｛｝｜{}|]*)｝/g, '{$1|$2}');
   return t;
@@ -888,7 +912,7 @@ function layoutWords(field, diag){
     else if(w in BLEED_WORDS) out.bleed = BLEED_WORDS[w];
     else if(w !== '자동') bad.push(w);
   }
-  if(bad.length) diag('G2', `‘${bad.join(', ')}’는 모르는 말이에요. 자동으로 놓았어요`);
+  if(bad.length) diag('G2', `‘${bad.join(', ')}’${jo(bad[bad.length - 1], '은는')} 모르는 말이에요. 자동으로 놓았어요`);
   return out;
 }
 function parseImage(body, diag){
@@ -948,18 +972,19 @@ function parseManuscript(raw, mode, opts = {}){
     if(box){
       if(/^:{3,}$/.test(line)){ closeBox(); continue; }
       if(/^:{3,}\s*\S/.test(line)){ diag('B2', `상자 안에 상자를 넣을 수 없어서 ‘${box.block.name}’ 상자를 여기서 닫고 새 상자를 시작했어요`); closeBox(); }
-      else if(/^#{1,3}\s/.test(line)){ diag('B1', `${box.line + 1}줄에서 시작한 ‘${box.block.name}’ 상자가 끝나지 않았어요. 제목 앞에서 닫았어요`, box.line); closeBox(); }
+      else if(/^#{1,3}\s/.test(line) && !/^#(\s+#){2,}$/.test(line)){ diag('B1', `${box.line + 1}줄에서 시작한 ‘${box.block.name}’ 상자가 끝나지 않았어요. 제목 앞에서 닫았어요`, box.line); closeBox(); }
       else { if(!line){ if(box.block.items.length && box.block.items[box.block.items.length - 1].t !== 'gap') box.block.items.push({t:'gap'}); } else box.block.items.push({t:'p', text:inl(line)}); continue; }
     }
     if(!line) continue;
     let m;
     if((m = line.match(/^:{3,}\s*([^|｜]+?)\s*(?:[|｜]\s*(.*))?$/)) && isGalName(m[1])){
       ensure(); let frame = '';
-      if(m[2]){ const w = m[2].trim(); if(w in FRAME_WORDS) frame = FRAME_WORDS[w]; else diag('G2', `‘${w}’는 모르는 틀이에요. 자동으로 놓았어요`); }
+      if(m[2]){ const w = m[2].trim(); if(w in FRAME_WORDS) frame = FRAME_WORDS[w]; else diag('G2', `‘${w}’${jo(w, '은는')} 모르는 틀이에요. 자동으로 놓았어요`); }
       const b = {t:'gal', frame, caption:'', items:[]}; cur.blocks.push(b); gal = {block:b, line:i}; continue;
     }
     if((m = line.match(/^:{3,}\s*(\S.*)$/))){ ensure(); const b = {t:'box', name:m[1].trim(), items:[]}; cur.blocks.push(b); box = {block:b, line:i}; continue; }
     if(/^:{3,}$/.test(line)) continue; // B3: 여는 줄 없는 닫는 줄은 무시
+    if(/^(\*\s*){3,}$/.test(line) || /^(-\s*){3,}$/.test(line) || /^(\+\s*){3,}$/.test(line) || /^#(\s+#){2,}$/.test(line)){ ensure(); cur.blocks.push({t:'break'}); continue; }
     if((m = line.match(/^(#{1,3})\s+(.+)$/))){
       if(m[1].length === 1){
         let t = m[2].trim(), kind = null; const a = t.match(/\s*\{([^{}]+)\}\s*$/);
@@ -972,7 +997,6 @@ function parseManuscript(raw, mode, opts = {}){
       } else { ensure(); cur.blocks.push({t:'h', level:m[1].length, text:inl(m[2])}); }
       continue;
     }
-    if(/^(\*\s*){3,}$/.test(line) || /^(-\s*){3,}$/.test(line) || /^(\+\s*){3,}$/.test(line) || /^#(\s+#){2,}$/.test(line)){ ensure(); cur.blocks.push({t:'break'}); continue; }
     if((m = line.match(/^\[(?:그림|사진)\s*:\s*(.*)[\]］]$/))){ ensure(); cur.blocks.push(parseImage(m[1], diag)); continue; }
     if((m = line.match(/^!\[([^\]]*)\]\(([^)]+)\)$/))){ ensure(); cur.blocks.push(parseImage(`${m[2]} | ${m[1]}`, diag)); continue; }
     if(/^\[(새\s*쪽|쪽\s*넘김|다음\s*쪽)\]$/.test(line)){ ensure(); cur.blocks.push({t:'dir', kind:'newPage'}); continue; }
@@ -989,7 +1013,7 @@ function parseManuscript(raw, mode, opts = {}){
       if(line.length <= 40 && (m = line.match(/^(?:제\s*\d+\s*장|\d+\s*장|chapter\s+\d+)\s*[.:·\-]?\s*(.*)$/i))){
         let title = m[1].trim();
         if(!title){ let j = i + 1; while(j < lines.length && (lines[j] == null || !lines[j].trim())) j++; if(j < lines.length && lines[j].trim().length <= 30){ title = lines[j].trim(); i = j; } }
-        push('chapter', title || '제목 없음', isDocx ? '워드 ‘제목 1’ 스타일' : `‘${line.split(/\s+/)[0]}’로 시작하는 줄`); continue;
+        push('chapter', title || '제목 없음', isDocx ? '워드 ‘제목 1’ 스타일' : `‘${line.split(/\s+/)[0]}’${jo(line.split(/\s+/)[0], '으로')} 시작하는 줄`); continue;
       }
       if(line.length <= 40 && (m = line.match(/^(?:제\s*)?\d+\s*부\s*[.:·\-]?\s*(.*)$/))){ push('part', m[1].trim() || line, isDocx ? '워드 ‘제목 1’ 스타일' : '‘부’로 끝나는 번호'); continue; }
       if(FB[line]){ push(FB[line], line, isDocx ? '워드 ‘제목 1’ 스타일' : `‘${line}’라는 제목`); continue; }
@@ -1011,21 +1035,31 @@ function imageLine(b){
   if(b.size) w.push(SIZE_LABEL[b.size]);
   if(b.place && b.size !== 'full' && b.size !== 'spread') w.push(b.place === 'side' ? (b.side && b.side !== 'outer' ? `글 옆 ${SIDE_LABEL[b.side]}` : '글 옆') : PLACE_LABEL[b.place]);
   if(b.size === 'full' && b.bleed != null) w.push(b.bleed ? '종이 끝까지' : '여백 안');
-  const f = [b.file || '', b.caption || '', w.join(', ')]; while(f.length > 1 && !f[f.length - 1]) f.pop();
+  const f = b.file ? [b.file, b.caption || '', w.join(', ')] : [b.caption || '', w.join(', ')]; while(f.length > 1 && !f[f.length - 1]) f.pop();
   return `[그림: ${f.join(' | ')}]`;
 }
-const withNotes = t => (t || '').replace(/\{\{(n\d+)\}\}/g, (_, id) => `[주: ${S.notes[id] || ''}]`);
+// 주석 내용의 짝 없는 [ ] 는 \ 로 글자 그대로 (표기로 보기에서 주석이 잘리지 않게)
+function balanceBrackets(t){
+  const open = [], bad = new Set();
+  for(let k = 0; k < t.length; k++){ const c = t[k]; if(c === '\\'){ k++; continue; } if(c === '[') open.push(k); else if(c === ']'){ if(open.length) open.pop(); else bad.add(k); } }
+  open.forEach(k => bad.add(k));
+  if(!bad.size) return t;
+  let out = ''; for(let k = 0; k < t.length; k++){ if(bad.has(k)) out += '\\'; out += t[k]; } return out;
+}
+const withNotes = t => (t || '').replace(/\{\{(n\d+)\}\}/g, (_, id) => `[주: ${balanceBrackets(S.notes[id] || '')}]`);
+const canonText = t => withNotes(canonInline(t));
+function dryDiag(text){ const n0 = noteSeq, i0 = idSeq; const d = parseManuscript(text, 'strict').diag; noteSeq = n0; idSeq = i0; return d; }
 function serializeSection(sec){
   const L = []; const fb = FB[sec.title];
   const needAttr = sec.kind === 'chapter' ? !!fb : fb !== sec.kind;
   L.push(`# ${sec.title}${needAttr ? ` {${KIND_ATTR[sec.kind]}}` : ''}`);
   for(const b of sec.blocks){
     L.push('');
-    if(b.t === 'p') L.push(lineSafe(withNotes(b.text)));
-    else if(b.t === 'h') L.push(`${b.level === 3 ? '###' : '##'} ${withNotes(b.text)}`);
+    if(b.t === 'p') L.push(lineSafe(canonText(b.text)));
+    else if(b.t === 'h') L.push(`${b.level === 3 ? '###' : '##'} ${canonText(b.text)}`);
     else if(b.t === 'box'){
-      if(b.name === '인용') b.items.forEach(it => L.push(it.t === 'gap' ? '>' : `> ${withNotes(it.text)}`));
-      else { L.push(`::: ${b.name}`); b.items.forEach(it => L.push(it.t === 'gap' ? '' : lineSafe(withNotes(it.text)))); L.push(':::'); }
+      if(b.name === '인용') b.items.forEach(it => L.push(it.t === 'gap' ? '>' : `> ${canonText(it.text)}`));
+      else { L.push(`::: ${b.name}`); b.items.forEach(it => L.push(it.t === 'gap' ? '' : lineSafe(canonText(it.text)))); L.push(':::'); }
     }
     else if(b.t === 'img') L.push(imageLine(b));
     else if(b.t === 'gal'){ L.push(`::: 사진 묶음${b.frame ? ` | ${FRAME_LABEL[b.frame]}` : ''}`); b.items.forEach(it => L.push(imageLine(it))); if(b.caption) L.push(lineSafe(b.caption)); L.push(':::'); }
@@ -1616,7 +1650,7 @@ function usedBoxes(){
 const customNames = () => Object.keys(S.styles).filter(k => S.styles[k].custom);
 function styleEditor(canon, st){
   return `<div class="style-edit">${BOX_PROPS.map(([k, label, opts]) => `<div class="ctl"><span class="lbl">${label}</span><div class="seg" role="group">${opts.map(([v, l]) => `<button type="button" data-act="style-set" data-name="${esc(canon)}" data-k="${k}" data-v="${String(v)}" aria-pressed="${String(st[k]) === String(v)}">${l}</button>`).join('')}</div></div>`).join('')}
-    <div class="ctl"><span class="muted small">이 책의 ‘${esc(canon)}’은 모두 이 모양으로 바뀌어요.</span><button class="btn small" data-act="style-reset" data-name="${esc(canon)}">디자인 기본값으로</button></div></div>`;
+    <div class="ctl"><span class="muted small">이 책의 ‘${esc(canon)}’${jo(canon, '은는')} 모두 이 모양으로 바뀌어요.</span><button class="btn small" data-act="style-reset" data-name="${esc(canon)}">디자인 기본값으로</button></div></div>`;
 }
 function stylesSection(){
   const IS = inlineStyle();
@@ -1654,7 +1688,7 @@ function designView(){
   const styleName = S.styleSel || Object.keys(getLayout().boxFirst)[0];
   const explain = {opener:'장 시작 면에는 머리글과 쪽 번호를 넣지 않아요. 장은 늘 오른쪽 면에서 시작해요.', body:'왼쪽 면 위에는 책 제목, 오른쪽 면 위에는 장 제목이 머리글로 들어가요. 쪽 번호는 바깥쪽에 있어요.', notes:'주석은 고른 위치(쪽 아래, 장 끝, 책 끝)에 모여요. 쪽 아래 주석은 번호가 있는 줄과 같은 쪽에 놓여요.', front:'판권 면과 차례예요. 차례의 쪽 번호는 조판이 끝난 뒤 저절로 채워져요.',
     photo:'사진이 처음 나오는 펼침면이에요. ‘사진 크기’를 바꾸면 자동으로 고른 사진이 함께 바뀌어요. 사진 하나만 바꾸려면 미리보기에서 그 사진을 누르세요.',
-    style: styleName ? (getLayout().boxFirst[styleName] != null ? `‘${styleName}’ 상자가 처음 나오는 펼침면이에요. 왼쪽 ‘이 책의 모양들’에서 고치면 책 전체의 ‘${styleName}’이 함께 바뀌어요.` : `이 책에는 아직 ‘${styleName}’ 상자가 없어요.`) : '이 책에는 이름 붙은 상자가 없어요.'}[S.designFocus];
+    style: styleName ? (getLayout().boxFirst[styleName] != null ? `‘${styleName}’ 상자가 처음 나오는 펼침면이에요. 왼쪽 ‘이 책의 모양들’에서 고치면 책 전체의 ‘${styleName}’${jo(styleName, '이가')} 함께 바뀌어요.` : `이 책에는 아직 ‘${styleName}’ 상자가 없어요.`) : '이 책에는 이름 붙은 상자가 없어요.'}[S.designFocus];
   return `<div class="design-grid">
   <section class="panel">
     <h2 class="sec-title">책 디자인</h2>
@@ -1821,7 +1855,7 @@ function insertAssets(names, at){
   const items = names.map(n => ({file:n, art:FILES[n], caption:''}));
   sec.blocks.splice(i + 1, 0, items.length > 1 ? {t:'gal', frame:'', caption:'', items} : {t:'img', ...items[0]});
   S.assetSel = []; S.focusBlock = i + 1; invalidate(); render();
-  toast(items.length > 1 ? `사진 ${items.length}장을 묶음으로 넣었어요. 틀은 자동으로 골라요` : `‘${names[0]}’을 넣었어요. 크기와 자리는 자동으로 골라요`);
+  toast(items.length > 1 ? `사진 ${items.length}장을 묶음으로 넣었어요. 틀은 자동으로 골라요` : `‘${names[0]}’${jo(names[0], '을를')} 넣었어요. 크기와 자리는 자동으로 골라요`);
 }
 // 사진을 바꾸면 그 장만 다시 조판하고, 미리보기는 사진이 있는 펼침면으로 따라간다
 function photoChanged(ref){
@@ -1932,7 +1966,7 @@ function runChecks(L){
     // 표기: 모르는 이름
     s.blocks.forEach((b, bi) => { if(b.t === 'box' && !resolveBox(b.name).known){ const sim = SIMILAR[b.name] || '상자'; warn.push({msg:`‘${b.name}’ 모양이 아직 없어요`, hint:`지금은 본문과 같은 모양으로 넣었어요. 비슷한 ‘${sim}’ 모양을 쓰거나 새 모양을 만들어 주세요.`, sec:s.id, bi, where:where(s), fix:{act:'alias', name:b.name, to:sim, label:`‘${sim}’ 모양 쓰기`}}); } });
     const spans = [...new Set(texts.flatMap(spanNamesIn))].filter(n => !SPAN_NAMES.includes(n));
-    for(const n of spans) warn.push({msg:`‘${n}’는 모르는 글자 꾸밈이에요`, hint:'글자는 그대로 두었어요. 쓸 수 있는 이름: ' + SPAN_NAMES.join(', '), sec:s.id, where:where(s)});
+    for(const n of spans) warn.push({msg:`‘${n}’${jo(n, '은는')} 모르는 글자 꾸밈이에요`, hint:'글자는 그대로 두었어요. 쓸 수 있는 이름: ' + SPAN_NAMES.join(', '), sec:s.id, where:where(s)});
     // 표기: 읽을 때 남긴 메모 (규격 7절)
     for(const d of s.diag || []) warn.push({msg:d.msg, hint:'', sec:s.id, where:where(s, d.line)});
   }
@@ -2272,8 +2306,8 @@ const ACT = {
   write:() => { S.sections = [{id:uid(), kind:'prologue', title:'여는 글', reason:'직접 추가', blocks:[], diag:[]}, {id:uid(), kind:'chapter', title:'첫 번째 장', reason:'직접 추가', blocks:[{t:'p', text:''}], diag:[]}]; S.notes = {}; S.sel = S.sections[1].id; S.furthest = 2; invalidate(); S.view = 'studio'; render(); },
   'toc-sel':(a, e) => { if(e.target.closest('select,input,button')) return; S.sel = a.dataset.id; render(); },
   mv:a => { const s = secById(a.dataset.id), d = +a.dataset.d; const zl = S.sections.filter(x => zoneOf(x) === zoneOf(s)); const j = zl.indexOf(s) + d; if(j < 0 || j >= zl.length) return; const o = zl[j]; const ia = S.sections.indexOf(s), ib = S.sections.indexOf(o); S.sections[ia] = o; S.sections[ib] = s; invalidate(); render(); },
-  merge:a => { const s = secById(a.dataset.id); const i = S.sections.indexOf(s); if(i <= 0) return; const p = S.sections[i - 1]; p.blocks.push({t:'h', level:2, text:escText(s.title)}, ...s.blocks); p.diag.push(...(s.diag || [])); S.sections.splice(i, 1); S.sel = p.id; invalidate(); toast(`‘${s.title}’을 ‘${p.title}’에 합쳤어요`); render(); },
-  'sec-del':a => { const s = secById(a.dataset.id); const i = S.sections.indexOf(s); S.lastDeleted = {s, i}; S.undoFn = null; S.sections.splice(i, 1); if(S.sel === s.id) S.sel = S.sections[0]?.id; invalidate(); render(); toast(`‘${s.title}’을 지웠어요`, true); },
+  merge:a => { const s = secById(a.dataset.id); const i = S.sections.indexOf(s); if(i <= 0) return; const p = S.sections[i - 1]; p.blocks.push({t:'h', level:2, text:escText(s.title)}, ...s.blocks); p.diag.push(...(s.diag || [])); S.sections.splice(i, 1); S.sel = p.id; invalidate(); toast(`‘${s.title}’${jo(s.title, '을를')} ‘${p.title}’에 합쳤어요`); render(); },
+  'sec-del':a => { const s = secById(a.dataset.id); const i = S.sections.indexOf(s); S.lastDeleted = {s, i}; S.undoFn = null; S.sections.splice(i, 1); if(S.sel === s.id) S.sel = S.sections[0]?.id; invalidate(); render(); toast(`‘${s.title}’${jo(s.title, '을를')} 지웠어요`, true); },
   undo:() => { if(S.undoFn){ S.undoFn(); S.undoFn = null; invalidate(); render(); document.querySelector('.toast')?.remove(); return; } const d = S.lastDeleted; if(!d) return; S.sections.splice(d.i, 0, d.s); S.lastDeleted = null; invalidate(); render(); document.querySelector('.toast')?.remove(); },
   split:a => { splitSection(secById(a.dataset.id), +a.dataset.i); toast('새 장을 만들었어요. 제목을 확인해 주세요'); render(); },
   'weak-ch':a => { splitSection(secById(a.dataset.id), +a.dataset.i); render(); },
@@ -2286,7 +2320,7 @@ const ACT = {
   'style-set':a => { const {name, k} = a.dataset; let v = a.dataset.v; if(['left','right','size','keep'].includes(k)) v = Number(v); if(k === 'lastRight') v = v === 'true'; S.styles[name] = {...(S.styles[name] || {}), [k]:v}; S.designFocus = 'style'; invalidate(); render(); },
   'style-reset':a => { const n = a.dataset.name; const custom = S.styles[n]?.custom; S.styles[n] = custom ? {custom:true} : {}; if(!custom) delete S.styles[n]; invalidate(); render(); },
   'inline-set':a => { S.inlineOv[a.dataset.k] = a.dataset.v; invalidate(); render(); },
-  alias:a => { const n = a.dataset.name, to = a.dataset.to; S.alias[n] = to; invalidate(); toast(`‘${n}’을 ‘${to}’ 모양으로 넣었어요`); render(); },
+  alias:a => { const n = a.dataset.name, to = a.dataset.to; S.alias[n] = to; invalidate(); toast(`‘${n}’${jo(n, '을를')} ‘${to}’ 모양으로 넣었어요`); render(); },
   newstyle:a => { const n = a.dataset.name; S.styles[n] = {custom:true}; S.styleSel = n; S.designFocus = 'style'; invalidate(); toast(`‘${n}’ 모양을 만들었어요. 모양을 골라 주세요`); if(S.view !== 'design') stepTo('design'); else render(); },
   flip:a => { const L = getLayout(); S.spread = Math.max(0, Math.min(L.spreads.length - 1, S.spread + +a.dataset.d)); refreshPreviews(); },
   spread:a => { S.spread = +a.dataset.v; refreshPreviews(); },
@@ -2311,7 +2345,7 @@ const ACT = {
   'ph-pick':a => { S.phPick = S.phPick === a.dataset.ref ? false : a.dataset.ref; render(); },
   'ph-swap':a => {
     const ref = a.dataset.ref, n = a.dataset.v;
-    if(ref.endsWith(':add')){ const P = photoAt(ref.slice(0, -4)); P.b.items.push({file:n, art:FILES[n], caption:''}); toast(`‘${n}’을 묶음에 더했어요`); }
+    if(ref.endsWith(':add')){ const P = photoAt(ref.slice(0, -4)); P.b.items.push({file:n, art:FILES[n], caption:''}); toast(`‘${n}’${jo(n, '을를')} 묶음에 더했어요`); }
     else { const P = photoAt(ref); P.b.file = n; P.b.art = FILES[n]; toast(`‘${n}’으로 바꿨어요. 자리와 설명은 그대로예요`); }
     S.phPick = false; photoChanged(ref.replace(/:add$/, ''));
   },
@@ -2338,7 +2372,7 @@ const ACT = {
   'box-label':a => { const i = +a.dataset.i; S.boxMenu = S.boxMenu === i ? null : i; render(); },
   'box-rename':a => { curSec().blocks[+a.dataset.i].name = a.dataset.v; S.boxMenu = null; invalidate(); render(); },
   'box-unwrap':a => { const sec = curSec(); const i = +a.dataset.i; const b = sec.blocks[i]; sec.blocks.splice(i, 1, ...b.items.filter(x => x.t === 'p').map(x => ({t:'p', text:x.text}))); S.boxMenu = null; invalidate(); render(); },
-  'raw-open':() => { S.rawMode = true; S.rawText = serializeSection(curSec()); S.rawDiag = parseManuscript(S.rawText, 'strict').diag; S.hanjaEdit = null; render(); },
+  'raw-open':() => { S.rawMode = true; S.rawText = serializeSection(curSec()); S.rawDiag = dryDiag(S.rawText); S.hanjaEdit = null; render(); },
   'raw-cancel':() => { S.rawMode = false; render(); },
   'raw-apply':() => {
     const sec = curSec(); const text = document.getElementById('raw').value;
@@ -2442,7 +2476,7 @@ document.addEventListener('input', e => {
   const t = e.target; const bind = t.dataset?.bind;
   if(S.undoFn){ S.undoFn = null; document.querySelector('.toast')?.remove(); }
   if(t.matches?.('.eb[contenteditable="true"]')){ syncEl(t); schedulePreview(); return; }
-  if(t.id === 'raw'){ clearTimeout(rawTimer); rawTimer = setTimeout(() => { S.rawText = t.value; S.rawDiag = parseManuscript(t.value, 'strict').diag; const ul = document.getElementById('rawdiag'); if(ul) ul.innerHTML = rawDiagHTML(); }, 300); return; }
+  if(t.id === 'raw'){ clearTimeout(rawTimer); rawTimer = setTimeout(() => { S.rawText = t.value; S.rawDiag = dryDiag(t.value); const ul = document.getElementById('rawdiag'); if(ul) ul.innerHTML = rawDiagHTML(); }, 300); return; }
   if(t.id === 'hanja-in'){ const he = S.hanjaEdit; if(!he) return; he.v = t.value; const el = view.querySelector(`#ed .eb[data-i="${he.i}"]${he.j != null ? `[data-j="${he.j}"]` : ':not([data-j])'}`); const sp = el && el.querySelectorAll('.m-hanja')[he.k]; if(sp){ sp.dataset.v = t.value; syncEl(el); schedulePreview(); } return; }
   if(!bind) return;
   if(bind === 'meta-title'){ S.meta.title = t.value; invalidate(); }
@@ -2475,7 +2509,7 @@ document.addEventListener('drop', e => {
   if(S.dragAsset){
     const t = e.target.closest?.('#ed > [data-i]'); const n = S.dragAsset; endDrag(); if(!e.target.closest?.('#ed')) return; e.preventDefault();
     const sec = curSec(); const tb = t ? sec.blocks[+t.dataset.i] : null;
-    if(tb && tb.t === 'gal'){ tb.items.push({file:n, art:FILES[n], caption:''}); invalidate(); render(); toast(`‘${n}’을 묶음에 더했어요`); }
+    if(tb && tb.t === 'gal'){ tb.items.push({file:n, art:FILES[n], caption:''}); invalidate(); render(); toast(`‘${n}’${jo(n, '을를')} 묶음에 더했어요`); }
     else insertAssets([n], t ? +t.dataset.i : sec.blocks.length - 1);
   }
 });
